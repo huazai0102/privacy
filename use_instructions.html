@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美光相机使用说明</title>
+    <script>
+        // 在页面加载前立即设置主题 - 防止闪烁
+        (function() {
+            // 获取URL参数
+            function getUrlParameter(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+
+            // 设置初始主题
+            const urlModel = getUrlParameter('model');
+            let theme = 'light';
+
+            if (urlModel !== null) {
+                theme = urlModel === '1' ? 'dark' : 'light';
+            } else {
+                const storedTheme = localStorage.getItem('theme');
+                if (storedTheme) {
+                    theme = storedTheme;
+                }
+            }
+
+            // 立即设置主题
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        })();
+    </script>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --h1-color: #2c3e50;
+            --h2-color: #3498db;
+            --h3-color: #2c3e50;
+            --step-bg: #f8f9fa;
+            --step-border: #3498db;
+            --feature-card-bg: #f8f9fa;
+            --tip-bg: #e8f5e9;
+            --tip-border: #4caf50;
+            --warning-bg: #ffebee;
+            --warning-border: #f44336;
+            --button-bg: #3498db;
+            --button-text: #ffffff;
+            --button-hover: #2980b9;
+            --shadow: 0 2px 4px rgba(0,0,0,0.05);
+            --border-color: #eee;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #000000;
+            --text-color: #e0e0e0;
+            --h1-color: #ffffff;
+            --h2-color: #5dade2;
+            --h3-color: #cccccc;
+            --step-bg: #2d2d2d;
+            --step-border: #5dade2;
+            --feature-card-bg: #2d2d2d;
+            --tip-bg: #1b5e20;
+            --tip-border: #4caf50;
+            --warning-bg: #b71c1c;
+            --warning-border: #f44336;
+            --button-bg: #5dade2;
+            --button-text: #ffffff;
+            --button-hover: #3498db;
+            --shadow: 0 2px 4px rgba(0,0,0,0.2);
+            --border-color: #444444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 禁用初始过渡效果 */
+        body * {
+            transition: none !important;
+        }
+
+        /* 页面加载完成后启用过渡效果 */
+        body.loaded * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--h1-color);
+        }
+        h2 {
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--h2-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        h3 {
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--h3-color);
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .step {
+            background-color: var(--step-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--step-border);
+        }
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--step-border);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .feature-card {
+            background-color: var(--feature-card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .feature-card h3 {
+            color: var(--h2-color);
+            margin-top: 0;
+        }
+        .tip {
+            background-color: var(--tip-bg);
+            border-left: 4px solid var(--tip-border);
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: var(--warning-bg);
+            border-left: 4px solid var(--warning-border);
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+
+        /* 主题切换按钮 */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--button-hover);
+        }
+
+        .theme-toggle .icon {
+            font-size: 16px;
+        }
+
+        /* 联系信息样式 */
+        .contact-info {
+            background-color: var(--feature-card-bg);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        code {
+            background-color: var(--step-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+
+            .theme-toggle {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 20px;
+                display: inline-flex;
+            }
+        }
+    </style>
+</head>
+<body>
+<!--<button class="theme-toggle" id="themeToggle" hidden="true">
+    <span class="icon">🌙</span>
+    <span>夜间模式</span>
+</button>-->
+
+<h1>《美光相机使用说明》</h1>
+
+<div class="section">
+    <p>欢迎使用补光灯应用！本指南将帮助您了解如何使用本应用的所有功能，包括补光灯效果、相机功能和悬浮窗模式。</p>
+</div>
+
+<div class="section">
+    <h2>一、基本功能使用</h2>
+
+    <div class="step">
+        <h3><span class="step-number">1</span>启动应用</h3>
+        <p>点击应用图标启动补光灯应用。首次启动时，应用会请求必要的权限，请根据提示允许相关权限。</p>
+        <p class="tip">提示：如您拒绝授权并要求不再提醒，可到手机系统设置->应用与权限->权限管理->美光相机，进行相关权限授权。</p>
+    </div>
+
+    <div class="step">
+        <h3><span class="step-number">2</span>选择补光模式</h3>
+        <p>应用提供两种补光模式：</p>
+        <ul>
+            <li><strong>单色模式</strong>：整个屏幕显示单一颜色</li>
+            <li><strong>双色模式</strong>：屏幕分为上下两部分，可分别设置不同颜色</li>
+        </ul>
+        <p>点击屏幕右上角的"分屏"图标切换模式。</p>
+    </div>
+
+    <div class="step">
+        <h3><span class="step-number">3</span>调整颜色和亮度</h3>
+        <p>从屏幕底部向上滑动打开控制面板：</p>
+        <ul>
+            <li>使用<strong>颜色选择器</strong>选择喜欢的颜色</li>
+            <li>拖动<strong>透明度滑块</strong>调整颜色透明度（0-255）</li>
+            <li>拖动<strong>亮度滑块</strong>调整补光亮度（0-255）</li>
+        </ul>
+        <p class="tip">提示：应用预设了多种常用补光颜色，可直接点击使用。</p>
+    </div>
+
+    <div class="step">
+        <h3><span class="step-number">4</span>使用相机功能</h3>
+        <p>点击屏幕右上角的"相机"图标开启/关闭相机预览：</p>
+        <ul>
+            <li><strong>拍照模式</strong>：点击底部圆形按钮拍照</li>
+            <li><strong>视频模式</strong>：切换到视频标签，点击按钮开始录制，会展示当前录制时长；再次点击可停止录制</li>
+            <li><strong>延时拍照</strong>：切换到延时标签，点击按钮后5秒自动拍照；5秒以内再次点击可取消倒计时</li>
+        </ul>
+        <p class="tip">提示：点击相机预览上方的"切换"图标可切换前后摄像头。</p>
+    </div>
+
+    <div class="step">
+        <h3><span class="step-number">5</span>保存自定义颜色</h3>
+        <p>如果您创建了喜欢的颜色组合，可以保存以备后用：</p>
+        <ol>
+            <li>调整到满意的颜色和亮度</li>
+            <li>点击控制面板底部的"保存"按钮</li>
+            <li>输入颜色名称（如"自然肤色"）</li>
+            <li>点击确认保存</li>
+            <li>长按收藏项，弹框提示重命名或删除，点击进行相应操作</li>
+        </ol>
+        <p>保存的颜色会显示在控制面板的"我的收藏"区域。</p>
+        <p class="tip">保存的颜色存储在应用私有目录，卸载软件数据将会消失</p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>二、高级功能</h2>
+
+    <div class="feature-card">
+        <h3>悬浮窗模式</h3>
+        <p>开启悬浮窗功能，让您在使用的应用的同时使用补光灯：</p>
+        <ol>
+            <li>点击屏幕左侧的"悬浮窗"图标</li>
+            <li>授予应用"显示悬浮窗"权限</li>
+            <li>补光灯将以小窗形式显示在其他应用上方</li>
+            <li>弹框提示，开启悬浮并打开第三方美颜相机应用。支持美图秀秀，美颜相机，轻颜相机，Faceu激萌，B612咔叽。点击对应选项，可以在该第三方应用虚浮补光灯悬浮框，起到补光效果。点击悬浮框当前比例，可以调整悬浮框的比例：4:3，3:4，1:1，16:9</li>
+            <li>拖动悬浮窗移动位置，双指缩放调整大小</li>
+            <li>拖动悬浮窗至屏幕外部，可以最小化悬浮框到对应边框，支持左边/右边最小化悬浮，再次点击可以恢复原来大小</li>
+            <li>点击悬浮窗上的"关闭"按钮退出悬浮模式</li>
+            <li>当应用在后台，点击悬浮框可快速会到应用，同时关闭悬浮框</li>
+        </ol>
+        <p class="tip">提示：在悬浮窗模式下，您仍然可以点击调整颜色和亮度。</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>屏幕常亮</h3>
+        <p>为防止补光过程中屏幕自动熄灭：</p>
+        <ol>
+            <li>点击屏幕右上角的"设置"图标</li>
+            <li>开启"保持屏幕常亮"选项</li>
+            <li>应用将保持屏幕点亮，直到您手动关闭</li>
+        </ol>
+        <p class="warning">注意：长时间保持屏幕常亮可能增加电池消耗。个性化设置存储在应用私有目录，卸载软件数据将会消失。</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>构图网格</h3>
+        <p>应用提供多种构图网格，帮助您拍摄更专业的照片：</p>
+
+        <h4>可用网格类型：</h4>
+        <ul>
+            <li><strong>三分法网格</strong>：将画面分为9个等分，帮助主体定位在交叉点上</li>
+            <li><strong>黄金分割网格</strong>：基于黄金比例的专业构图辅助</li>
+            <li><strong>十字准星</strong>：中心十字线和圆圈，适合对称构图</li>
+            <li><strong>方形网格</strong>：3x3方形网格，适合建筑和风景摄影</li>
+        </ul>
+
+        <h4>使用方法：</h4>
+        <ol>
+            <li>点击屏幕右上角的"设置"图标</li>
+            <li>开启"构图网格"下拉选项</li>
+            <li>选择喜欢的网格类型</li>
+            <li>点击可设置</li>
+        </ol>
+        <p class="tip">提示：构图网格只在预览时显示，不会出现在最终照片中。个性化设置存储在应用私有目录，卸载软件数据将会消失。</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>快捷操作</h3>
+        <p>应用支持多种快捷操作：</p>
+        <ul>
+            <li><strong>双击屏幕</strong>：快速显示/隐藏控制面板</li>
+            <li><strong>长按颜色预设</strong>：快速应用该颜色</li>
+            <li><strong>双指捏合</strong>：在悬浮窗模式下调整大小</li>
+        </ul>
+    </div>
+</div>
+
+
+
+<div class="section">
+    <h2>三、更多功能</h2>
+    <!--<p>自持跟多小功能：</p>-->
+
+    <div class="feature-card">
+        <h3>电子木鱼</h3>
+        <p>电子木鱼是一款结合传统禅意与现代科技的移动应用，让用户随时随地通过敲击电子木鱼来积累功德、净化心灵。应用融合了传统木鱼敲击体验与现代化的交互设计，为您带来独特的禅意体验。</p>
+
+        <p>🎵 核心敲击功能 ：</p>
+
+        <ul>
+            <li><strong>单次敲击</strong>：点击木鱼区域进行单次敲击</li>
+            <li><strong>连续敲击</strong>：使用"快速敲击"按钮</li>
+            <li><strong>功德计数</strong>：自动记录每次敲击积累的功德</li>
+            <li><strong>随机祝福</strong>：每次敲击显示不同的祝福语，可以定制自己的祝福语</li>
+        </ul>
+
+        <p>🎶 音效与振动 ：</p>
+        <ul>
+            <li><strong>木鱼音效</strong>：逼真的木鱼敲击声音，可选择不同的木鱼样式及音效</li>
+            <li><strong>振动反馈</strong>：敲击时提供触觉反馈</li>
+            <li><strong>音量控制</strong>：独立调节敲击音量和背景音乐音量</li>
+        </ul>
+
+        <p>🎵 背景音乐 ：</p>
+        <ul>
+            <li><strong>多种音源</strong>：秋天寺庙、慢脚步声、山间溪流</li>
+            <li><strong>循环播放</strong>：所选择背景音乐自动循环</li>
+            <li><strong>音量调节</strong>：独立控制背景音乐音量</li>
+            <li><strong>音乐切换</strong>：点击可切换背景音乐</li>
+        </ul>
+
+        <p>🎵 背景视频 ：</p>
+        <ul>
+            <li><strong>本地视频</strong>：可以通过相册相册选择多个本地视频作为背景</li>
+            <li><strong>循环播放</strong>：背景视频自动循环</li>
+            <li><strong>音量调节</strong>：独立控制背景视频音量</li>
+            <li><strong>视频切换</strong>：播放完，自动切换到下一个</li>
+        </ul>
+
+        <p>📝 祝福语管理 ：</p>
+        <ul>
+            <li><strong>自定义祝福</strong>：添加、编辑、删除祝福语</li>
+            <li><strong>默认祝福库</strong>：内置多种传统与现代祝福语</li>
+            <li><strong>实时同步</strong>：修改后立即生效</li>
+        </ul>
+
+
+        <p>⚙️ 个性化设置 ：</p>
+        <ul>
+            <li><strong>敲击音量</strong>：调节木鱼敲击声音大小</li>
+            <li><strong>背景音乐</strong>：打开背景音乐可选择音源，关闭背景音乐可选择背景视频</li>
+            <li><strong>振动反馈</strong>：开启/关闭敲击振动</li>
+        </ul>
+    </div>
+
+
+
+    <div class="feature-card">
+        <h3>手电筒：</h3>
+        <p>支持照明</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>美妆镜：</h3>
+        <p>通过相机实现美妆镜功能，可以自定义美妆镜形状，灯光氛围，焦距，镜头等</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>滚动字幕：</h3>
+        <p>用于接机、演唱会应援、地摊叫卖、活动展示等场景，支持自定义文本内容，Led背景颜色，字体颜色，字体效果，字体大小，滚动速度，横竖屏切换等</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>迷彩字幕：</h3>
+        <p>更炫酷效果滚动字幕</p>
+    </div>
+
+
+    <div class="feature-card">
+        <h3>弹幕：</h3>
+        <p>一个自娱弹幕小工具，可以选择自己的视频，编辑并发送弹幕，或者随机生成有趣的弹幕</p>
+    </div>
+
+
+    <div class="feature-card">
+        <h3>霓虹灯，警告灯，报警灯：</h3>
+        <p>具备一定警示作用，道路应急提醒</p>
+    </div>
+
+
+    <div class="feature-card">
+        <h3>荧光棒：</h3>
+        <p>演唱会应援</p>
+    </div>
+
+
+    <!--<div class="feature-card">
+        <h3>相机集成</h3>
+        <p>应用使用Android CameraX库实现相机功能：</p>
+        <ul>
+            <li><strong>Preview</strong>：显示相机预览</li>
+            <li><strong>ImageCapture</strong>：处理拍照功能</li>
+            <li><strong>VideoCapture</strong>：处理视频录制</li>
+        </ul>
+        <p>所有媒体文件自动保存到设备的相册目录。</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>悬浮窗实现</h3>
+        <p>悬浮窗通过Android的WindowManager实现：</p>
+        <ol>
+            <li>请求SYSTEM_ALERT_WINDOW权限</li>
+            <li>创建WindowManager.LayoutParams配置窗口参数</li>
+            <li>添加视图到WindowManager</li>
+            <li>处理触摸事件实现拖动和缩放</li>
+        </ol>
+    </div>-->
+</div>
+
+
+
+<div class="section">
+    <h2>四、技术实现原理</h2>
+    <p>了解应用的技术实现原理，有助于您更好地使用各项功能：</p>
+
+    <div class="feature-card">
+        <h3>颜色处理机制</h3>
+        <p>应用通过以下公式计算最终显示颜色：</p>
+        <p><code>最终颜色 = Color.argb(透明度, (int)(红色分量 × 亮度系数), (int)(绿色分量 × 亮度系数), (int)(蓝色分量 × 亮度系数))</code></p>
+        <p>其中亮度系数 = 亮度值 / 255.0f</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>相机集成</h3>
+        <p>应用使用Android CameraX库实现相机功能：</p>
+        <ul>
+            <li><strong>Preview</strong>：显示相机预览</li>
+            <li><strong>ImageCapture</strong>：处理拍照功能</li>
+            <li><strong>VideoCapture</strong>：处理视频录制</li>
+        </ul>
+        <p>所有媒体文件自动保存到设备的相册目录。</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>悬浮窗实现</h3>
+        <p>悬浮窗通过Android的WindowManager实现：</p>
+        <ol>
+            <li>请求SYSTEM_ALERT_WINDOW权限</li>
+            <li>创建WindowManager.LayoutParams配置窗口参数</li>
+            <li>添加视图到WindowManager</li>
+            <li>处理触摸事件实现拖动和缩放</li>
+        </ol>
+    </div>
+</div>
+
+<div class="section">
+    <h2>五、常见问题解答</h2>
+
+    <div class="feature-card">
+        <h3>Q: 为什么相机无法启动？</h3>
+        <p>A: 请检查是否已授予相机权限。如果问题持续，请尝试重启应用或设备。</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Q: 悬浮窗无法显示怎么办？</h3>
+        <p>A: 请检查是否已授予"显示悬浮窗"权限。不同Android版本中，该权限的设置位置可能不同。</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Q: 拍照或录制的视频在哪里查看？</h3>
+        <p>A: 所有媒体文件自动保存到设备的相册应用中，通常在"相机"或"图库"相册中。</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Q: 如何删除已保存的颜色？</h3>
+        <p>A: 在"我的收藏"区域长按要删除的颜色，然后选择删除选项。</p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>六、获取帮助</h2>
+    <p>如果您遇到任何问题或有改进建议，请联系我们：</p>
+
+    <div class="contact-info">
+        <p><strong>运营方：</strong> 张广华</p>
+        <p><strong>电子邮件：</strong> 382916853@qq.com</p>
+        <p><strong>联系电话：</strong> 13524419665</p>
+        <p><strong>QQ群：</strong> 761541025</p>
+    </div>
+
+    <p class="tip">我们将不断更新和改进应用，感谢您的使用和支持！</p>
+</div>
+
+<script>
+    // 页面加载完成后启用过渡效果
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+
+        // 设置切换按钮状态
+        const themeToggle = document.getElementById('themeToggle');
+        const iconElement = themeToggle.querySelector('.icon');
+        const textElement = themeToggle.querySelector('span:last-child');
+
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+
+        if (currentTheme === 'dark') {
+            iconElement.textContent = '☀️';
+            textElement.textContent = '白天模式';
+        } else {
+            iconElement.textContent = '🌙';
+            textElement.textContent = '夜间模式';
+        }
+
+        // 切换主题功能
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            if (newTheme === 'dark') {
+                iconElement.textContent = '☀️';
+                textElement.textContent = '白天模式';
+            } else {
+                iconElement.textContent = '🌙';
+                textElement.textContent = '夜间模式';
+            }
+        });
+    });
+</script>
+</body>
+</html>
