@@ -197,6 +197,29 @@
             font-size: 16px;
         }
 
+        /* 语言切换按钮 */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 140px;
+            background: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-toggle:hover {
+            background: var(--button-hover);
+        }
+
         /* 卡片式布局替代方案 */
         .card-container {
             display: none; /* 默认隐藏，在移动端显示 */
@@ -227,7 +250,7 @@
         }
 
         /* 移动端显示卡片布局 */
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 768px) {
             body {
                 padding: 15px;
             }
@@ -246,12 +269,16 @@
                 display: block;
             }
 
-            .theme-toggle {
+            .theme-toggle, .language-toggle {
                 position: relative;
                 top: auto;
                 right: auto;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
                 display: inline-flex;
+            }
+
+            .language-toggle {
+                margin-right: 10px;
             }
         }
 
@@ -265,71 +292,76 @@
     </style>
 </head>
 <body>
-<!--<button class="theme-toggle" id="themeToggle">
+<button class="language-toggle" id="languageToggle">
+    <span class="icon">🌐</span>
+    <span>English</span>
+</button>
+
+<button class="theme-toggle" id="themeToggle">
     <span class="icon">🌙</span>
     <span>夜间模式</span>
-</button>-->
+</button>
 
-<h1>《美光相机隐私政策》</h1>
+<h1 data-i18n="title">《美光相机隐私政策》</h1>
 
-<p class="update-date">最后更新日期：2025年9月19日</p>
+<p class="update-date" data-i18n="updateDate">最后更新日期：2025年9月19日</p>
 
 <div class="section">
-    <p>欢迎使用我们的应用！我们深知个人信息对您的重要性，并庄严承诺保护您的隐私。本隐私政策旨在说明应用（以下简称"我们"或"本应用"）如何收集、使用、存储和保护您的个人信息，以及您如何行使您的个人信息权利。</p>
-    <p>请您在使用我们的服务前，仔细阅读并理解本隐私政策的全部内容。<strong>一旦您开始使用本应用，即表示您已充分理解并同意本政策的内容</strong>。</p>
+    <p data-i18n="welcome1">欢迎使用我们的应用！我们深知个人信息对您的重要性，并庄严承诺保护您的隐私。本隐私政策旨在说明应用（以下简称"我们"或"本应用"，我们合法拥有并运营的名称为"美光相机"，"美光相機"和"Meglight"）如何收集、使用、存储和保护您的个人信息，以及您如何行使您的个人信息权利。</p>
+    <p data-i18n="welcome2">请您在使用我们的服务前，仔细阅读并理解本隐私政策的全部内容。<strong>一旦您开始使用本应用，即表示您已充分理解并同意本政策的内容</strong>。</p>
 </div>
 
 <div class="section">
-    <h2>一、定义</h2>
-    <p>1.1 <strong>个人信息</strong>：指以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人身份或者反映特定自然人活动情况的各种信息。</p>
-    <p>1.2 <strong>个人敏感信息</strong>：指一旦泄露、非法提供或滥用可能危害人身和财产安全，极易导致个人名誉、身心健康受到损害或者歧视性待遇等的个人信息。</p>
-    <p>1.3 <strong>匿名化</strong>：通过对个人信息的技术处理，使得个人信息主体无法被识别，且处理后的信息不能被复原的过程。</p>
+    <h2 data-i18n="definition">一、定义</h2>
+    <p data-i18n="definition1">1.1 <strong>个人信息</strong>：指以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人身份或者反映特定自然人活动情况的各种信息。</p>
+    <p data-i18n="definition2">1.2 <strong>个人敏感信息</strong>：指一旦泄露、非法提供或滥用可能危害人身和财产安全，极易导致个人名誉、身心健康受到损害或者歧视性待遇等的个人信息。</p>
+    <p data-i18n="definition3">1.3 <strong>匿名化</strong>：通过对个人信息的技术处理，使得个人信息主体无法被识别，且处理后的信息不能被复原的过程。</p>
 </div>
 
 <div class="section">
-    <h2>二、我们如何收集和使用您的个人信息</h2>
-    <p>我们遵循"最小必要原则"，仅收集实现产品功能所必要的个人信息。以下是本应用申请权限及使用情况的详细说明：</p>
+    <h2 data-i18n="collectUse">二、我们如何收集和使用您的个人信息</h2>
+    <p data-i18n="collectUseIntro">我们遵循"最小必要原则"，仅收集实现产品功能所必要的个人信息。以下是本应用申请权限及使用情况的详细说明：</p>
 
     <!-- 响应式表格 -->
     <table class="responsive-table">
         <thead>
         <tr>
-            <th>权限名称</th>
-            <th>使用目的</th>
-            <th>使用场景</th>
-            <th>是否必需</th>
+            <th data-i18n="permissionName">权限名称</th>
+            <th data-i18n="usagePurpose">使用目的</th>
+            <th data-i18n="usageScenario">使用场景</th>
+            <th data-i18n="isRequired">是否必需</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>相机权限(CAMERA)</td>
-            <td>访问摄像头设备</td>
-            <td>用于拍照、录制视频、补光灯功能</td>
-            <td>是</td>
+            <td data-i18n="cameraPermission">相机权限(CAMERA)</td>
+            <td data-i18n="cameraPurpose">访问摄像头设备</td>
+            <td data-i18n="cameraScenario">用于拍照、录制视频、补光灯功能</td>
+            <td data-i18n="yes">是</td>
         </tr>
         <tr>
-            <td>麦克风权限(RECORD_AUDIO)</td>
-            <td>录制音频</td>
-            <td>在录制视频时同步录制声音</td>
-            <td>否（仅在使用视频录制功能时需要）</td>
+            <td data-i18n="microphonePermission">麦克风权限(RECORD_AUDIO)</td>
+            <td data-i18n="microphonePurpose">录制音频</td>
+            <td data-i18n="microphoneScenario">在录制视频时同步录制声音</td>
+            <td data-i18n="microphoneRequired">否（仅在使用视频录制功能时需要）</td>
         </tr>
         <tr>
-            <td>读取媒体权限(READ_MEDIA_IMAGES/VIDEO/AUDIO)</td>
-            <td>访问设备上的媒体文件</td>
-            <td>允许您选择和使用设备中的照片、视频作为补光灯背景或进行编辑</td>
-            <td>否（仅在使用相册选择功能时需要）</td>
+            <td data-i18n="mediaPermission">读取媒体权限(READ_MEDIA_IMAGES/VIDEO/AUDIO)</td>
+            <td data-i18n="mediaPurpose">访问设备上的媒体文件</td>
+            <td data-i18n="mediaScenario">允许您选择和使用设备中的照片、视频作为补光灯背景或进行编辑</td>
+            <td data-i18n="mediaRequired">否（仅在使用相册选择功能时需要）</td>
         </tr>
         <tr>
-            <td>闪光灯权限(FLASHLIGHT)</td>
-            <td>控制设备闪光灯</td>
-            <td>实现补光灯功能，提供光线补充</td>
-            <td>是</td>
+            <td data-i18n="flashlightPermission">闪光灯权限(FLASHLIGHT)</td>
+            <td data-i18n="flashlightPurpose">控制设备闪光灯</td>
+            <td data-i18n="flashlightScenario">实现补光灯功能，提供光线补充</td>
+            <td data-i18n="yes">是</td>
         </tr>
         <tr>
-            <td>振动器权限(VIBRATE)</td>
-            <td>控制设备振动器</td>
-            <td>在特定操作（如拍照完成）时提供触觉反馈</td>
-            <td>否</td>
+            <td data-i18n="vibratePermission">振动器权限(VIBRATE)</td>
+            <td data-i18n="vibratePurpose">控制设备振动器</td>
+            <td data-i18n="vibrateScenario">在特定操作（如拍照完成）时提供触觉反馈</td>
+            <td data-i18n="no">否</td>
         </tr>
         </tbody>
     </table>
@@ -337,170 +369,451 @@
     <!-- 卡片式布局（在移动端显示） -->
     <div class="card-container">
         <div class="permission-card">
-            <h3>相机权限(CAMERA)</h3>
-            <p><span class="label">使用目的：</span>访问摄像头设备</p>
-            <p><span class="label">使用场景：</span>用于拍照、录制视频、补光灯功能</p>
-            <p><span class="label">是否必需：</span>是</p>
+            <h3 data-i18n="cameraPermission">相机权限(CAMERA)</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="cameraPurpose">访问摄像头设备</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="cameraScenario">用于拍照、录制视频、补光灯功能</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="yes">是</span></p>
         </div>
 
         <div class="permission-card">
-            <h3>麦克风权限(RECORD_AUDIO)</h3>
-            <p><span class="label">使用目的：</span>录制音频</p>
-            <p><span class="label">使用场景：</span>在录制视频时同步录制声音</p>
-            <p><span class="label">是否必需：</span>否（仅在使用视频录制功能时需要）</p>
+            <h3 data-i18n="microphonePermission">麦克风权限(RECORD_AUDIO)</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="microphonePurpose">录制音频</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="microphoneScenario">在录制视频时同步录制声音</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="microphoneRequired">否（仅在使用视频录制功能时需要）</span></p>
         </div>
 
         <div class="permission-card">
-            <h3>读取媒体权限</h3>
-            <p><span class="label">使用目的：</span>访问设备上的媒体文件</p>
-            <p><span class="label">使用场景：</span>允许您选择和使用设备中的照片、视频作为补光灯背景或进行编辑</p>
-            <p><span class="label">是否必需：</span>否（仅在使用相册选择功能时需要）</p>
+            <h3 data-i18n="mediaPermission">读取媒体权限</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="mediaPurpose">访问设备上的媒体文件</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="mediaScenario">允许您选择和使用设备中的照片、视频作为补光灯背景或进行编辑</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="mediaRequired">否（仅在使用相册选择功能时需要）</span></p>
         </div>
 
         <div class="permission-card">
-            <h3>闪光灯权限(FLASHLIGHT)</h3>
-            <p><span class="label">使用目的：</span>控制设备闪光灯</p>
-            <p><span class="label">使用场景：</span>实现补光灯功能，提供光线补充</p>
-            <p><span class="label">是否必需：</span>是</p>
+            <h3 data-i18n="flashlightPermission">闪光灯权限(FLASHLIGHT)</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="flashlightPurpose">控制设备闪光灯</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="flashlightScenario">实现补光灯功能，提供光线补充</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="yes">是</span></p>
         </div>
 
         <div class="permission-card">
-            <h3>振动器权限(VIBRATE)</h3>
-            <p><span class="label">使用目的：</span>控制设备振动器</p>
-            <p><span class="label">使用场景：</span>在特定操作（如拍照完成）时提供触觉反馈</p>
-            <p><span class="label">是否必需：</span>否</p>
+            <h3 data-i18n="vibratePermission">振动器权限(VIBRATE)</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="vibratePurpose">控制设备振动器</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="vibrateScenario">在特定操作（如拍照完成）时提供触觉反馈</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="no">否</span></p>
         </div>
     </div>
 
-    <p>我们承诺，上述权限和收集的信息将仅用于明确声明的目的，不会用于其他商业用途。如我们需要使用您的个人信息超出原本目的，我们将再次获取您的明确同意。</p>
+    <p data-i18n="permissionPromise">我们承诺，上述权限和收集的信息将仅用于明确声明的目的，不会用于其他商业用途。如我们需要使用您的个人信息超出原本目的，我们将再次获取您的明确同意。</p>
 </div>
 
 <div class="section">
-    <h2>三、我们如何使用Cookie和类似技术</h2>
-    <p>3.1 我们还未提供用户登录的功能，我们并未使用Cookie和类似技术。</p>
-    <!--<p>3.1 为实现您联机体验的个性化需求，使您获得更轻松的访问体验。我们会在您的计算机或移动设备上发送一个或多个名为Cookies的小数据文件。</p>
-    <p>3.2 我们使用Cookie的目的是为了简化您重复登录的步骤、帮助判断您的登录状态以及账号或数据安全。</p>
-    <p>3.3 您有权接受或拒绝Cookie。大多数浏览器会自动接受Cookie，但您通常可以根据自己的需要修改浏览器设置以拒绝Cookie。但请注意，如果选择拒绝Cookie，您可能无法完全体验我们提供的服务。</p>-->
+    <h2 data-i18n="cookie">三、我们如何使用Cookie和类似技术</h2>
+    <p data-i18n="cookie1">3.1 我们还未提供用户登录的功能，我们并未使用Cookie和类似技术。</p>
 </div>
 
 <div class="section">
-    <h2>四、我们如何共享、转让、公开披露您的个人信息</h2>
-    <p>4.1 <strong>共享</strong>：我们不会与任何公司、组织和个人共享您的个人信息，但以下情况除外：</p>
+    <h2 data-i18n="share">四、我们如何共享、转让、公开披露您的个人信息</h2>
+    <p data-i18n="share1">4.1 <strong>共享</strong>：我们不会与任何公司、组织和个人共享您的个人信息，但以下情况除外：</p>
     <ul>
-        <li>事先获得您明确的同意或授权；</li>
-        <li>根据适用的法律法规、法律程序的要求、强制性的行政或司法要求所必须的情况下；</li>
-        <li>只有共享您的信息，才能实现我们的产品与/或服务的核心功能或提供您需要的服务；</li>
-        <li>应您需求为您处理您与他人的纠纷或争议；</li>
-        <li>符合与您签署的相关协议（包括在线签署的电子协议以及相应的平台规则）或其他的法律文件约定所提供的。</li>
+        <li data-i18n="share1_1">事先获得您明确的同意或授权；</li>
+        <li data-i18n="share1_2">根据适用的法律法规、法律程序的要求、强制性的行政或司法要求所必须的情况下；</li>
+        <li data-i18n="share1_3">只有共享您的信息，才能实现我们的产品与/或服务的核心功能或提供您需要的服务；</li>
+        <li data-i18n="share1_4">应您需求为您处理您与他人的纠纷或争议；</li>
+        <li data-i18n="share1_5">符合与您签署的相关协议（包括在线签署的电子协议以及相应的平台规则）或其他的法律文件约定所提供的。</li>
     </ul>
 
-    <p>4.2 <strong>转让</strong>：我们不会将您的个人信息转让给任何公司、组织和个人，但以下情况除外：</p>
+    <p data-i18n="share2">4.2 <strong>转让</strong>：我们不会将您的个人信息转让给任何公司、组织和个人，但以下情况除外：</p>
     <ul>
-        <li>事先获得您明确的同意或授权；</li>
-        <li>在涉及合并、收购、资产转让或类似的交易时，如涉及到个人信息转让，我们会要求新的持有您个人信息的公司、组织继续受本隐私政策的约束，否则我们将要求该公司、组织重新向您征求授权同意。</li>
+        <li data-i18n="share2_1">事先获得您明确的同意或授权；</li>
+        <li data-i18n="share2_2">在涉及合并、收购、资产转让或类似的交易时，如涉及到个人信息转让，我们会要求新的持有您个人信息的公司、组织继续受本隐私政策的约束，否则我们将要求该公司、组织重新向您征求授权同意。</li>
     </ul>
 
-    <p>4.3 <strong>公开披露</strong>：我们仅会在以下情况下，公开披露您的个人信息：</p>
+    <p data-i18n="share3">4.3 <strong>公开披露</strong>：我们仅会在以下情况下，公开披露您的个人信息：</p>
     <ul>
-        <li>获得您明确同意后；</li>
-        <li>基于法律的披露：在法律、法律程序、诉讼或政府主管部门强制性要求的情况下，我们可能会公开披露您的个人信息。</li>
+        <li data-i18n="share3_1">获得您明确同意后；</li>
+        <li data-i18n="share3_2">基于法律的披露：在法律、法律程序、诉讼或政府主管部门强制性要求的情况下，我们可能会公开披露您的个人信息。</li>
     </ul>
 </div>
 
 <div class="section">
-    <h2>五、我们如何保护和保存您的个人信息</h2>
-    <p>5.1 <strong>安全保护措施</strong>：我们已采取符合行业标准的安全措施来保护您的个人信息，防止数据遭到未经授权的访问、公开披露、使用、修改、损坏或丢失。</p>
-    <p>5.2 <strong>数据留存期限</strong>：我们仅为实现目的所必需的时间保留您的个人信息。对于相机和麦克风数据，我们通常不会在设备上长期存储，除非您明确保存媒体文件。</p>
-    <p>5.3 <strong>安全事件处置</strong>：一旦发生个人信息安全事件，我们将按照法律法规要求，及时将事件相关情况以邮件、信函、电话、推送通知等方式告知您。同时，我们还将按照监管部门要求，主动上报个人信息安全事件的处置情况。</p>
+    <h2 data-i18n="protection">五、我们如何保护和保存您的个人信息</h2>
+    <p data-i18n="protection1">5.1 <strong>安全保护措施</strong>：我们已采取符合行业标准的安全措施来保护您的个人信息，防止数据遭到未经授权的访问、公开披露、使用、修改、损坏或丢失。</p>
+    <p data-i18n="protection2">5.2 <strong>数据留存期限</strong>：我们仅为实现目的所必需的时间保留您的个人信息。对于相机和麦克风数据，我们通常不会在设备上长期存储，除非您明确保存媒体文件。</p>
+    <p data-i18n="protection3">5.3 <strong>安全事件处置</strong>：一旦发生个人信息安全事件，我们将按照法律法规要求，及时将事件相关情况以邮件、信函、电话、推送通知等方式告知您。同时，我们还将按照监管部门要求，主动上报个人信息安全事件的处置情况。</p>
 </div>
 
 <div class="section">
-    <h2>六、您的权利</h2>
-    <p>按照中国相关的法律、法规、标准，以及其他国家、地区的通行做法，我们保障您对自己的个人信息行使以下权利：</p>
+    <h2 data-i18n="rights">六、您的权利</h2>
+    <p data-i18n="rightsIntro">按照中国相关的法律、法规、标准，以及其他国家、地区的通行做法，我们保障您对自己的个人信息行使以下权利：</p>
 
-    <h3>6.1 访问您的个人信息</h3>
-    <p>您有权访问您的个人信息，法律法规规定的例外情况除外。</p>
+    <h3 data-i18n="accessRight">6.1 访问您的个人信息</h3>
+    <p data-i18n="accessRightDesc">您有权访问您的个人信息，法律法规规定的例外情况除外。</p>
 
-    <h3>6.2 更正您的个人信息</h3>
-    <p>当您发现我们处理的关于您的个人信息有错误时，您有权要求我们做出更正。</p>
+    <h3 data-i18n="correctRight">6.2 更正您的个人信息</h3>
+    <p data-i18n="correctRightDesc">当您发现我们处理的关于您的个人信息有错误时，您有权要求我们做出更正。</p>
 
-    <h3>6.3 删除您的个人信息</h3>
-    <p>在以下情况下，您可以要求我们删除个人信息：</p>
+    <h3 data-i18n="deleteRight">6.3 删除您的个人信息</h3>
+    <p data-i18n="deleteRightDesc">在以下情况下，您可以要求我们删除个人信息：</p>
     <ul>
-        <li>如果我们处理个人信息的行为违反法律法规；</li>
-        <li>如果我们收集、使用您的个人信息，却未征得您的同意；</li>
-        <li>如果我们处理个人信息的行为严重违反了与您的约定；</li>
-        <li>如果您不再使用我们的产品或服务，或您主动注销了账号；</li>
-        <li>如果我们不再为您提供产品或服务。</li>
+        <li data-i18n="delete1">如果我们处理个人信息的行为违反法律法规；</li>
+        <li data-i18n="delete2">如果我们收集、使用您的个人信息，却未征得您的同意；</li>
+        <li data-i18n="delete3">如果我们处理个人信息的行为严重违反了与您的约定；</li>
+        <li data-i18n="delete4">如果您不再使用我们的产品或服务，或您主动注销了账号；</li>
+        <li data-i18n="delete5">如果我们不再为您提供产品或服务。</li>
     </ul>
 
-    <h3>6.4 改变您授权同意的范围</h3>
-    <p>您可以通过设备权限设置改变您授权我们继续收集个人信息的范围或撤回您的授权。</p>
-    <p><strong>请注意：</strong> 您撤回权限同意后，我们将不再处理相应的个人信息。但您撤回同意的决定，不会影响此前基于您的授权而开展的个人信息处理。</p>
+    <h3 data-i18n="changeRight">6.4 改变您授权同意的范围</h3>
+    <p data-i18n="changeRightDesc">您可以通过设备权限设置改变您授权我们继续收集个人信息的范围或撤回您的授权。</p>
+    <p data-i18n="changeRightNote"><strong>请注意：</strong> 您撤回权限同意后，我们将不再处理相应的个人信息。但您撤回同意的决定，不会影响此前基于您的授权而开展的个人信息处理。</p>
 
-    <h3>6.5 个人信息主体注销账户</h3>
-    <p>您随时可注销此前注册的账户。您可以通过本政策第九条列明的联系方式与我们联系，申请注销账户。我们将在验证您的身份后15个工作日内处理您的请求。</p>
+    <h3 data-i18n="cancelAccount">6.5 个人信息主体注销账户</h3>
+    <p data-i18n="cancelAccountDesc">您随时可注销此前注册的账户。您可以通过本政策第九条列明的联系方式与我们联系，申请注销账户。我们将在验证您的身份后15个工作日内处理您的请求。</p>
 
-    <h3>6.6 响应您的上述请求</h3>
-    <p>为保障安全，您可能需要提供书面请求，或以其他方式证明您的身份。我们可能会先要求您验证自己的身份，然后再处理您的请求。</p>
-    <p>对于您合理的请求，我们原则上不收取费用。但对多次重复、超出合理限度的请求，我们将视情收取一定成本费用。</p>
+    <h3 data-i18n="responseRight">6.6 响应您的上述请求</h3>
+    <p data-i18n="responseRightDesc1">为保障安全，您可能需要提供书面请求，或以其他方式证明您的身份。我们可能会先要求您验证自己的身份，然后再处理您的请求。</p>
+    <p data-i18n="responseRightDesc2">对于您合理的请求，我们原则上不收取费用。但对多次重复、超出合理限度的请求，我们将视情收取一定成本费用。</p>
 </div>
 
 <div class="section">
-    <h2>七、我们如何处理儿童的个人信息</h2>
-    <p>7.1 我们的产品、网站和服务主要面向成人。如果没有父母或监护人的同意，儿童不得创建自己的用户账户。</p>
-    <p>7.2 对于经父母同意而收集儿童个人信息的情况，我们只会在受到法律允许、父母或监护人明确同意或者保护儿童所必要的情况下使用或公开披露此信息。</p>
-    <p>7.3 尽管当地法律和习俗对儿童的定义不同，但我们将不满14周岁的任何人均视为儿童。</p>
-    <p>7.4 如果我们发现自己在未事先获得可证实的父母同意的情况下收集了儿童的个人信息，则会设法尽快删除相关数据。</p>
+    <h2 data-i18n="children">七、我们如何处理儿童的个人信息</h2>
+    <p data-i18n="children1">7.1 我们的产品、网站和服务主要面向成人。如果没有父母或监护人的同意，儿童不得创建自己的用户账户。</p>
+    <p data-i18n="children2">7.2 对于经父母同意而收集儿童个人信息的情况，我们只会在受到法律允许、父母或监护人明确同意或者保护儿童所必要的情况下使用或公开披露此信息。</p>
+    <p data-i18n="children3">7.3 尽管当地法律和习俗对儿童的定义不同，但我们将不满14周岁的任何人均视为儿童。</p>
+    <p data-i18n="children4">7.4 如果我们发现自己在未事先获得可证实的父母同意的情况下收集了儿童的个人信息，则会设法尽快删除相关数据。</p>
 </div>
 
 <div class="section">
-    <h2>八、本政策如何更新</h2>
-    <p>8.1 我们的隐私政策可能变更。未经您明确同意，我们不会削减您按照本隐私政策所应享有的权利。</p>
-    <p>8.2 我们会通过适当的方式发布对本政策所做的任何变更，包括应用内公告、网站公示或其他合适方式。</p>
-    <p>8.3 对于重大变更，我们还会提供更为显著的通知（包括对于某些服务，我们会通过电子邮件发送通知，说明隐私政策的具体变更内容）。</p>
-    <p>8.4 本政策所指的重大变更包括但不限于：</p>
+    <h2 data-i18n="update">八、本政策如何更新</h2>
+    <p data-i18n="update1">8.1 我们的隐私政策可能变更。未经您明确同意，我们不会削减您按照本隐私政策所应享有的权利。</p>
+    <p data-i18n="update2">8.2 我们会通过适当的方式发布对本政策所做的任何变更，包括应用内公告、网站公示或其他合适方式。</p>
+    <p data-i18n="update3">8.3 对于重大变更，我们还会提供更为显著的通知（包括对于某些服务，我们会通过电子邮件发送通知，说明隐私政策的具体变更内容）。</p>
+    <p data-i18n="update4">8.4 本政策所指的重大变更包括但不限于：</p>
     <ul>
-        <li>我们的服务模式发生重大变化；</li>
-        <li>个人信息共享、转让或公开披露的主要对象发生变化；</li>
-        <li>您参与个人信息处理方面的权利及其行使方式发生重大变化；</li>
-        <li>我们的联系方式及投诉渠道发生变化；</li>
-        <li>个人信息安全影响评估报告表明存在高风险时。</li>
+        <li data-i18n="update4_1">我们的服务模式发生重大变化；</li>
+        <li data-i18n="update4_2">个人信息共享、转让或公开披露的主要对象发生变化；</li>
+        <li data-i18n="update4_3">您参与个人信息处理方面的权利及其行使方式发生重大变化；</li>
+        <li data-i18n="update4_4">我们的联系方式及投诉渠道发生变化；</li>
+        <li data-i18n="update4_5">个人信息安全影响评估报告表明存在高风险时。</li>
     </ul>
 </div>
 
 <div class="section">
-    <h2>九、如何联系我们</h2>
-    <p>如果您对本隐私政策有任何疑问、意见或建议，或者想要行使您的个人信息权利，请通过以下方式与我们联系：</p>
+    <h2 data-i18n="contact">九、如何联系我们</h2>
+    <p data-i18n="contactIntro">如果您对本隐私政策有任何疑问、意见或建议，或者想要行使您的个人信息权利，请通过以下方式与我们联系：</p>
 
     <div class="contact-info">
-        <p><strong>运营方：</strong> 张广华</p>
-        <p><strong>电子邮件：</strong> 382916853@qq.com</p>
-        <p><strong>联系电话：</strong> 13524419665</p>
-        <p><strong>QQ群：</strong> 761541025</p>
+        <p><strong data-i18n="operator">运营方：</strong> 张广华</p>
+        <p><strong data-i18n="email">电子邮件：</strong> 382916853@qq.com</p>
+        <p><strong data-i18n="phone">联系电话：</strong> 13524419665</p>
+        <p><strong  data-i18n="qqGroup">QQ群：</strong> 761541025</p>
     </div>
 
-    <p>一般情况下，我们将在<strong>15个工作日</strong>内回复您的请求。如果您对我们的回复不满意，特别是认为我们的个人信息处理行为损害了您的合法权益，您还可以向网信、公安、工商等监管部门进行投诉或举报。</p>
+    <p data-i18n="contactResponse">一般情况下，我们将在<strong>15个工作日</strong>内回复您的请求。如果您对我们的回复不满意，特别是认为我们的个人信息处理行为损害了您的合法权益，您还可以向网信、公安、工商等监管部门进行投诉或举报。</p>
 </div>
 
 <script>
+    // 语言切换功能
+    const languageData = {
+        'zh-CN': {
+
+
+
+            // 按钮文本
+            'languageButton': 'English',
+            'themeButton': '夜间模式',
+
+
+
+            // 页面内容
+            'title': '《美光相机隐私政策》',
+            'updateDate': '最后更新日期：2025年9月19日',
+            'welcome1': '欢迎使用我们的应用！我们深知个人信息对您的重要性，并庄严承诺保护您的隐私。本隐私政策旨在说明应用（以下简称"我们"或"本应用"，我们合法拥有并运营的名称为"美光相机"，"美光相機"和"Meglight"）如何收集、使用、存储和保护您的个人信息，以及您如何行使您的个人信息权利。',
+            'welcome2': '请您在使用我们的服务前，仔细阅读并理解本隐私政策的全部内容。<strong>一旦您开始使用本应用，即表示您已充分理解并同意本政策的内容</strong>。',
+            'definition': '一、定义',
+            'definition1': '1.1 <strong>个人信息</strong>：指以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人身份或者反映特定自然人活动情况的各种信息。',
+            'definition2': '1.2 <strong>个人敏感信息</strong>：指一旦泄露、非法提供或滥用可能危害人身和财产安全，极易导致个人名誉、身心健康受到损害或者歧视性待遇等的个人信息。',
+            'definition3': '1.3 <strong>匿名化</strong>：通过对个人信息的技术处理，使得个人信息主体无法被识别，且处理后的信息不能被复原的过程。',
+            'collectUse': '二、我们如何收集和使用您的个人信息',
+            'collectUseIntro': '我们遵循"最小必要原则"，仅收集实现产品功能所必要的个人信息。以下是本应用申请权限及使用情况的详细说明：',
+            'permissionName': '权限名称',
+            'usagePurpose': '使用目的',
+            'usageScenario': '使用场景',
+            'isRequired': '是否必需',
+            'cameraPermission': '相机权限(CAMERA)',
+            'cameraPurpose': '访问摄像头设备',
+            'cameraScenario': '用于拍照、录制视频、补光灯功能',
+            'microphonePermission': '麦克风权限(RECORD_AUDIO)',
+            'microphonePurpose': '录制音频',
+            'microphoneScenario': '在录制视频时同步录制声音',
+            'microphoneRequired': '否（仅在使用视频录制功能时需要）',
+            'mediaPermission': '读取媒体权限(READ_MEDIA_IMAGES/VIDEO/AUDIO)',
+            'mediaPurpose': '访问设备上的媒体文件',
+            'mediaScenario': '允许您选择和使用设备中的照片、视频作为补光灯背景或进行编辑',
+            'mediaRequired': '否（仅在使用相册选择功能时需要）',
+            'flashlightPermission': '闪光灯权限(FLASHLIGHT)',
+            'flashlightPurpose': '控制设备闪光灯',
+            'flashlightScenario': '实现补光灯功能，提供光线补充',
+            'vibratePermission': '振动器权限(VIBRATE)',
+            'vibratePurpose': '控制设备振动器',
+            'vibrateScenario': '在特定操作（如拍照完成）时提供触觉反馈',
+            'yes': '是',
+            'no': '否',
+            'permissionPromise': '我们承诺，上述权限和收集的信息将仅用于明确声明的目的，不会用于其他商业用途。如我们需要使用您的个人信息超出原本目的，我们将再次获取您的明确同意。',
+            'cookie': '三、我们如何使用Cookie和类似技术',
+            'cookie1': '3.1 我们还未提供用户登录的功能，我们并未使用Cookie和类似技术。',
+            'share': '四、我们如何共享、转让、公开披露您的个人信息',
+            'share1': '4.1 <strong>共享</strong>：我们不会与任何公司、组织和个人共享您的个人信息，但以下情况除外：',
+            'share1_1': '事先获得您明确的同意或授权；',
+            'share1_2': '根据适用的法律法规、法律程序的要求、强制性的行政或司法要求所必须的情况下；',
+            'share1_3': '只有共享您的信息，才能实现我们的产品与/或服务的核心功能或提供您需要的服务；',
+            'share1_4': '应您需求为您处理您与他人的纠纷或争议；',
+            'share1_5': '符合与您签署的相关协议（包括在线签署的电子协议以及相应的平台规则）或其他的法律文件约定所提供的。',
+            'share2': '4.2 <strong>转让</strong>：我们不会将您的个人信息转让给任何公司、组织和个人，但以下情况除外：',
+            'share2_1': '事先获得您明确的同意或授权；',
+            'share2_2': '在涉及合并、收购、资产转让或类似的交易时，如涉及到个人信息转让，我们会要求新的持有您个人信息的公司、组织继续受本隐私政策的约束，否则我们将要求该公司、组织重新向您征求授权同意。',
+            'share3': '4.3 <strong>公开披露</strong>：我们仅会在以下情况下，公开披露您的个人信息：',
+            'share3_1': '获得您明确同意后；',
+            'share3_2': '基于法律的披露：在法律、法律程序、诉讼或政府主管部门强制性要求的情况下，我们可能会公开披露您的个人信息。',
+            'protection': '五、我们如何保护和保存您的个人信息',
+            'protection1': '5.1 <strong>安全保护措施</strong>：我们已采取符合行业标准的安全措施来保护您的个人信息，防止数据遭到未经授权的访问、公开披露、使用、修改、损坏或丢失。',
+            'protection2': '5.2 <strong>数据留存期限</strong>：我们仅为实现目的所必需的时间保留您的个人信息。对于相机和麦克风数据，我们通常不会在设备上长期存储，除非您明确保存媒体文件。',
+            'protection3': '5.3 <strong>安全事件处置</strong>：一旦发生个人信息安全事件，我们将按照法律法规要求，及时将事件相关情况以邮件、信函、电话、推送通知等方式告知您。同时，我们还将按照监管部门要求，主动上报个人信息安全事件的处置情况。',
+            'rights': '六、您的权利',
+            'rightsIntro': '按照中国相关的法律、法规、标准，以及其他国家、地区的通行做法，我们保障您对自己的个人信息行使以下权利：',
+            'accessRight': '6.1 访问您的个人信息',
+            'accessRightDesc': '您有权访问您的个人信息，法律法规规定的例外情况除外。',
+            'correctRight': '6.2 更正您的个人信息',
+            'correctRightDesc': '当您发现我们处理的关于您的个人信息有错误时，您有权要求我们做出更正。',
+            'deleteRight': '6.3 删除您的个人信息',
+            'deleteRightDesc': '在以下情况下，您可以要求我们删除个人信息：',
+            'delete1': '如果我们处理个人信息的行为违反法律法规；',
+            'delete2': '如果我们收集、使用您的个人信息，却未征得您的同意；',
+            'delete3': '如果我们处理个人信息的行为严重违反了与您的约定；',
+            'delete4': '如果您不再使用我们的产品或服务，或您主动注销了账号；',
+            'delete5': '如果我们不再为您提供产品或服务。',
+            'changeRight': '6.4 改变您授权同意的范围',
+            'changeRightDesc': '您可以通过设备权限设置改变您授权我们继续收集个人信息的范围或撤回您的授权。',
+            'changeRightNote': '<strong>请注意：</strong> 您撤回权限同意后，我们将不再处理相应的个人信息。但您撤回同意的决定，不会影响此前基于您的授权而开展的个人信息处理。',
+            'cancelAccount': '6.5 个人信息主体注销账户',
+            'cancelAccountDesc': '您随时可注销此前注册的账户。您可以通过本政策第九条列明的联系方式与我们联系，申请注销账户。我们将在验证您的身份后15个工作日内处理您的请求。',
+            'responseRight': '6.6 响应您的上述请求',
+            'responseRightDesc1': '为保障安全，您可能需要提供书面请求，或以其他方式证明您的身份。我们可能会先要求您验证自己的身份，然后再处理您的请求。',
+            'responseRightDesc2': '对于您合理的请求，我们原则上不收取费用。但对多次重复、超出合理限度的请求，我们将视情收取一定成本费用。',
+            'children': '七、我们如何处理儿童的个人信息',
+            'children1': '7.1 我们的产品、网站和服务主要面向成人。如果没有父母或监护人的同意，儿童不得创建自己的用户账户。',
+            'children2': '7.2 对于经父母同意而收集儿童个人信息的情况，我们只会在受到法律允许、父母或监护人明确同意或者保护儿童所必要的情况下使用或公开披露此信息。',
+            'children3': '7.3 尽管当地法律和习俗对儿童的定义不同，但我们将不满14周岁的任何人均视为儿童。',
+            'children4': '7.4 如果我们发现自己在未事先获得可证实的父母同意的情况下收集了儿童的个人信息，则会设法尽快删除相关数据。',
+            'update': '八、本政策如何更新',
+            'update1': '8.1 我们的隐私政策可能变更。未经您明确同意，我们不会削减您按照本隐私政策所应享有的权利。',
+            'update2': '8.2 我们会通过适当的方式发布对本政策所做的任何变更，包括应用内公告、网站公示或其他合适方式。',
+            'update3': '8.3 对于重大变更，我们还会提供更为显著的通知（包括对于某些服务，我们会通过电子邮件发送通知，说明隐私政策的具体变更内容）。',
+            'update4': '8.4 本政策所指的重大变更包括但不限于：',
+            'update4_1': '我们的服务模式发生重大变化；',
+            'update4_2': '个人信息共享、转让或公开披露的主要对象发生变化；',
+            'update4_3': '您参与个人信息处理方面的权利及其行使方式发生重大变化；',
+            'update4_4': '我们的联系方式及投诉渠道发生变化；',
+            'update4_5': '个人信息安全影响评估报告表明存在高风险时。',
+            'contact': '九、如何联系我们',
+            'contactIntro': '如果您对本隐私政策有任何疑问、意见或建议，或者想要行使您的个人信息权利，请通过以下方式与我们联系：',
+            'operator': '运营方：',
+            'email': '电子邮件：',
+            'phone': '联系电话：',
+            'qqGroup': 'QQ群：',
+            'contactResponse': '一般情况下，我们将在<strong>15个工作日</strong>内回复您的请求。如果您对我们的回复不满意，特别是认为我们的个人信息处理行为损害了您的合法权益，您还可以向网信、公安、工商等监管部门进行投诉或举报。'
+        },
+        'en-US': {
+            // 按钮文本
+            'languageButton': '中文',
+            'themeButton': 'Day Mode',
+
+            // 页面内容
+            'title': 'Meglight Privacy Policy',
+            'updateDate': 'Last Updated: September 19, 2025',
+            'welcome1': 'Welcome to our app! We understand the importance of personal information to you and solemnly commit to protecting your privacy. This privacy policy aims to explain how the application (hereinafter referred to as "we" or "this app", The names we legally own and operate are "美光相机", "美光相機"", and "Meglight") collects, uses, stores, and protects your personal information, as well as how you can exercise your personal information rights.',
+            'welcome2': 'Please read and understand the entire content of this privacy policy carefully before using our services. <strong>Once you start using this app, it means that you have fully understood and agreed to the content of this policy</strong>.',
+            'definition': 'I. Definitions',
+            'definition1': '1.1 <strong>Personal Information</strong>: Refers to various information recorded electronically or in other ways that can identify a specific natural person\'s identity alone or in combination with other information, or reflect the activities of a specific natural person.',
+            'definition2': '1.2 <strong>Sensitive Personal Information</strong>: Refers to personal information that, once leaked, illegally provided, or abused, may endanger personal and property safety, and is highly likely to cause damage to personal reputation, physical and mental health, or discriminatory treatment, etc.',
+            'definition3': '1.3 <strong>Anonymization</strong>: The process of technical processing of personal information so that the personal information subject cannot be identified, and the processed information cannot be restored.',
+            'collectUse': 'II. How We Collect and Use Your Personal Information',
+            'collectUseIntro': 'We follow the "principle of minimum necessity" and only collect personal information necessary to achieve product functions. The following is a detailed description of the permissions applied for by this app and their usage:',
+            'permissionName': 'Permission Name',
+            'usagePurpose': 'Usage Purpose',
+            'usageScenario': 'Usage Scenario',
+            'isRequired': 'Is Required',
+            'cameraPermission': 'Camera Permission (CAMERA)',
+            'cameraPurpose': 'Access camera device',
+            'cameraScenario': 'Used for taking photos, recording videos, flashlight function',
+            'microphonePermission': 'Microphone Permission (RECORD_AUDIO)',
+            'microphonePurpose': 'Record audio',
+            'microphoneScenario': 'Record sound synchronously when recording video',
+            'microphoneRequired': 'No (only required when using video recording function)',
+            'mediaPermission': 'Read Media Permission (READ_MEDIA_IMAGES/VIDEO/AUDIO)',
+            'mediaPurpose': 'Access media files on the device',
+            'mediaScenario': 'Allow you to select and use photos and videos from the device as flashlight background or for editing',
+            'mediaRequired': 'No (only required when using album selection function)',
+            'flashlightPermission': 'Flashlight Permission (FLASHLIGHT)',
+            'flashlightPurpose': 'Control device flashlight',
+            'flashlightScenario': 'Implement flashlight function, provide light supplement',
+            'vibratePermission': 'Vibrator Permission (VIBRATE)',
+            'vibratePurpose': 'Control device vibrator',
+            'vibrateScenario': 'Provide haptic feedback during specific operations (such as when photo capture is completed)',
+            'yes': 'Yes',
+            'no': 'No',
+            'permissionPromise': 'We promise that the above permissions and collected information will only be used for the explicitly stated purposes and will not be used for other commercial purposes. If we need to use your personal information beyond the original purpose, we will obtain your explicit consent again.',
+            'cookie': 'III. How We Use Cookies and Similar Technologies',
+            'cookie1': '3.1 We do not yet provide user login functionality, and we do not use cookies and similar technologies.',
+            'share': 'IV. How We Share, Transfer, and Publicly Disclose Your Personal Information',
+            'share1': '4.1 <strong>Sharing</strong>: We will not share your personal information with any company, organization, or individual, except in the following circumstances:',
+            'share1_1': 'Prior obtaining your explicit consent or authorization;',
+            'share1_2': 'When required by applicable laws and regulations, legal procedures, mandatory administrative or judicial requirements;',
+            'share1_3': 'Only by sharing your information can we achieve the core functions of our products and/or services or provide the services you need;',
+            'share1_4': 'At your request to handle disputes or controversies between you and others;',
+            'share1_5': 'As provided in relevant agreements signed with you (including electronically signed agreements and corresponding platform rules) or other legal documents.',
+            'share2': '4.2 <strong>Transfer</strong>: We will not transfer your personal information to any company, organization, or individual, except in the following circumstances:',
+            'share2_1': 'Prior obtaining your explicit consent or authorization;',
+            'share2_2': 'In the event of mergers, acquisitions, asset transfers, or similar transactions, if personal information transfer is involved, we will require the new holder of your personal information to continue to be bound by this privacy policy, otherwise we will require that company or organization to seek your authorization and consent again.',
+            'share3': '4.3 <strong>Public Disclosure</strong>: We will only publicly disclose your personal information under the following circumstances:',
+            'share3_1': 'After obtaining your explicit consent;',
+            'share3_2': 'Disclosure based on laws: Under the circumstances of laws, legal procedures, litigation, or mandatory requirements of government authorities, we may publicly disclose your personal information.',
+            'protection': 'V. How We Protect and Store Your Personal Information',
+            'protection1': '5.1 <strong>Security Protection Measures</strong>: We have taken security measures that comply with industry standards to protect your personal information and prevent data from unauthorized access, public disclosure, use, modification, damage, or loss.',
+            'protection2': '5.2 <strong>Data Retention Period</strong>: We only retain your personal information for the time necessary to achieve the purpose. For camera and microphone data, we typically do not store it on the device for a long time unless you explicitly save media files.',
+            'protection3': '5.3 <strong>Security Incident Handling</strong>: Once a personal information security incident occurs, we will, in accordance with legal and regulatory requirements, promptly inform you of the relevant situation of the incident by email, letter, telephone, push notification, etc. At the same time, we will also actively report the handling of personal information security incidents to regulatory authorities as required.',
+            'rights': 'VI. Your Rights',
+            'rightsIntro': 'In accordance with relevant Chinese laws, regulations, standards, and common practices in other countries and regions, we guarantee that you can exercise the following rights over your personal information:',
+            'accessRight': '6.1 Access Your Personal Information',
+            'accessRightDesc': 'You have the right to access your personal information, except as otherwise provided by laws and regulations.',
+            'correctRight': '6.2 Correct Your Personal Information',
+            'correctRightDesc': 'When you find errors in the personal information we process about you, you have the right to request us to make corrections.',
+            'deleteRight': '6.3 Delete Your Personal Information',
+            'deleteRightDesc': 'Under the following circumstances, you can request us to delete personal information:',
+            'delete1': 'If our processing of personal information violates laws and regulations;',
+            'delete2': 'If we collect and use your personal information without obtaining your consent;',
+            'delete3': 'If our processing of personal information seriously violates the agreement with you;',
+            'delete4': 'If you no longer use our products or services, or you actively cancel your account;',
+            'delete5': 'If we no longer provide you with products or services.',
+            'changeRight': '6.4 Change the Scope of Your Authorized Consent',
+            'changeRightDesc': 'You can change the scope of your authorization for us to continue collecting personal information or withdraw your authorization through device permission settings.',
+            'changeRightNote': '<strong>Please note:</strong> After you withdraw your permission consent, we will no longer process the corresponding personal information. However, your decision to withdraw consent will not affect the previous personal information processing based on your authorization.',
+            'cancelAccount': '6.5 Personal Information Subject Account Cancellation',
+            'cancelAccountDesc': 'You can cancel your previously registered account at any time. You can contact us through the contact methods listed in Article 9 of this policy to apply for account cancellation. We will process your request within 15 working days after verifying your identity.',
+            'responseRight': '6.6 Respond to Your Above Requests',
+            'responseRightDesc1': 'To ensure security, you may need to provide a written request or prove your identity in other ways. We may require you to verify your identity before processing your request.',
+            'responseRightDesc2': 'For your reasonable requests, we generally do not charge fees. However, for multiple repeated requests that exceed reasonable limits, we will charge a certain cost fee depending on the situation.',
+            'children': 'VII. How We Handle Children\'s Personal Information',
+            'children1': '7.1 Our products, websites, and services are mainly aimed at adults. Without the consent of parents or guardians, children are not allowed to create their own user accounts.',
+            'children2': '7.2 For the collection of children\'s personal information with parental consent, we will only use or publicly disclose this information when permitted by law, with the explicit consent of parents or guardians, or when necessary to protect children.',
+            'children3': '7.3 Although local laws and customs have different definitions of children, we consider anyone under the age of 14 as a child.',
+            'children4': '7.4 If we find that we have collected children\'s personal information without prior verifiable parental consent, we will try to delete the relevant data as soon as possible.',
+            'update': 'VIII. How This Policy Is Updated',
+            'update1': '8.1 Our privacy policy may change. Without your explicit consent, we will not reduce the rights you should enjoy under this privacy policy.',
+            'update2': '8.2 We will publish any changes to this policy through appropriate methods, including in-app announcements, website announcements, or other appropriate methods.',
+            'update3': '8.3 For major changes, we will also provide more prominent notices (including for certain services, we will send notifications via email explaining the specific changes to the privacy policy).',
+            'update4': '8.4 Major changes referred to in this policy include but are not limited to:',
+            'update4_1': 'Major changes in our service model;',
+            'update4_2': 'The main objects of personal information sharing, transfer, or public disclosure change;',
+            'update4_3': 'Major changes in your rights regarding personal information processing and how to exercise them;',
+            'update4_4': 'Our contact information and complaint channels change;',
+            'update4_5': 'When the personal information security impact assessment report indicates high risk.',
+            'contact': 'IX. How to Contact Us',
+            'contactIntro': 'If you have any questions, comments, or suggestions about this privacy policy, or want to exercise your personal information rights, please contact us in the following ways:',
+            'operator': 'Operator:',
+            'email': 'Email:',
+            'phone': 'Phone:',
+            'qqGroup': 'QQ Group:',
+            'contactResponse': 'Generally, we will respond to your request within <strong>15 working days</strong>. If you are not satisfied with our response, especially if you believe that our personal information processing behavior has harmed your legitimate rights and interests, you can also complain or report to regulatory authorities such as cyberspace administration, public security, and industry and commerce.'
+        }
+    };
+
+    // 获取URL参数
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // 设置语言
+    function setLanguage(lang) {
+        // 设置html的lang属性
+        document.documentElement.lang = lang;
+
+        // 更新所有带有data-i18n属性的元素
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (languageData[lang] && languageData[lang][key]) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.value = languageData[lang][key];
+                } else {
+                    element.innerHTML = languageData[lang][key];
+                }
+            }
+        });
+
+        // 更新语言切换按钮文本
+        const languageToggle = document.getElementById('languageToggle');
+        const languageText = languageToggle.querySelector('span:last-child');
+        languageText.textContent = languageData[lang]['languageButton'];
+
+        // 更新主题切换按钮文本
+        const themeToggle = document.getElementById('themeToggle');
+        const themeText = themeToggle.querySelector('span:last-child');
+        themeText.textContent = languageData[lang]['themeButton'];
+
+        // 保存语言设置到本地存储
+        localStorage.setItem('language', lang);
+    }
+
+    // 初始化语言设置
+    function initLanguage() {
+        // 获取URL参数
+        const urlLanguage = getUrlParameter('language');
+
+        let lang = 'zh-CN'; // 默认语言
+
+        if (urlLanguage === 'us') {
+            lang = 'en-US';
+        } else if (urlLanguage === 'cn') {
+            lang = 'zh-CN';
+        } else {
+            // 检查本地存储
+            const storedLanguage = localStorage.getItem('language');
+            if (storedLanguage) {
+                lang = storedLanguage;
+            } else {
+                // 检查浏览器语言
+                const browserLang = navigator.language || navigator.userLanguage;
+                if (browserLang.startsWith('en')) {
+                    lang = 'en-US';
+                }
+            }
+        }
+
+        setLanguage(lang);
+    }
+
     // 页面加载完成后启用过渡效果
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
 
+        // 初始化语言
+        initLanguage();
+
         // 设置切换按钮状态
         const themeToggle = document.getElementById('themeToggle');
-        const iconElement = themeToggle.querySelector('.icon');
-        const textElement = themeToggle.querySelector('span:last-child');
+        const themeIcon = themeToggle.querySelector('.icon');
+        const themeText = themeToggle.querySelector('span:last-child');
 
         const currentTheme = document.documentElement.getAttribute('data-theme');
 
         if (currentTheme === 'dark') {
-            iconElement.textContent = '☀️';
-            textElement.textContent = '白天模式';
+            themeIcon.textContent = '☀️';
+            // 文本会在语言切换时更新
         } else {
-            iconElement.textContent = '🌙';
-            textElement.textContent = '夜间模式';
+            themeIcon.textContent = '🌙';
+            // 文本会在语言切换时更新
         }
 
         // 切换主题功能
@@ -512,12 +825,18 @@
             localStorage.setItem('theme', newTheme);
 
             if (newTheme === 'dark') {
-                iconElement.textContent = '☀️';
-                textElement.textContent = '白天模式';
+                themeIcon.textContent = '☀️';
             } else {
-                iconElement.textContent = '🌙';
-                textElement.textContent = '夜间模式';
+                themeIcon.textContent = '🌙';
             }
+        });
+
+        // 切换语言功能
+        const languageToggle = document.getElementById('languageToggle');
+        languageToggle.addEventListener('click', function() {
+            const currentLang = document.documentElement.lang;
+            const newLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
+            setLanguage(newLang);
         });
     });
 

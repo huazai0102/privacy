@@ -200,6 +200,29 @@
             font-size: 16px;
         }
 
+        /* 语言切换按钮 */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 140px;
+            background: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-toggle:hover {
+            background: var(--button-hover);
+        }
+
         /* 联系信息样式 */
         .contact-info {
             background-color: var(--feature-card-bg);
@@ -216,7 +239,7 @@
             font-family: monospace;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             body {
                 padding: 15px;
             }
@@ -227,361 +250,714 @@
                 font-size: 18px;
             }
 
-            .theme-toggle {
+            .theme-toggle, .language-toggle {
                 position: relative;
                 top: auto;
                 right: auto;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
                 display: inline-flex;
+            }
+
+            .language-toggle {
+                margin-right: 10px;
             }
         }
     </style>
 </head>
 <body>
-<!--<button class="theme-toggle" id="themeToggle" hidden="true">
+<button class="language-toggle" id="languageToggle">
+    <span class="icon">🌐</span>
+    <span>English</span>
+</button>
+
+<button class="theme-toggle" id="themeToggle">
     <span class="icon">🌙</span>
     <span>夜间模式</span>
-</button>-->
+</button>
 
-<h1>《美光相机使用说明》</h1>
+<h1 data-i18n="title">《美光相机使用说明》</h1>
 
 <div class="section">
-    <p>欢迎使用补光灯应用！本指南将帮助您了解如何使用本应用的所有功能，包括补光灯效果、相机功能和悬浮窗模式。</p>
+    <p data-i18n="welcome">欢迎使用补光灯应用！本指南将帮助您了解如何使用本应用的所有功能，包括补光灯效果、相机功能和悬浮窗模式。</p>
 </div>
 
 <div class="section">
-    <h2>一、基本功能使用</h2>
+    <h2 data-i18n="basicFunctions">一、基本功能使用</h2>
 
     <div class="step">
-        <h3><span class="step-number">1</span>启动应用</h3>
-        <p>点击应用图标启动补光灯应用。首次启动时，应用会请求必要的权限，请根据提示允许相关权限。</p>
-        <p class="tip">提示：如您拒绝授权并要求不再提醒，可到手机系统设置->应用与权限->权限管理->美光相机，进行相关权限授权。</p>
-    </div>
-
-    <div class="step">
-        <h3><span class="step-number">2</span>选择补光模式</h3>
-        <p>应用提供两种补光模式：</p>
-        <ul>
-            <li><strong>单色模式</strong>：整个屏幕显示单一颜色</li>
-            <li><strong>双色模式</strong>：屏幕分为上下两部分，可分别设置不同颜色</li>
-        </ul>
-        <p>点击屏幕右上角的"分屏"图标切换模式。</p>
+        <h3><span class="step-number">1</span><span data-i18n="step1Title">启动应用</span></h3>
+        <p data-i18n="step1Desc1">点击应用图标启动补光灯应用。首次启动时，应用会请求必要的权限，请根据提示允许相关权限。</p>
+        <p class="tip" data-i18n="step1Tip">提示：如您拒绝授权并要求不再提醒，可到手机系统设置->应用与权限->权限管理->美光相机，进行相关权限授权。</p>
     </div>
 
     <div class="step">
-        <h3><span class="step-number">3</span>调整颜色和亮度</h3>
-        <p>从屏幕底部向上滑动打开控制面板：</p>
+        <h3><span class="step-number">2</span><span data-i18n="step2Title">选择补光模式</span></h3>
+        <p data-i18n="step2Desc1">应用提供两种补光模式：</p>
         <ul>
-            <li>使用<strong>颜色选择器</strong>选择喜欢的颜色</li>
-            <li>拖动<strong>透明度滑块</strong>调整颜色透明度（0-255）</li>
-            <li>拖动<strong>亮度滑块</strong>调整补光亮度（0-255）</li>
+            <li data-i18n="step2Item1"><strong>单色模式</strong>：整个屏幕显示单一颜色</li>
+            <li data-i18n="step2Item2"><strong>双色模式</strong>：屏幕分为上下两部分，可分别设置不同颜色</li>
         </ul>
-        <p class="tip">提示：应用预设了多种常用补光颜色，可直接点击使用。</p>
+        <p data-i18n="step2Desc2">点击屏幕右上角的"分屏"图标切换模式。</p>
     </div>
 
     <div class="step">
-        <h3><span class="step-number">4</span>使用相机功能</h3>
-        <p>点击屏幕右上角的"相机"图标开启/关闭相机预览：</p>
+        <h3><span class="step-number">3</span><span data-i18n="step3Title">调整颜色和亮度</span></h3>
+        <p data-i18n="step3Desc1">从屏幕底部向上滑动打开控制面板：</p>
         <ul>
-            <li><strong>拍照模式</strong>：点击底部圆形按钮拍照</li>
-            <li><strong>视频模式</strong>：切换到视频标签，点击按钮开始录制，会展示当前录制时长；再次点击可停止录制</li>
-            <li><strong>延时拍照</strong>：切换到延时标签，点击按钮后5秒自动拍照；5秒以内再次点击可取消倒计时</li>
+            <li data-i18n="step3Item1">使用<strong>颜色选择器</strong>选择喜欢的颜色</li>
+            <li data-i18n="step3Item2">拖动<strong>透明度滑块</strong>调整颜色透明度（0-255）</li>
+            <li data-i18n="step3Item3">拖动<strong>亮度滑块</strong>调整补光亮度（0-255）</li>
         </ul>
-        <p class="tip">提示：点击相机预览上方的"切换"图标可切换前后摄像头。</p>
+        <p class="tip" data-i18n="step3Tip">提示：应用预设了多种常用补光颜色，可直接点击使用。</p>
     </div>
 
     <div class="step">
-        <h3><span class="step-number">5</span>保存自定义颜色</h3>
-        <p>如果您创建了喜欢的颜色组合，可以保存以备后用：</p>
+        <h3><span class="step-number">4</span><span data-i18n="step4Title">使用相机功能</span></h3>
+        <p data-i18n="step4Desc1">点击屏幕右上角的"相机"图标开启/关闭相机预览：</p>
+        <ul>
+            <li data-i18n="step4Item1"><strong>拍照模式</strong>：点击底部圆形按钮拍照</li>
+            <li data-i18n="step4Item2"><strong>视频模式</strong>：切换到视频标签，点击按钮开始录制，会展示当前录制时长；再次点击可停止录制</li>
+            <li data-i18n="step4Item3"><strong>延时拍照</strong>：切换到延时标签，点击按钮后5秒自动拍照；5秒以内再次点击可取消倒计时</li>
+        </ul>
+        <p class="tip" data-i18n="step4Tip">提示：点击相机预览上方的"切换"图标可切换前后摄像头。</p>
+    </div>
+
+    <div class="step">
+        <h3><span class="step-number">5</span><span data-i18n="step5Title">保存自定义颜色</span></h3>
+        <p data-i18n="step5Desc1">如果您创建了喜欢的颜色组合，可以保存以备后用：</p>
         <ol>
-            <li>调整到满意的颜色和亮度</li>
-            <li>点击控制面板底部的"保存"按钮</li>
-            <li>输入颜色名称（如"自然肤色"）</li>
-            <li>点击确认保存</li>
-            <li>长按收藏项，弹框提示重命名或删除，点击进行相应操作</li>
+            <li data-i18n="step5Item1">调整到满意的颜色和亮度</li>
+            <li data-i18n="step5Item2">点击控制面板底部的"保存"按钮</li>
+            <li data-i18n="step5Item3">输入颜色名称（如"自然肤色"）</li>
+            <li data-i18n="step5Item4">点击确认保存</li>
+            <li data-i18n="step5Item5">长按收藏项，弹框提示重命名或删除，点击进行相应操作</li>
         </ol>
-        <p>保存的颜色会显示在控制面板的"我的收藏"区域。</p>
-        <p class="tip">保存的颜色存储在应用私有目录，卸载软件数据将会消失</p>
+        <p data-i18n="step5Desc2">保存的颜色会显示在控制面板的"我的收藏"区域。</p>
+        <p class="tip" data-i18n="step5Tip">保存的颜色存储在应用私有目录，卸载软件数据将会消失</p>
     </div>
 </div>
 
 <div class="section">
-    <h2>二、高级功能</h2>
+    <h2 data-i18n="advancedFunctions">二、高级功能</h2>
 
     <div class="feature-card">
-        <h3>悬浮窗模式</h3>
-        <p>开启悬浮窗功能，让您在使用的应用的同时使用补光灯：</p>
+        <h3 data-i18n="feature1Title">悬浮窗模式</h3>
+        <p data-i18n="feature1Desc1">开启悬浮窗功能，让您在使用的应用的同时使用补光灯：</p>
         <ol>
-            <li>点击屏幕左侧的"悬浮窗"图标</li>
-            <li>授予应用"显示悬浮窗"权限</li>
-            <li>补光灯将以小窗形式显示在其他应用上方</li>
-            <li>弹框提示，开启悬浮并打开第三方美颜相机应用。支持美图秀秀，美颜相机，轻颜相机，Faceu激萌，B612咔叽。点击对应选项，可以在该第三方应用虚浮补光灯悬浮框，起到补光效果。点击悬浮框当前比例，可以调整悬浮框的比例：4:3，3:4，1:1，16:9</li>
-            <li>拖动悬浮窗移动位置，双指缩放调整大小</li>
-            <li>拖动悬浮窗至屏幕外部，可以最小化悬浮框到对应边框，支持左边/右边最小化悬浮，再次点击可以恢复原来大小</li>
-            <li>点击悬浮窗上的"关闭"按钮退出悬浮模式</li>
-            <li>当应用在后台，点击悬浮框可快速会到应用，同时关闭悬浮框</li>
+            <li data-i18n="feature1Item1">点击屏幕左侧的"悬浮窗"图标</li>
+            <li data-i18n="feature1Item2">授予应用"显示悬浮窗"权限</li>
+            <li data-i18n="feature1Item3">补光灯将以小窗形式显示在其他应用上方</li>
+            <li data-i18n="feature1Item4">弹框提示，开启悬浮并打开第三方美颜相机应用。支持美图秀秀，美颜相机，轻颜相机，Faceu激萌，B612咔叽。点击对应选项，可以在该第三方应用虚浮补光灯悬浮框，起到补光效果。点击悬浮框当前比例，可以调整悬浮框的比例：4:3，3:4，1:1，16:9</li>
+            <li data-i18n="feature1Item5">拖动悬浮窗移动位置，双指缩放调整大小</li>
+            <li data-i18n="feature1Item6">拖动悬浮窗至屏幕外部，可以最小化悬浮框到对应边框，支持左边/右边最小化悬浮，再次点击可以恢复原来大小</li>
+            <li data-i18n="feature1Item7">点击悬浮窗上的"关闭"按钮退出悬浮模式</li>
+            <li data-i18n="feature1Item8">当应用在后台，点击悬浮框可快速会到应用，同时关闭悬浮框</li>
         </ol>
-        <p class="tip">提示：在悬浮窗模式下，您仍然可以点击调整颜色和亮度。</p>
+        <p class="tip" data-i18n="feature1Tip">提示：在悬浮窗模式下，您仍然可以点击调整颜色和亮度。</p>
     </div>
 
     <div class="feature-card">
-        <h3>屏幕常亮</h3>
-        <p>为防止补光过程中屏幕自动熄灭：</p>
+        <h3 data-i18n="feature2Title">屏幕常亮</h3>
+        <p data-i18n="feature2Desc1">为防止补光过程中屏幕自动熄灭：</p>
         <ol>
-            <li>点击屏幕右上角的"设置"图标</li>
-            <li>开启"保持屏幕常亮"选项</li>
-            <li>应用将保持屏幕点亮，直到您手动关闭</li>
+            <li data-i18n="feature2Item1">点击屏幕右上角的"设置"图标</li>
+            <li data-i18n="feature2Item2">开启"保持屏幕常亮"选项</li>
+            <li data-i18n="feature2Item3">应用将保持屏幕点亮，直到您手动关闭</li>
         </ol>
-        <p class="warning">注意：长时间保持屏幕常亮可能增加电池消耗。个性化设置存储在应用私有目录，卸载软件数据将会消失。</p>
+        <p class="warning" data-i18n="feature2Warning">注意：长时间保持屏幕常亮可能增加电池消耗。个性化设置存储在应用私有目录，卸载软件数据将会消失。</p>
     </div>
 
     <div class="feature-card">
-        <h3>构图网格</h3>
-        <p>应用提供多种构图网格，帮助您拍摄更专业的照片：</p>
+        <h3 data-i18n="feature3Title">构图网格</h3>
+        <p data-i18n="feature3Desc1">应用提供多种构图网格，帮助您拍摄更专业的照片：</p>
 
-        <h4>可用网格类型：</h4>
+        <h4 data-i18n="feature3Subtitle1">可用网格类型：</h4>
         <ul>
-            <li><strong>三分法网格</strong>：将画面分为9个等分，帮助主体定位在交叉点上</li>
-            <li><strong>黄金分割网格</strong>：基于黄金比例的专业构图辅助</li>
-            <li><strong>十字准星</strong>：中心十字线和圆圈，适合对称构图</li>
-            <li><strong>方形网格</strong>：3x3方形网格，适合建筑和风景摄影</li>
+            <li data-i18n="feature3Item1"><strong>三分法网格</strong>：将画面分为9个等分，帮助主体定位在交叉点上</li>
+            <li data-i18n="feature3Item2"><strong>黄金分割网格</strong>：基于黄金比例的专业构图辅助</li>
+            <li data-i18n="feature3Item3"><strong>十字准星</strong>：中心十字线和圆圈，适合对称构图</li>
+            <li data-i18n="feature3Item4"><strong>方形网格</strong>：3x3方形网格，适合建筑和风景摄影</li>
         </ul>
 
-        <h4>使用方法：</h4>
+        <h4 data-i18n="feature3Subtitle2">使用方法：</h4>
         <ol>
-            <li>点击屏幕右上角的"设置"图标</li>
-            <li>开启"构图网格"下拉选项</li>
-            <li>选择喜欢的网格类型</li>
-            <li>点击可设置</li>
+            <li data-i18n="feature3Item5">点击屏幕右上角的"设置"图标</li>
+            <li data-i18n="feature3Item6">开启"构图网格"下拉选项</li>
+            <li data-i18n="feature3Item7">选择喜欢的网格类型</li>
+            <li data-i18n="feature3Item8">点击可设置</li>
         </ol>
-        <p class="tip">提示：构图网格只在预览时显示，不会出现在最终照片中。个性化设置存储在应用私有目录，卸载软件数据将会消失。</p>
+        <p class="tip" data-i18n="feature3Tip">提示：构图网格只在预览时显示，不会出现在最终照片中。个性化设置存储在应用私有目录，卸载软件数据将会消失。</p>
     </div>
 
     <div class="feature-card">
-        <h3>快捷操作</h3>
-        <p>应用支持多种快捷操作：</p>
+        <h3 data-i18n="feature4Title">快捷操作</h3>
+        <p data-i18n="feature4Desc1">应用支持多种快捷操作：</p>
         <ul>
-            <li><strong>双击屏幕</strong>：快速显示/隐藏控制面板</li>
-            <li><strong>长按颜色预设</strong>：快速应用该颜色</li>
-            <li><strong>双指捏合</strong>：在悬浮窗模式下调整大小</li>
+            <li data-i18n="feature4Item1"><strong>双击屏幕</strong>：快速显示/隐藏控制面板</li>
+            <li data-i18n="feature4Item2"><strong>长按颜色预设</strong>：快速应用该颜色</li>
+            <li data-i18n="feature4Item3"><strong>双指捏合</strong>：在悬浮窗模式下调整大小</li>
         </ul>
     </div>
 </div>
 
-
-
 <div class="section">
-    <h2>三、更多功能</h2>
-    <!--<p>自持跟多小功能：</p>-->
+    <h2 data-i18n="moreFunctions">三、更多功能</h2>
 
     <div class="feature-card">
-        <h3>电子木鱼</h3>
-        <p>电子木鱼是一款结合传统禅意与现代科技的移动应用，让用户随时随地通过敲击电子木鱼来积累功德、净化心灵。应用融合了传统木鱼敲击体验与现代化的交互设计，为您带来独特的禅意体验。</p>
+        <h3 data-i18n="more1Title">电子木鱼</h3>
+        <p data-i18n="more1Desc1">电子木鱼是一款结合传统禅意与现代科技的移动应用，让用户随时随地通过敲击电子木鱼来积累功德、净化心灵。应用融合了传统木鱼敲击体验与现代化的交互设计，为您带来独特的禅意体验。</p>
 
-        <p>🎵 核心敲击功能 ：</p>
-
+        <p data-i18n="more1Subtitle1">🎵 核心敲击功能 ：</p>
         <ul>
-            <li><strong>单次敲击</strong>：点击木鱼区域进行单次敲击</li>
-            <li><strong>连续敲击</strong>：使用"快速敲击"按钮</li>
-            <li><strong>功德计数</strong>：自动记录每次敲击积累的功德</li>
-            <li><strong>随机祝福</strong>：每次敲击显示不同的祝福语，可以定制自己的祝福语</li>
+            <li data-i18n="more1Item1"><strong>单次敲击</strong>：点击木鱼区域进行单次敲击</li>
+            <li data-i18n="more1Item2"><strong>连续敲击</strong>：使用"快速敲击"按钮</li>
+            <li data-i18n="more1Item3"><strong>功德计数</strong>：自动记录每次敲击积累的功德</li>
+            <li data-i18n="more1Item4"><strong>随机祝福</strong>：每次敲击显示不同的祝福语，可以定制自己的祝福语</li>
         </ul>
 
-        <p>🎶 音效与振动 ：</p>
+        <p data-i18n="more1Subtitle2">🎶 音效与振动 ：</p>
         <ul>
-            <li><strong>木鱼音效</strong>：逼真的木鱼敲击声音，可选择不同的木鱼样式及音效</li>
-            <li><strong>振动反馈</strong>：敲击时提供触觉反馈</li>
-            <li><strong>音量控制</strong>：独立调节敲击音量和背景音乐音量</li>
+            <li data-i18n="more1Item5"><strong>木鱼音效</strong>：逼真的木鱼敲击声音，可选择不同的木鱼样式及音效</li>
+            <li data-i18n="more1Item6"><strong>振动反馈</strong>：敲击时提供触觉反馈</li>
+            <li data-i18n="more1Item7"><strong>音量控制</strong>：独立调节敲击音量和背景音乐音量</li>
         </ul>
 
-        <p>🎵 背景音乐 ：</p>
+        <p data-i18n="more1Subtitle3">🎵 背景音乐 ：</p>
         <ul>
-            <li><strong>多种音源</strong>：秋天寺庙、慢脚步声、山间溪流</li>
-            <li><strong>循环播放</strong>：所选择背景音乐自动循环</li>
-            <li><strong>音量调节</strong>：独立控制背景音乐音量</li>
-            <li><strong>音乐切换</strong>：点击可切换背景音乐</li>
+            <li data-i18n="more1Item8"><strong>多种音源</strong>：秋天寺庙、慢脚步声、山间溪流</li>
+            <li data-i18n="more1Item9"><strong>循环播放</strong>：所选择背景音乐自动循环</li>
+            <li data-i18n="more1Item10"><strong>音量调节</strong>：独立控制背景音乐音量</li>
+            <li data-i18n="more1Item11"><strong>音乐切换</strong>：点击可切换背景音乐</li>
         </ul>
 
-        <p>🎵 背景视频 ：</p>
+        <p data-i18n="more1Subtitle4">🎵 背景视频 ：</p>
         <ul>
-            <li><strong>本地视频</strong>：可以通过相册相册选择多个本地视频作为背景</li>
-            <li><strong>循环播放</strong>：背景视频自动循环</li>
-            <li><strong>音量调节</strong>：独立控制背景视频音量</li>
-            <li><strong>视频切换</strong>：播放完，自动切换到下一个</li>
+            <li data-i18n="more1Item12"><strong>本地视频</strong>：可以通过相册相册选择多个本地视频作为背景</li>
+            <li data-i18n="more1Item13"><strong>循环播放</strong>：背景视频自动循环</li>
+            <li data-i18n="more1Item14"><strong>音量调节</strong>：独立控制背景视频音量</li>
+            <li data-i18n="more1Item15"><strong>视频切换</strong>：播放完，自动切换到下一个</li>
         </ul>
 
-        <p>📝 祝福语管理 ：</p>
+        <p data-i18n="more1Subtitle5">📝 祝福语管理 ：</p>
         <ul>
-            <li><strong>自定义祝福</strong>：添加、编辑、删除祝福语</li>
-            <li><strong>默认祝福库</strong>：内置多种传统与现代祝福语</li>
-            <li><strong>实时同步</strong>：修改后立即生效</li>
+            <li data-i18n="more1Item16"><strong>自定义祝福</strong>：添加、编辑、删除祝福语</li>
+            <li data-i18n="more1Item17"><strong>默认祝福库</strong>：内置多种传统与现代祝福语</li>
+            <li data-i18n="more1Item18"><strong>实时同步</strong>：修改后立即生效</li>
         </ul>
 
-
-        <p>⚙️ 个性化设置 ：</p>
+        <p data-i18n="more1Subtitle6">⚙️ 个性化设置 ：</p>
         <ul>
-            <li><strong>敲击音量</strong>：调节木鱼敲击声音大小</li>
-            <li><strong>背景音乐</strong>：打开背景音乐可选择音源，关闭背景音乐可选择背景视频</li>
-            <li><strong>振动反馈</strong>：开启/关闭敲击振动</li>
+            <li data-i18n="more1Item19"><strong>敲击音量</strong>：调节木鱼敲击声音大小</li>
+            <li data-i18n="more1Item20"><strong>背景音乐</strong>：打开背景音乐可选择音源，关闭背景音乐可选择背景视频</li>
+            <li data-i18n="more1Item21"><strong>振动反馈</strong>：开启/关闭敲击振动</li>
         </ul>
     </div>
 
-
-
     <div class="feature-card">
-        <h3>手电筒：</h3>
-        <p>支持照明</p>
+        <h3 data-i18n="more2Title">手电筒：</h3>
+        <p data-i18n="more2Desc1">支持照明</p>
     </div>
 
     <div class="feature-card">
-        <h3>美妆镜：</h3>
-        <p>通过相机实现美妆镜功能，可以自定义美妆镜形状，灯光氛围，焦距，镜头等</p>
+        <h3 data-i18n="more3Title">美妆镜：</h3>
+        <p data-i18n="more3Desc1">通过相机实现美妆镜功能，可以自定义美妆镜形状，灯光氛围，焦距，镜头等</p>
     </div>
 
     <div class="feature-card">
-        <h3>滚动字幕：</h3>
-        <p>用于接机、演唱会应援、地摊叫卖、活动展示等场景，支持自定义文本内容，Led背景颜色，字体颜色，字体效果，字体大小，滚动速度，横竖屏切换等</p>
+        <h3 data-i18n="more4Title">滚动字幕：</h3>
+        <p data-i18n="more4Desc1">用于接机、演唱会应援、地摊叫卖、活动展示等场景，支持自定义文本内容，Led背景颜色，字体颜色，字体效果，字体大小，滚动速度，横竖屏切换等</p>
     </div>
 
     <div class="feature-card">
-        <h3>迷彩字幕：</h3>
-        <p>更炫酷效果滚动字幕</p>
-    </div>
-
-
-    <div class="feature-card">
-        <h3>弹幕：</h3>
-        <p>一个自娱弹幕小工具，可以选择自己的视频，编辑并发送弹幕，或者随机生成有趣的弹幕</p>
-    </div>
-
-
-    <div class="feature-card">
-        <h3>霓虹灯，警告灯，报警灯：</h3>
-        <p>具备一定警示作用，道路应急提醒</p>
-    </div>
-
-
-    <div class="feature-card">
-        <h3>荧光棒：</h3>
-        <p>演唱会应援</p>
-    </div>
-
-
-    <!--<div class="feature-card">
-        <h3>相机集成</h3>
-        <p>应用使用Android CameraX库实现相机功能：</p>
-        <ul>
-            <li><strong>Preview</strong>：显示相机预览</li>
-            <li><strong>ImageCapture</strong>：处理拍照功能</li>
-            <li><strong>VideoCapture</strong>：处理视频录制</li>
-        </ul>
-        <p>所有媒体文件自动保存到设备的相册目录。</p>
+        <h3 data-i18n="more5Title">迷彩字幕：</h3>
+        <p data-i18n="more5Desc1">更炫酷效果滚动字幕</p>
     </div>
 
     <div class="feature-card">
-        <h3>悬浮窗实现</h3>
-        <p>悬浮窗通过Android的WindowManager实现：</p>
-        <ol>
-            <li>请求SYSTEM_ALERT_WINDOW权限</li>
-            <li>创建WindowManager.LayoutParams配置窗口参数</li>
-            <li>添加视图到WindowManager</li>
-            <li>处理触摸事件实现拖动和缩放</li>
-        </ol>
-    </div>-->
+        <h3 data-i18n="more6Title">弹幕：</h3>
+        <p data-i18n="more6Desc1">一个自娱弹幕小工具，可以选择自己的视频，编辑并发送弹幕，或者随机生成有趣的弹幕</p>
+    </div>
+
+    <div class="feature-card">
+        <h3 data-i18n="more7Title">霓虹灯，警告灯，报警灯：</h3>
+        <p data-i18n="more7Desc1">具备一定警示作用，道路应急提醒</p>
+    </div>
+
+    <div class="feature-card">
+        <h3 data-i18n="more8Title">荧光棒：</h3>
+        <p data-i18n="more8Desc1">演唱会应援</p>
+    </div>
 </div>
 
-
-
 <div class="section">
-    <h2>四、技术实现原理</h2>
-    <p>了解应用的技术实现原理，有助于您更好地使用各项功能：</p>
+    <h2 data-i18n="technicalImplementation">四、技术实现原理</h2>
+    <p data-i18n="techDesc1">了解应用的技术实现原理，有助于您更好地使用各项功能：</p>
 
     <div class="feature-card">
-        <h3>颜色处理机制</h3>
-        <p>应用通过以下公式计算最终显示颜色：</p>
-        <p><code>最终颜色 = Color.argb(透明度, (int)(红色分量 × 亮度系数), (int)(绿色分量 × 亮度系数), (int)(蓝色分量 × 亮度系数))</code></p>
-        <p>其中亮度系数 = 亮度值 / 255.0f</p>
+        <h3 data-i18n="tech1Title">颜色处理机制</h3>
+        <p data-i18n="tech1Desc1">应用通过以下公式计算最终显示颜色：</p>
+        <p><code data-i18n="tech1Code">最终颜色 = Color.argb(透明度, (int)(红色分量 × 亮度系数), (int)(绿色分量 × 亮度系数), (int)(蓝色分量 × 亮度系数))</code></p>
+        <p data-i18n="tech1Desc2">其中亮度系数 = 亮度值 / 255.0f</p>
     </div>
 
     <div class="feature-card">
-        <h3>相机集成</h3>
-        <p>应用使用Android CameraX库实现相机功能：</p>
+        <h3 data-i18n="tech2Title">相机集成</h3>
+        <p data-i18n="tech2Desc1">应用使用Android CameraX库实现相机功能：</p>
         <ul>
-            <li><strong>Preview</strong>：显示相机预览</li>
-            <li><strong>ImageCapture</strong>：处理拍照功能</li>
-            <li><strong>VideoCapture</strong>：处理视频录制</li>
+            <li data-i18n="tech2Item1"><strong>Preview</strong>：显示相机预览</li>
+            <li data-i18n="tech2Item2"><strong>ImageCapture</strong>：处理拍照功能</li>
+            <li data-i18n="tech2Item3"><strong>VideoCapture</strong>：处理视频录制</li>
         </ul>
-        <p>所有媒体文件自动保存到设备的相册目录。</p>
+        <p data-i18n="tech2Desc2">所有媒体文件自动保存到设备的相册目录。</p>
     </div>
 
     <div class="feature-card">
-        <h3>悬浮窗实现</h3>
-        <p>悬浮窗通过Android的WindowManager实现：</p>
+        <h3 data-i18n="tech3Title">悬浮窗实现</h3>
+        <p data-i18n="tech3Desc1">悬浮窗通过Android的WindowManager实现：</p>
         <ol>
-            <li>请求SYSTEM_ALERT_WINDOW权限</li>
-            <li>创建WindowManager.LayoutParams配置窗口参数</li>
-            <li>添加视图到WindowManager</li>
-            <li>处理触摸事件实现拖动和缩放</li>
+            <li data-i18n="tech3Item1">请求SYSTEM_ALERT_WINDOW权限</li>
+            <li data-i18n="tech3Item2">创建WindowManager.LayoutParams配置窗口参数</li>
+            <li data-i18n="tech3Item3">添加视图到WindowManager</li>
+            <li data-i18n="tech3Item4">处理触摸事件实现拖动和缩放</li>
         </ol>
     </div>
 </div>
 
 <div class="section">
-    <h2>五、常见问题解答</h2>
+    <h2 data-i18n="faq">五、常见问题解答</h2>
 
     <div class="feature-card">
-        <h3>Q: 为什么相机无法启动？</h3>
-        <p>A: 请检查是否已授予相机权限。如果问题持续，请尝试重启应用或设备。</p>
+        <h3 data-i18n="faq1Q">Q: 为什么相机无法启动？</h3>
+        <p data-i18n="faq1A">A: 请检查是否已授予相机权限。如果问题持续，请尝试重启应用或设备。</p>
     </div>
 
     <div class="feature-card">
-        <h3>Q: 悬浮窗无法显示怎么办？</h3>
-        <p>A: 请检查是否已授予"显示悬浮窗"权限。不同Android版本中，该权限的设置位置可能不同。</p>
+        <h3 data-i18n="faq2Q">Q: 悬浮窗无法显示怎么办？</h3>
+        <p data-i18n="faq2A">A: 请检查是否已授予"显示悬浮窗"权限。不同Android版本中，该权限的设置位置可能不同。</p>
     </div>
 
     <div class="feature-card">
-        <h3>Q: 拍照或录制的视频在哪里查看？</h3>
-        <p>A: 所有媒体文件自动保存到设备的相册应用中，通常在"相机"或"图库"相册中。</p>
+        <h3 data-i18n="faq3Q">Q: 拍照或录制的视频在哪里查看？</h3>
+        <p data-i18n="faq3A">A: 所有媒体文件自动保存到设备的相册应用中，通常在"相机"或"图库"相册中。</p>
     </div>
 
     <div class="feature-card">
-        <h3>Q: 如何删除已保存的颜色？</h3>
-        <p>A: 在"我的收藏"区域长按要删除的颜色，然后选择删除选项。</p>
+        <h3 data-i18n="faq4Q">Q: 如何删除已保存的颜色？</h3>
+        <p data-i18n="faq4A">A: 在"我的收藏"区域长按要删除的颜色，然后选择删除选项。</p>
     </div>
 </div>
 
 <div class="section">
-    <h2>六、获取帮助</h2>
-    <p>如果您遇到任何问题或有改进建议，请联系我们：</p>
+    <h2 data-i18n="getHelp">六、获取帮助</h2>
+    <p data-i18n="helpDesc1">如果您遇到任何问题或有改进建议，请联系我们：</p>
 
     <div class="contact-info">
-        <p><strong>运营方：</strong> 张广华</p>
-        <p><strong>电子邮件：</strong> 382916853@qq.com</p>
-        <p><strong>联系电话：</strong> 13524419665</p>
-        <p><strong>QQ群：</strong> 761541025</p>
+        <p><strong data-i18n="operator">运营方：</strong> 张广华</p>
+        <p><strong data-i18n="email">电子邮件：</strong> 382916853@qq.com</p>
+        <p><strong data-i18n="phone">联系电话：</strong> 13524419665</p>
+        <p><strong data-i18n="qqGroup">QQ群：</strong> 761541025</p>
     </div>
 
-    <p class="tip">我们将不断更新和改进应用，感谢您的使用和支持！</p>
+    <p class="tip" data-i18n="helpDesc2">我们将不断更新和改进应用，感谢您的使用和支持！</p>
 </div>
 
 <script>
+    // 语言切换功能
+    const languageData = {
+        'zh-CN': {
+            // 按钮文本
+            'languageButton': 'English',
+            'themeButton': '夜间模式',
+
+            // 页面内容
+            'title': '《美光相机使用说明》',
+            'welcome': '欢迎使用补光灯应用！本指南将帮助您了解如何使用本应用的所有功能，包括补光灯效果、相机功能和悬浮窗模式。',
+            'basicFunctions': '一、基本功能使用',
+            'step1Title': '启动应用',
+            'step1Desc1': '点击应用图标启动补光灯应用。首次启动时，应用会请求必要的权限，请根据提示允许相关权限。',
+            'step1Tip': '提示：如您拒绝授权并要求不再提醒，可到手机系统设置->应用与权限->权限管理->美光相机，进行相关权限授权。',
+            'step2Title': '选择补光模式',
+            'step2Desc1': '应用提供两种补光模式：',
+            'step2Item1': '<strong>单色模式</strong>：整个屏幕显示单一颜色',
+            'step2Item2': '<strong>双色模式</strong>：屏幕分为上下两部分，可分别设置不同颜色',
+            'step2Desc2': '点击屏幕右上角的"分屏"图标切换模式。',
+            'step3Title': '调整颜色和亮度',
+            'step3Desc1': '从屏幕底部向上滑动打开控制面板：',
+            'step3Item1': '使用<strong>颜色选择器</strong>选择喜欢的颜色',
+            'step3Item2': '拖动<strong>透明度滑块</strong>调整颜色透明度（0-255）',
+            'step3Item3': '拖动<strong>亮度滑块</strong>调整补光亮度（0-255）',
+            'step3Tip': '提示：应用预设了多种常用补光颜色，可直接点击使用。',
+            'step4Title': '使用相机功能',
+            'step4Desc1': '点击屏幕右上角的"相机"图标开启/关闭相机预览：',
+            'step4Item1': '<strong>拍照模式</strong>：点击底部圆形按钮拍照',
+            'step4Item2': '<strong>视频模式</strong>：切换到视频标签，点击按钮开始录制，会展示当前录制时长；再次点击可停止录制',
+            'step4Item3': '<strong>延时拍照</strong>：切换到延时标签，点击按钮后5秒自动拍照；5秒以内再次点击可取消倒计时',
+            'step4Tip': '提示：点击相机预览上方的"切换"图标可切换前后摄像头。',
+            'step5Title': '保存自定义颜色',
+            'step5Desc1': '如果您创建了喜欢的颜色组合，可以保存以备后用：',
+            'step5Item1': '调整到满意的颜色和亮度',
+            'step5Item2': '点击控制面板底部的"保存"按钮',
+            'step5Item3': '输入颜色名称（如"自然肤色"）',
+            'step5Item4': '点击确认保存',
+            'step5Item5': '长按收藏项，弹框提示重命名或删除，点击进行相应操作',
+            'step5Desc2': '保存的颜色会显示在控制面板的"我的收藏"区域。',
+            'step5Tip': '保存的颜色存储在应用私有目录，卸载软件数据将会消失',
+            'advancedFunctions': '二、高级功能',
+            'feature1Title': '悬浮窗模式',
+            'feature1Desc1': '开启悬浮窗功能，让您在使用的应用的同时使用补光灯：',
+            'feature1Item1': '点击屏幕左侧的"悬浮窗"图标',
+            'feature1Item2': '授予应用"显示悬浮窗"权限',
+            'feature1Item3': '补光灯将以小窗形式显示在其他应用上方',
+            'feature1Item4': '弹框提示，开启悬浮并打开第三方美颜相机应用。支持美图秀秀，美颜相机，轻颜相机，Faceu激萌，B612咔叽。点击对应选项，可以在该第三方应用虚浮补光灯悬浮框，起到补光效果。点击悬浮框当前比例，可以调整悬浮框的比例：4:3，3:4，1:1，16:9',
+            'feature1Item5': '拖动悬浮窗移动位置，双指缩放调整大小',
+            'feature1Item6': '拖动悬浮窗至屏幕外部，可以最小化悬浮框到对应边框，支持左边/右边最小化悬浮，再次点击可以恢复原来大小',
+            'feature1Item7': '点击悬浮窗上的"关闭"按钮退出悬浮模式',
+            'feature1Item8': '当应用在后台，点击悬浮框可快速会到应用，同时关闭悬浮框',
+            'feature1Tip': '提示：在悬浮窗模式下，您仍然可以点击调整颜色和亮度。',
+            'feature2Title': '屏幕常亮',
+            'feature2Desc1': '为防止补光过程中屏幕自动熄灭：',
+            'feature2Item1': '点击屏幕右上角的"设置"图标',
+            'feature2Item2': '开启"保持屏幕常亮"选项',
+            'feature2Item3': '应用将保持屏幕点亮，直到您手动关闭',
+            'feature2Warning': '注意：长时间保持屏幕常亮可能增加电池消耗。个性化设置存储在应用私有目录，卸载软件数据将会消失。',
+            'feature3Title': '构图网格',
+            'feature3Desc1': '应用提供多种构图网格，帮助您拍摄更专业的照片：',
+            'feature3Subtitle1': '可用网格类型：',
+            'feature3Item1': '<strong>三分法网格</strong>：将画面分为9个等分，帮助主体定位在交叉点上',
+            'feature3Item2': '<strong>黄金分割网格</strong>：基于黄金比例的专业构图辅助',
+            'feature3Item3': '<strong>十字准星</strong>：中心十字线和圆圈，适合对称构图',
+            'feature3Item4': '<strong>方形网格</strong>：3x3方形网格，适合建筑和风景摄影',
+            'feature3Subtitle2': '使用方法：',
+            'feature3Item5': '点击屏幕右上角的"设置"图标',
+            'feature3Item6': '开启"构图网格"下拉选项',
+            'feature3Item7': '选择喜欢的网格类型',
+            'feature3Item8': '点击可设置',
+            'feature3Tip': '提示：构图网格只在预览时显示，不会出现在最终照片中。个性化设置存储在应用私有目录，卸载软件数据将会消失。',
+            'feature4Title': '快捷操作',
+            'feature4Desc1': '应用支持多种快捷操作：',
+            'feature4Item1': '<strong>双击屏幕</strong>：快速显示/隐藏控制面板',
+            'feature4Item2': '<strong>长按颜色预设</strong>：快速应用该颜色',
+            'feature4Item3': '<strong>双指捏合</strong>：在悬浮窗模式下调整大小',
+            'moreFunctions': '三、更多功能',
+            'more1Title': '电子木鱼',
+            'more1Desc1': '电子木鱼是一款结合传统禅意与现代科技的移动应用，让用户随时随地通过敲击电子木鱼来积累功德、净化心灵。应用融合了传统木鱼敲击体验与现代化的交互设计，为您带来独特的禅意体验。',
+            'more1Subtitle1': '🎵 核心敲击功能 ：',
+            'more1Item1': '<strong>单次敲击</strong>：点击木鱼区域进行单次敲击',
+            'more1Item2': '<strong>连续敲击</strong>：使用"快速敲击"按钮',
+            'more1Item3': '<strong>功德计数</strong>：自动记录每次敲击积累的功德',
+            'more1Item4': '<strong>随机祝福</strong>：每次敲击显示不同的祝福语，可以定制自己的祝福语',
+            'more1Subtitle2': '🎶 音效与振动 ：',
+            'more1Item5': '<strong>木鱼音效</strong>：逼真的木鱼敲击声音，可选择不同的木鱼样式及音效',
+            'more1Item6': '<strong>振动反馈</strong>：敲击时提供触觉反馈',
+            'more1Item7': '<strong>音量控制</strong>：独立调节敲击音量和背景音乐音量',
+            'more1Subtitle3': '🎵 背景音乐 ：',
+            'more1Item8': '<strong>多种音源</strong>：秋天寺庙、慢脚步声、山间溪流',
+            'more1Item9': '<strong>循环播放</strong>：所选择背景音乐自动循环',
+            'more1Item10': '<strong>音量调节</strong>：独立控制背景音乐音量',
+            'more1Item11': '<strong>音乐切换</strong>：点击可切换背景音乐',
+            'more1Subtitle4': '🎵 背景视频 ：',
+            'more1Item12': '<strong>本地视频</strong>：可以通过相册相册选择多个本地视频作为背景',
+            'more1Item13': '<strong>循环播放</strong>：背景视频自动循环',
+            'more1Item14': '<strong>音量调节</strong>：独立控制背景视频音量',
+            'more1Item15': '<strong>视频切换</strong>：播放完，自动切换到下一个',
+            'more1Subtitle5': '📝 祝福语管理 ：',
+            'more1Item16': '<strong>自定义祝福</strong>：添加、编辑、删除祝福语',
+            'more1Item17': '<strong>默认祝福库</strong>：内置多种传统与现代祝福语',
+            'more1Item18': '<strong>实时同步</strong>：修改后立即生效',
+            'more1Subtitle6': '⚙️ 个性化设置 ：',
+            'more1Item19': '<strong>敲击音量</strong>：调节木鱼敲击声音大小',
+            'more1Item20': '<strong>背景音乐</strong>：打开背景音乐可选择音源，关闭背景音乐可选择背景视频',
+            'more1Item21': '<strong>振动反馈</strong>：开启/关闭敲击振动',
+            'more2Title': '手电筒：',
+            'more2Desc1': '支持照明',
+            'more3Title': '美妆镜：',
+            'more3Desc1': '通过相机实现美妆镜功能，可以自定义美妆镜形状，灯光氛围，焦距，镜头等',
+            'more4Title': '滚动字幕：',
+            'more4Desc1': '用于接机、演唱会应援、地摊叫卖、活动展示等场景，支持自定义文本内容，Led背景颜色，字体颜色，字体效果，字体大小，滚动速度，横竖屏切换等',
+            'more5Title': '迷彩字幕：',
+            'more5Desc1': '更炫酷效果滚动字幕',
+            'more6Title': '弹幕：',
+            'more6Desc1': '一个自娱弹幕小工具，可以选择自己的视频，编辑并发送弹幕，或者随机生成有趣的弹幕',
+            'more7Title': '霓虹灯，警告灯，报警灯：',
+            'more7Desc1': '具备一定警示作用，道路应急提醒',
+            'more8Title': '荧光棒：',
+            'more8Desc1': '演唱会应援',
+            'technicalImplementation': '四、技术实现原理',
+            'techDesc1': '了解应用的技术实现原理，有助于您更好地使用各项功能：',
+            'tech1Title': '颜色处理机制',
+            'tech1Desc1': '应用通过以下公式计算最终显示颜色：',
+            'tech1Code': '最终颜色 = Color.argb(透明度, (int)(红色分量 × 亮度系数), (int)(绿色分量 × 亮度系数), (int)(蓝色分量 × 亮度系数))',
+            'tech1Desc2': '其中亮度系数 = 亮度值 / 255.0f',
+            'tech2Title': '相机集成',
+            'tech2Desc1': '应用使用Android CameraX库实现相机功能：',
+            'tech2Item1': '<strong>Preview</strong>：显示相机预览',
+            'tech2Item2': '<strong>ImageCapture</strong>：处理拍照功能',
+            'tech2Item3': '<strong>VideoCapture</strong>：处理视频录制',
+            'tech2Desc2': '所有媒体文件自动保存到设备的相册目录。',
+            'tech3Title': '悬浮窗实现',
+            'tech3Desc1': '悬浮窗通过Android的WindowManager实现：',
+            'tech3Item1': '请求SYSTEM_ALERT_WINDOW权限',
+            'tech3Item2': '创建WindowManager.LayoutParams配置窗口参数',
+            'tech3Item3': '添加视图到WindowManager',
+            'tech3Item4': '处理触摸事件实现拖动和缩放',
+            'faq': '五、常见问题解答',
+            'faq1Q': 'Q: 为什么相机无法启动？',
+            'faq1A': 'A: 请检查是否已授予相机权限。如果问题持续，请尝试重启应用或设备。',
+            'faq2Q': 'Q: 悬浮窗无法显示怎么办？',
+            'faq2A': 'A: 请检查是否已授予"显示悬浮窗"权限。不同Android版本中，该权限的设置位置可能不同。',
+            'faq3Q': 'Q: 拍照或录制的视频在哪里查看？',
+            'faq3A': 'A: 所有媒体文件自动保存到设备的相册应用中，通常在"相机"或"图库"相册中。',
+            'faq4Q': 'Q: 如何删除已保存的颜色？',
+            'faq4A': 'A: 在"我的收藏"区域长按要删除的颜色，然后选择删除选项。',
+            'getHelp': '六、获取帮助',
+            'helpDesc1': '如果您遇到任何问题或有改进建议，请联系我们：',
+            'operator': '运营方：',
+            'email': '电子邮件：',
+            'phone': '联系电话：',
+            'qqGroup': 'QQ群：',
+            'helpDesc2': '我们将不断更新和改进应用，感谢您的使用和支持！'
+        },
+        'en-US': {
+            // 按钮文本
+            'languageButton': '中文',
+            'themeButton': 'Day Mode',
+
+            // 页面内容
+            'title': 'Meglight User Guide',
+            'welcome': 'Welcome to the fill light app! This guide will help you understand how to use all the features of this app, including fill light effects, camera functions, and floating window mode.',
+            'basicFunctions': 'I. Basic Functions',
+            'step1Title': 'Launch the App',
+            'step1Desc1': 'Click the app icon to launch the fill light app. When launching for the first time, the app will request necessary permissions. Please allow the relevant permissions as prompted.',
+            'step1Tip': 'Tip: If you refuse authorization and request not to be reminded again, you can go to phone system settings -> Apps & permissions -> Permission management -> Meglight to authorize relevant permissions.',
+            'step2Title': 'Select Fill Light Mode',
+            'step2Desc1': 'The app provides two fill light modes:',
+            'step2Item1': '<strong>Single Color Mode</strong>: The entire screen displays a single color',
+            'step2Item2': '<strong>Dual Color Mode</strong>: The screen is divided into upper and lower parts, which can be set to different colors respectively',
+            'step2Desc2': 'Click the "Split Screen" icon in the upper right corner of the screen to switch modes.',
+            'step3Title': 'Adjust Color and Brightness',
+            'step3Desc1': 'Swipe up from the bottom of the screen to open the control panel:',
+            'step3Item1': 'Use the <strong>color picker</strong> to select your favorite color',
+            'step3Item2': 'Drag the <strong>transparency slider</strong> to adjust color transparency (0-255)',
+            'step3Item3': 'Drag the <strong>brightness slider</strong> to adjust fill light brightness (0-255)',
+            'step3Tip': 'Tip: The app presets a variety of commonly used fill light colors that can be directly clicked to use.',
+            'step4Title': 'Use Camera Functions',
+            'step4Desc1': 'Click the "Camera" icon in the upper right corner of the screen to turn on/off camera preview:',
+            'step4Item1': '<strong>Photo Mode</strong>: Click the circular button at the bottom to take photos',
+            'step4Item2': '<strong>Video Mode</strong>: Switch to the video tab, click the button to start recording, the current recording duration will be displayed; click again to stop recording',
+            'step4Item3': '<strong>Delayed Photo</strong>: Switch to the delay tab, click the button to automatically take a photo after 5 seconds; click again within 5 seconds to cancel the countdown',
+            'step4Tip': 'Tip: Click the "Switch" icon above the camera preview to switch between front and rear cameras.',
+            'step5Title': 'Save Custom Colors',
+            'step5Desc1': 'If you create a color combination you like, you can save it for later use:',
+            'step5Item1': 'Adjust to the desired color and brightness',
+            'step5Item2': 'Click the "Save" button at the bottom of the control panel',
+            'step5Item3': 'Enter a color name (such as "Natural Skin Tone")',
+            'step5Item4': 'Click confirm to save',
+            'step5Item5': 'Long press the favorite item, a dialog box will prompt for renaming or deletion, click to perform the corresponding operation',
+            'step5Desc2': 'Saved colors will be displayed in the "My Favorites" area of the control panel.',
+            'step5Tip': 'Saved colors are stored in the app\'s private directory, uninstalling the software will cause the data to disappear',
+            'advancedFunctions': 'II. Advanced Functions',
+            'feature1Title': 'Floating Window Mode',
+            'feature1Desc1': 'Enable the floating window function to use the fill light while using other applications:',
+            'feature1Item1': 'Click the "Floating Window" icon on the left side of the screen',
+            'feature1Item2': 'Grant the app "Display Floating Window" permission',
+            'feature1Item3': 'The fill light will be displayed in a small window above other applications',
+            'feature1Item4': 'A dialog box will prompt to open the floating window and open third-party beauty camera apps. Supports Meitu XiuXiu, Meiyan Camera, Light Camera, Faceu, B612. Click the corresponding option to float the fill light floating window in that third-party app to achieve fill light effect. Click the current ratio of the floating window to adjust the floating window ratio: 4:3, 3:4, 1:1, 16:9',
+            'feature1Item5': 'Drag the floating window to move the position, pinch with two fingers to adjust the size',
+            'feature1Item6': 'Drag the floating window to the outside of the screen to minimize the floating window to the corresponding border, supports left/right minimized floating, click again to restore the original size',
+            'feature1Item7': 'Click the "Close" button on the floating window to exit floating mode',
+            'feature1Item8': 'When the app is in the background, clicking the floating window can quickly return to the app while closing the floating window',
+            'feature1Tip': 'Tip: In floating window mode, you can still click to adjust colors and brightness.',
+            'feature2Title': 'Keep Screen On',
+            'feature2Desc1': 'To prevent the screen from automatically turning off during fill light:',
+            'feature2Item1': 'Click the "Settings" icon in the upper right corner of the screen',
+            'feature2Item2': 'Turn on the "Keep Screen On" option',
+            'feature2Item3': 'The app will keep the screen lit until you manually turn it off',
+            'feature2Warning': 'Note: Keeping the screen on for a long time may increase battery consumption. Personalized settings are stored in the app\'s private directory, uninstalling the software will cause the data to disappear.',
+            'feature3Title': 'Composition Grid',
+            'feature3Desc1': 'The app provides a variety of composition grids to help you take more professional photos:',
+            'feature3Subtitle1': 'Available Grid Types:',
+            'feature3Item1': '<strong>Rule of Thirds Grid</strong>: Divides the frame into 9 equal parts, helping to position the subject at the intersection points',
+            'feature3Item2': '<strong>Golden Ratio Grid</strong>: Professional composition aid based on the golden ratio',
+            'feature3Item3': '<strong>Crosshairs</strong>: Center crosshairs and circle, suitable for symmetrical composition',
+            'feature3Item4': '<strong>Square Grid</strong>: 3x3 square grid, suitable for architectural and landscape photography',
+            'feature3Subtitle2': 'How to Use:',
+            'feature3Item5': 'Click the "Settings" icon in the upper right corner of the screen',
+            'feature3Item6': 'Turn on the "Composition Grid" dropdown option',
+            'feature3Item7': 'Select your favorite grid type',
+            'feature3Item8': 'Click to set',
+            'feature3Tip': 'Tip: The composition grid is only displayed during preview and will not appear in the final photo. Personalized settings are stored in the app\'s private directory, uninstalling the software will cause the data to disappear.',
+            'feature4Title': 'Quick Operations',
+            'feature4Desc1': 'The app supports various quick operations:',
+            'feature4Item1': '<strong>Double-tap the screen</strong>: Quickly show/hide the control panel',
+            'feature4Item2': '<strong>Long press color presets</strong>: Quickly apply that color',
+            'feature4Item3': '<strong>Two-finger pinch</strong>: Adjust size in floating window mode',
+            'moreFunctions': 'III. More Functions',
+            'more1Title': 'Electronic Wooden Fish',
+            'more1Desc1': 'Electronic Wooden Fish is a mobile application that combines traditional Zen spirit with modern technology, allowing users to accumulate merit and purify their minds by tapping electronic wooden fish anytime, anywhere. The application integrates traditional wooden fish tapping experience with modern interactive design, bringing you a unique Zen experience.',
+            'more1Subtitle1': '🎵 Core Tapping Functions:',
+            'more1Item1': '<strong>Single Tap</strong>: Click the wooden fish area for single tapping',
+            'more1Item2': '<strong>Continuous Tapping</strong>: Use the "Quick Tap" button',
+            'more1Item3': '<strong>Merit Counting</strong>: Automatically records the merit accumulated with each tap',
+            'more1Item4': '<strong>Random Blessings</strong>: Displays different blessings with each tap, you can customize your own blessings',
+            'more1Subtitle2': '🎶 Sound Effects and Vibration:',
+            'more1Item5': '<strong>Wooden Fish Sound Effects</strong>: Realistic wooden fish tapping sounds, you can choose different wooden fish styles and sound effects',
+            'more1Item6': '<strong>Vibration Feedback</strong>: Provides haptic feedback when tapping',
+            'more1Item7': '<strong>Volume Control</strong>: Independently adjust tapping volume and background music volume',
+            'more1Subtitle3': '🎵 Background Music:',
+            'more1Item8': '<strong>Multiple Sound Sources</strong>: Autumn temple, slow footsteps, mountain stream',
+            'more1Item9': '<strong>Loop Playback</strong>: The selected background music automatically loops',
+            'more1Item10': '<strong>Volume Adjustment</strong>: Independently control background music volume',
+            'more1Item11': '<strong>Music Switching</strong>: Click to switch background music',
+            'more1Subtitle4': '🎵 Background Video:',
+            'more1Item12': '<strong>Local Videos</strong>: You can select multiple local videos from the album as background',
+            'more1Item13': '<strong>Loop Playback</strong>: Background videos automatically loop',
+            'more1Item14': '<strong>Volume Adjustment</strong>: Independently control background video volume',
+            'more1Item15': '<strong>Video Switching</strong>: After playing, automatically switch to the next one',
+            'more1Subtitle5': '📝 Blessing Management:',
+            'more1Item16': '<strong>Custom Blessings</strong>: Add, edit, delete blessings',
+            'more1Item17': '<strong>Default Blessing Library</strong>: Built-in various traditional and modern blessings',
+            'more1Item18': '<strong>Real-time Synchronization</strong>: Changes take effect immediately',
+            'more1Subtitle6': '⚙️ Personalized Settings:',
+            'more1Item19': '<strong>Tapping Volume</strong>: Adjust the volume of wooden fish tapping',
+            'more1Item20': '<strong>Background Music</strong>: Turn on background music to select sound sources, turn off background music to select background videos',
+            'more1Item21': '<strong>Vibration Feedback</strong>: Turn on/off tapping vibration',
+            'more2Title': 'Flashlight:',
+            'more2Desc1': 'Supports lighting',
+            'more3Title': 'Makeup Mirror:',
+            'more3Desc1': 'Implement makeup mirror function through the camera, you can customize the shape of the makeup mirror, lighting atmosphere, focal length, lens, etc.',
+            'more4Title': 'Scrolling Text:',
+            'more4Desc1': 'Used for scenarios such as airport pick-up, concert support, stall hawking, event display, etc. Supports custom text content, LED background color, font color, font effect, font size, scrolling speed, horizontal and vertical screen switching, etc.',
+            'more5Title': 'Camouflage Text:',
+            'more5Desc1': 'More cool effect scrolling text',
+            'more6Title': 'Bullet Screen:',
+            'more6Desc1': 'A self-entertaining bullet screen tool, you can choose your own video, edit and send bullet screens, or randomly generate interesting bullet screens',
+            'more7Title': 'Neon Lights, Warning Lights, Alarm Lights:',
+            'more7Desc1': 'Have certain warning functions, road emergency reminders',
+            'more8Title': 'Glow Stick:',
+            'more8Desc1': 'Concert support',
+            'technicalImplementation': 'IV. Technical Implementation Principles',
+            'techDesc1': 'Understanding the technical implementation principles of the app will help you better use various functions:',
+            'tech1Title': 'Color Processing Mechanism',
+            'tech1Desc1': 'The app calculates the final display color using the following formula:',
+            'tech1Code': 'Final color = Color.argb(transparency, (int)(red component × brightness coefficient), (int)(green component × brightness coefficient), (int)(blue component × brightness coefficient))',
+            'tech1Desc2': 'where brightness coefficient = brightness value / 255.0f',
+            'tech2Title': 'Camera Integration',
+            'tech2Desc1': 'The app uses Android CameraX library to implement camera functions:',
+            'tech2Item1': '<strong>Preview</strong>: Display camera preview',
+            'tech2Item2': '<strong>ImageCapture</strong>: Handle photo capture function',
+            'tech2Item3': '<strong>VideoCapture</strong>: Handle video recording function',
+            'tech2Desc2': 'All media files are automatically saved to the device\'s album directory.',
+            'tech3Title': 'Floating Window Implementation',
+            'tech3Desc1': 'The floating window is implemented through Android\'s WindowManager:',
+            'tech3Item1': 'Request SYSTEM_ALERT_WINDOW permission',
+            'tech3Item2': 'Create WindowManager.LayoutParams to configure window parameters',
+            'tech3Item3': 'Add view to WindowManager',
+            'tech3Item4': 'Handle touch events to implement dragging and scaling',
+            'faq': 'V. Frequently Asked Questions',
+            'faq1Q': 'Q: Why can\'t the camera start?',
+            'faq1A': 'A: Please check if camera permission has been granted. If the problem persists, try restarting the app or device.',
+            'faq2Q': 'Q: What should I do if the floating window cannot be displayed?',
+            'faq2A': 'A: Please check if "Display Floating Window" permission has been granted. The location of this permission setting may vary in different Android versions.',
+            'faq3Q': 'Q: Where can I view photos or recorded videos?',
+            'faq3A': 'A: All media files are automatically saved to the device\'s album app, usually in the "Camera" or "Gallery" album.',
+            'faq4Q': 'Q: How to delete saved colors?',
+            'faq4A': 'A: Long press the color you want to delete in the "My Favorites" area, then select the delete option.',
+            'getHelp': 'VI. Get Help',
+            'helpDesc1': 'If you encounter any problems or have improvement suggestions, please contact us:',
+            'operator': 'Operator:',
+            'email': 'Email:',
+            'phone': 'Phone:',
+            'qqGroup': 'QQ Group:',
+            'helpDesc2': 'We will continuously update and improve the app, thank you for your use and support!'
+        }
+    };
+
+    // 获取URL参数
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // 设置语言
+    function setLanguage(lang) {
+        // 设置html的lang属性
+        document.documentElement.lang = lang;
+
+        // 更新所有带有data-i18n属性的元素
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (languageData[lang] && languageData[lang][key]) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.value = languageData[lang][key];
+                } else {
+                    element.innerHTML = languageData[lang][key];
+                }
+            }
+        });
+
+        // 更新语言切换按钮文本
+        const languageToggle = document.getElementById('languageToggle');
+        const languageText = languageToggle.querySelector('span:last-child');
+        languageText.textContent = languageData[lang]['languageButton'];
+
+        // 更新主题切换按钮文本
+        const themeToggle = document.getElementById('themeToggle');
+        const themeText = themeToggle.querySelector('span:last-child');
+        themeText.textContent = languageData[lang]['themeButton'];
+
+        // 保存语言设置到本地存储
+        localStorage.setItem('language', lang);
+    }
+
+    // 初始化语言设置
+    function initLanguage() {
+        // 获取URL参数
+        const urlLanguage = getUrlParameter('language');
+
+        let lang = 'zh-CN'; // 默认语言
+
+        if (urlLanguage === 'us') {
+            lang = 'en-US';
+        } else if (urlLanguage === 'cn') {
+            lang = 'zh-CN';
+        } else {
+            // 检查本地存储
+            const storedLanguage = localStorage.getItem('language');
+            if (storedLanguage) {
+                lang = storedLanguage;
+            } else {
+                // 检查浏览器语言
+                const browserLang = navigator.language || navigator.userLanguage;
+                if (browserLang.startsWith('en')) {
+                    lang = 'en-US';
+                }
+            }
+        }
+
+        setLanguage(lang);
+    }
+
     // 页面加载完成后启用过渡效果
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
 
+        // 初始化语言
+        initLanguage();
+
         // 设置切换按钮状态
         const themeToggle = document.getElementById('themeToggle');
-        const iconElement = themeToggle.querySelector('.icon');
-        const textElement = themeToggle.querySelector('span:last-child');
+        const themeIcon = themeToggle.querySelector('.icon');
+        const themeText = themeToggle.querySelector('span:last-child');
 
         const currentTheme = document.documentElement.getAttribute('data-theme');
 
         if (currentTheme === 'dark') {
-            iconElement.textContent = '☀️';
-            textElement.textContent = '白天模式';
+            themeIcon.textContent = '☀️';
+            // 文本会在语言切换时更新
         } else {
-            iconElement.textContent = '🌙';
-            textElement.textContent = '夜间模式';
+            themeIcon.textContent = '🌙';
+            // 文本会在语言切换时更新
         }
 
         // 切换主题功能
@@ -593,12 +969,18 @@
             localStorage.setItem('theme', newTheme);
 
             if (newTheme === 'dark') {
-                iconElement.textContent = '☀️';
-                textElement.textContent = '白天模式';
+                themeIcon.textContent = '☀️';
             } else {
-                iconElement.textContent = '🌙';
-                textElement.textContent = '夜间模式';
+                themeIcon.textContent = '🌙';
             }
+        });
+
+        // 切换语言功能
+        const languageToggle = document.getElementById('languageToggle');
+        languageToggle.addEventListener('click', function() {
+            const currentLang = document.documentElement.lang;
+            const newLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
+            setLanguage(newLang);
         });
     });
 </script>

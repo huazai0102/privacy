@@ -177,7 +177,30 @@
             font-size: 16px;
         }
 
-        @media (max-width: 600px) {
+        /* 语言切换按钮 */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 140px;
+            background: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-toggle:hover {
+            background: var(--button-hover);
+        }
+
+        @media (max-width: 768px) {
             body {
                 padding: 15px;
             }
@@ -188,162 +211,369 @@
                 font-size: 18px;
             }
 
-            .theme-toggle {
+            .theme-toggle, .language-toggle {
                 position: relative;
                 top: auto;
                 right: auto;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
                 display: inline-flex;
+            }
+
+            .language-toggle {
+                margin-right: 10px;
             }
         }
     </style>
 </head>
 <body>
-<!--<button class="theme-toggle" id="themeToggle">
+<button class="language-toggle" id="languageToggle">
+    <span class="icon">🌐</span>
+    <span>English</span>
+</button>
+
+<button class="theme-toggle" id="themeToggle">
     <span class="icon">🌙</span>
     <span>夜间模式</span>
-</button>-->
+</button>
 
-<h1>《美光相机用户协议》</h1>
+<h1 data-i18n="title">《美光相机用户协议》</h1>
 
-<p class="update-date">最后更新日期：2025年9月19日</p>
+<p class="update-date" data-i18n="updateDate">最后更新日期：2025年9月19日</p>
 
 <div class="section">
-    <p>欢迎使用我们的应用！请在使用前仔细阅读本用户协议（以下简称"本协议"）。本协议是您（以下简称"用户"）与我们（以下简称"我们"或"本应用"）之间关于使用本应用所订立的协议。</p>
-    <p><strong>一旦您开始使用本应用，即表示您已充分阅读、理解并同意接受本协议的全部内容</strong>。如果您不同意本协议的任何条款，请立即停止使用本应用。</p>
+    <p data-i18n="welcome1">欢迎使用我们的应用！请在使用前仔细阅读本用户协议（以下简称"本协议"）。本协议是您（以下简称"用户"）与我们（以下简称"我们"或"本应用"，我们合法拥有并运营的名称为"美光相机"，"美光相機"和"Meglight"）之间关于使用本应用所订立的协议。</p>
+    <p data-i18n="welcome2"><strong>一旦您开始使用本应用，即表示您已充分阅读、理解并同意接受本协议的全部内容</strong>。如果您不同意本协议的任何条款，请立即停止使用本应用。</p>
 </div>
 
 <div class="section">
-
-    <h2>一、服务内容</h2>
-    <p>1.1 本应用是一款提供补光灯拍照功能的手机应用程序，主要功能包括：</p>
+    <h2 data-i18n="serviceContent">一、服务内容</h2>
+    <p data-i18n="service1">1.1 本应用是一款提供补光灯拍照功能的手机应用程序，主要功能包括：</p>
     <ul>
-        <li>提供多种颜色的补光效果</li>
-        <li>补光背景支持分屏模式，可以选择每个分屏的背景颜色</li>
-        <li>允许用户自定义颜色和亮度</li>
-        <li>支持保存最多20条颜色到本地，卸载软件，保存数据会消失。</li>
-        <li>支持相机拍照，延时拍照和录像功能</li>
-        <li>提供补光背景悬浮窗模式，为支持第三方美颜相机的补光效果（美图秀秀，美颜相机，轻颜相机，Faceu激萌，B612咔叽）</li>
+        <li data-i18n="service1_1">提供多种颜色的补光效果</li>
+        <li data-i18n="service1_2">补光背景支持分屏模式，可以选择每个分屏的背景颜色</li>
+        <li data-i18n="service1_3">允许用户自定义颜色和亮度</li>
+        <li data-i18n="service1_4">支持保存最多20条颜色到本地，卸载软件，保存数据会消失。</li>
+        <li data-i18n="service1_5">支持相机拍照，延时拍照和录像功能</li>
+        <li data-i18n="service1_6">提供补光背景悬浮窗模式，为支持第三方美颜相机的补光效果（美图秀秀，美颜相机，轻颜相机，Faceu激萌，B612咔叽）</li>
     </ul>
 
-    <p>1.2 更多功能包含：</p>
+    <p data-i18n="service2">1.2 更多功能包含：</p>
     <ul>
-
-        <li>电子木鱼：结合传统禅意与现代科技的移动应用，让用户随时随地通过敲击电子木鱼来积累功德、净化心灵。应用融合了传统木鱼敲击体验与现代化的交互设计，为您带来独特的禅意体验。</li>
-
-        <li>化妆镜：通过相机实现美妆镜功能，可以自定义美妆镜形状，灯光氛围，焦距，镜头等</li>
-        <li>手电筒：照明工具</li>
-
-        <li>滚动字幕：用于接机、演唱会应援、地摊叫卖、活动展示等场景，支持自定义文本内容，Led背景颜色，字体颜色，字体效果，字体大小，滚动速度，横竖屏切换等</li>
-        <li>迷彩字幕：更炫酷效果滚动字幕</li>
-        <li>弹幕：一个自娱弹幕小工具，可以选择自己的视频，编辑并发送弹幕，或者随机生成有趣的弹幕</li>
-
-
-        <li>霓虹灯，警告灯，报警灯：具备一定警示作用，道路应急提醒</li>
-        <li>荧光棒：演唱会应援</li>
+        <li data-i18n="service2_1">电子木鱼：结合传统禅意与现代科技的移动应用，让用户随时随地通过敲击电子木鱼来积累功德、净化心灵。应用融合了传统木鱼敲击体验与现代化的交互设计，为您带来独特的禅意体验。</li>
+        <li data-i18n="service2_2">化妆镜：通过相机实现美妆镜功能，可以自定义美妆镜形状，灯光氛围，焦距，镜头等</li>
+        <li data-i18n="service2_3">手电筒：照明工具</li>
+        <li data-i18n="service2_4">滚动字幕：用于接机、演唱会应援、地摊叫卖、活动展示等场景，支持自定义文本内容，Led背景颜色，字体颜色，字体效果，字体大小，滚动速度，横竖屏切换等</li>
+        <li data-i18n="service2_5">迷彩字幕：更炫酷效果滚动字幕</li>
+        <li data-i18n="service2_6">弹幕：一个自娱弹幕小工具，可以选择自己的视频，编辑并发送弹幕，或者随机生成有趣的弹幕</li>
+        <li data-i18n="service2_7">霓虹灯，警告灯，报警灯：具备一定警示作用，道路应急提醒</li>
+        <li data-i18n="service2_8">荧光棒：演唱会应援</li>
     </ul>
 
-    <p>1.3 我们保留随时变更、中断或终止部分或全部服务的权利，且不承担任何责任。</p>
-
-
+    <p data-i18n="service3">1.3 我们保留随时变更、中断或终止部分或全部服务的权利，且不承担任何责任。</p>
 </div>
 
 <div class="section">
-
-    <!--账户注册与安全-->
-    <h2>二、账户注册与安全</h2>
-    <p>2.1 所有功能均不需要注册账户，您不需要提供真实、准确、完整的信息。</p>
-    <p>2.2 目前我们也不提供联网服务，您的信息均在手机本地存储。</p>
-    <p>2.3 您有责任妥善使用该软件，并对使用该软件的所有活动承担责任。</p>
-    <p>2.4 如发现任何未经授权使用您个人信息的情况，请立即通知我们。</p>
-
-    <!--<p>2.1 部分功能可能需要注册账户。注册时，您需要提供真实、准确、完整的信息。</p>
-    <p>2.2 您有责任妥善保管账户信息及密码，并对使用该账户的所有活动承担责任。</p>
-    <p>2.3 如发现任何未经授权使用您账户的情况，请立即通知我们。</p>-->
+    <h2 data-i18n="accountSecurity">二、账户注册与安全</h2>
+    <p data-i18n="account1">2.1 所有功能均不需要注册账户，您不需要提供真实、准确、完整的信息。</p>
+    <p data-i18n="account2">2.2 目前我们也不提供联网服务，您的信息均在手机本地存储。</p>
+    <p data-i18n="account3">2.3 您有责任妥善使用该软件，并对使用该软件的所有活动承担责任。</p>
+    <p data-i18n="account4">2.4 如发现任何未经授权使用您个人信息的情况，请立即通知我们。</p>
 </div>
 
 <div class="section">
-    <h2>三、用户行为规范</h2>
-    <p>3.1 您同意在使用本应用时遵守所有适用的法律法规。</p>
-    <p>3.2 您不得利用本应用从事以下活动：</p>
+    <h2 data-i18n="userBehavior">三、用户行为规范</h2>
+    <p data-i18n="behavior1">3.1 您同意在使用本应用时遵守所有适用的法律法规。</p>
+    <p data-i18n="behavior2">3.2 您不得利用本应用从事以下活动：</p>
     <ul>
-        <li>违反国家法律法规的行为</li>
-        <li>侵犯他人合法权益的行为</li>
-        <li>干扰或破坏本应用正常运行的行为</li>
-        <li>未经授权访问、干扰或破坏我们的服务器或网络</li>
-        <li>任何其他不当行为</li>
+        <li data-i18n="behavior2_1">违反国家法律法规的行为</li>
+        <li data-i18n="behavior2_2">侵犯他人合法权益的行为</li>
+        <li data-i18n="behavior2_3">干扰或破坏本应用正常运行的行为</li>
+        <li data-i18n="behavior2_4">未经授权访问、干扰或破坏我们的服务器或网络</li>
+        <li data-i18n="behavior2_5">任何其他不当行为</li>
     </ul>
-    <p>3.3 我们有权对用户行为进行监督，并对违反本协议的行为采取相应措施。</p>
+    <p data-i18n="behavior3">3.3 我们有权对用户行为进行监督，并对违反本协议的行为采取相应措施。</p>
 </div>
 
 <div class="section">
-    <h2>四、知识产权</h2>
-    <p>4.1 本应用的所有知识产权，包括但不限于代码、设计、logo、图形、文字等，均归我们所有。</p>
-    <p>4.2 未经我们明确授权，您不得复制、修改、传播、出售或利用本应用的任何部分。</p>
-    <p>4.3 您通过本应用创建、上传或分享的内容，其知识产权仍归您所有，但您授予我们在全球范围内免费使用这些内容的权利。</p>
-    <!--<p>4.3 您通过本应用创建、上传或分享的内容，其知识产权仍归您所有，但您授予我们在全球范围内免费使用这些内容的权利。</p>-->
+    <h2 data-i18n="intellectualProperty">四、知识产权</h2>
+    <p data-i18n="property1">4.1 本应用的所有知识产权，包括但不限于代码、设计、logo、图形、文字等，均归我们所有。</p>
+    <p data-i18n="property2">4.2 未经我们明确授权，您不得复制、修改、传播、出售或利用本应用的任何部分。</p>
+    <p data-i18n="property3">4.3 您通过本应用创建、上传或分享的内容，其知识产权仍归您所有，但您授予我们在全球范围内免费使用这些内容的权利。</p>
 </div>
 
 <div class="section">
-    <h2>五、免责声明</h2>
-    <p>5.1 本应用按"现状"提供，我们不保证服务不会中断或没有错误。</p>
-    <p>5.2 我们对因使用本应用而导致的任何直接、间接、偶然、特殊或后果性损害不承担责任。</p>
-    <p>5.3 我们对用户使用本应用的方式或由此产生的任何后果不承担责任。</p>
-    <p>5.4 我们不对第三方通过本应用提供的内容或服务负责。</p>
+    <h2 data-i18n="disclaimer">五、免责声明</h2>
+    <p data-i18n="disclaimer1">5.1 本应用按"现状"提供，我们不保证服务不会中断或没有错误。</p>
+    <p data-i18n="disclaimer2">5.2 我们对因使用本应用而导致的任何直接、间接、偶然、特殊或后果性损害不承担责任。</p>
+    <p data-i18n="disclaimer3">5.3 我们对用户使用本应用的方式或由此产生的任何后果不承担责任。</p>
+    <p data-i18n="disclaimer4">5.4 我们不对第三方通过本应用提供的内容或服务负责。</p>
 </div>
 
 <div class="section">
-    <h2>六、服务变更与终止</h2>
-    <p>6.1 我们有权随时修改、暂停或终止本应用的全部或部分服务。</p>
-    <p>6.2 我们可以随时修改本协议，修改后的协议将在公布后生效。</p>
-    <p>6.3 如果您不同意修改后的协议，请停止使用本应用。</p>
+    <h2 data-i18n="serviceChange">六、服务变更与终止</h2>
+    <p data-i18n="change1">6.1 我们有权随时修改、暂停或终止本应用的全部或部分服务。</p>
+    <p data-i18n="change2">6.2 我们可以随时修改本协议，修改后的协议将在公布后生效。</p>
+    <p data-i18n="change3">6.3 如果您不同意修改后的协议，请停止使用本应用。</p>
 </div>
 
 <div class="section">
-    <h2>七、适用法律与争议解决</h2>
-    <p>7.1 本协议的订立、执行和解释及争议的解决均应适用中华人民共和国法律。</p>
-    <p>7.2 如双方就本协议内容或其执行发生任何争议，应首先通过友好协商解决；协商不成时，任何一方均可向我们所在地的人民法院提起诉讼。</p>
+    <h2 data-i18n="applicableLaw">七、适用法律与争议解决</h2>
+    <p data-i18n="law1">7.1 本协议的订立、执行和解释及争议的解决均应适用中华人民共和国法律。</p>
+    <p data-i18n="law2">7.2 如双方就本协议内容或其执行发生任何争议，应首先通过友好协商解决；协商不成时，任何一方均可向我们所在地的人民法院提起诉讼。</p>
 </div>
 
 <div class="section">
-    <h2>八、其他</h2>
-    <p>8.1 本协议构成您与我们之间就使用本应用的完整协议。</p>
-    <p>8.2 如果我们未执行本协议的任何条款，不应视为放弃该条款。</p>
-    <p>8.3 如果本协议的任何条款被认定为无效或不可执行，不影响其他条款的效力。</p>
+    <h2 data-i18n="other">八、其他</h2>
+    <p data-i18n="other1">8.1 本协议构成您与我们之间就使用本应用的完整协议。</p>
+    <p data-i18n="other2">8.2 如果我们未执行本协议的任何条款，不应视为放弃该条款。</p>
+    <p data-i18n="other3">8.3 如果本协议的任何条款被认定为无效或不可执行，不影响其他条款的效力。</p>
 </div>
 
 <div class="section">
-    <h2>九、联系我们</h2>
-    <p>如果您对本协议有任何疑问、意见或建议，请通过以下方式与我们联系：</p>
+    <h2 data-i18n="contact">九、联系我们</h2>
+    <p data-i18n="contactIntro">如果您对本协议有任何疑问、意见或建议，请通过以下方式与我们联系：</p>
 
     <div class="contact-info">
-        <p><strong>运营方：</strong> 张广华</p>
-        <p><strong>电子邮件：</strong> 382916853@qq.com</p>
-        <p><strong>联系电话：</strong> 13524419665</p>
-        <p><strong>QQ群：</strong> 761541025</p>
+        <p><strong data-i18n="operator">运营方：</strong> 张广华</p>
+        <p><strong data-i18n="email">电子邮件：</strong> 382916853@qq.com</p>
+        <p><strong data-i18n="phone">联系电话：</strong> 13524419665</p>
+        <p><strong data-i18n="qqGroup">QQ群：</strong> 761541025</p>
     </div>
 
-    <p>一般情况下，我们将在<strong>15个工作日</strong>内回复您的请求。</p>
+    <p data-i18n="contactResponse">一般情况下，我们将在<strong>15个工作日</strong>内回复您的请求。</p>
 </div>
 
 <script>
+    // 语言切换功能
+    const languageData = {
+        'zh-CN': {
+            // 按钮文本
+            'languageButton': 'English',
+            'themeButton': '夜间模式',
+
+            // 页面内容
+            'title': '《美光相机用户协议》',
+            'updateDate': '最后更新日期：2025年9月19日',
+            'welcome1': '欢迎使用我们的应用！请在使用前仔细阅读本用户协议（以下简称"本协议"）。本协议是您（以下简称"用户"）与我们（以下简称"我们"或"本应用"，我们合法拥有并运营的名称为"美光相机"，"美光相機"和"Meglight"）之间关于使用本应用所订立的协议。',
+            'welcome2': '<strong>一旦您开始使用本应用，即表示您已充分阅读、理解并同意接受本协议的全部内容</strong>。如果您不同意本协议的任何条款，请立即停止使用本应用。',
+            'serviceContent': '一、服务内容',
+            'service1': '1.1 本应用是一款提供补光灯拍照功能的手机应用程序，主要功能包括：',
+            'service1_1': '提供多种颜色的补光效果',
+            'service1_2': '补光背景支持分屏模式，可以选择每个分屏的背景颜色',
+            'service1_3': '允许用户自定义颜色和亮度',
+            'service1_4': '支持保存最多20条颜色到本地，卸载软件，保存数据会消失。',
+            'service1_5': '支持相机拍照，延时拍照和录像功能',
+            'service1_6': '提供补光背景悬浮窗模式，为支持第三方美颜相机的补光效果（美图秀秀，美颜相机，轻颜相机，Faceu激萌，B612咔叽）',
+            'service2': '1.2 更多功能包含：',
+            'service2_1': '电子木鱼：结合传统禅意与现代科技的移动应用，让用户随时随地通过敲击电子木鱼来积累功德、净化心灵。应用融合了传统木鱼敲击体验与现代化的交互设计，为您带来独特的禅意体验。',
+            'service2_2': '化妆镜：通过相机实现美妆镜功能，可以自定义美妆镜形状，灯光氛围，焦距，镜头等',
+            'service2_3': '手电筒：照明工具',
+            'service2_4': '滚动字幕：用于接机、演唱会应援、地摊叫卖、活动展示等场景，支持自定义文本内容，Led背景颜色，字体颜色，字体效果，字体大小，滚动速度，横竖屏切换等',
+            'service2_5': '迷彩字幕：更炫酷效果滚动字幕',
+            'service2_6': '弹幕：一个自娱弹幕小工具，可以选择自己的视频，编辑并发送弹幕，或者随机生成有趣的弹幕',
+            'service2_7': '霓虹灯，警告灯，报警灯：具备一定警示作用，道路应急提醒',
+            'service2_8': '荧光棒：演唱会应援',
+            'service3': '1.3 我们保留随时变更、中断或终止部分或全部服务的权利，且不承担任何责任。',
+            'accountSecurity': '二、账户注册与安全',
+            'account1': '2.1 所有功能均不需要注册账户，您不需要提供真实、准确、完整的信息。',
+            'account2': '2.2 目前我们也不提供联网服务，您的信息均在手机本地存储。',
+            'account3': '2.3 您有责任妥善使用该软件，并对使用该软件的所有活动承担责任。',
+            'account4': '2.4 如发现任何未经授权使用您个人信息的情况，请立即通知我们。',
+            'userBehavior': '三、用户行为规范',
+            'behavior1': '3.1 您同意在使用本应用时遵守所有适用的法律法规。',
+            'behavior2': '3.2 您不得利用本应用从事以下活动：',
+            'behavior2_1': '违反国家法律法规的行为',
+            'behavior2_2': '侵犯他人合法权益的行为',
+            'behavior2_3': '干扰或破坏本应用正常运行的行为',
+            'behavior2_4': '未经授权访问、干扰或破坏我们的服务器或网络',
+            'behavior2_5': '任何其他不当行为',
+            'behavior3': '3.3 我们有权对用户行为进行监督，并对违反本协议的行为采取相应措施。',
+            'intellectualProperty': '四、知识产权',
+            'property1': '4.1 本应用的所有知识产权，包括但不限于代码、设计、logo、图形、文字等，均归我们所有。',
+            'property2': '4.2 未经我们明确授权，您不得复制、修改、传播、出售或利用本应用的任何部分。',
+            'property3': '4.3 您通过本应用创建、上传或分享的内容，其知识产权仍归您所有，但您授予我们在全球范围内免费使用这些内容的权利。',
+            'disclaimer': '五、免责声明',
+            'disclaimer1': '5.1 本应用按"现状"提供，我们不保证服务不会中断或没有错误。',
+            'disclaimer2': '5.2 我们对因使用本应用而导致的任何直接、间接、偶然、特殊或后果性损害不承担责任。',
+            'disclaimer3': '5.3 我们对用户使用本应用的方式或由此产生的任何后果不承担责任。',
+            'disclaimer4': '5.4 我们不对第三方通过本应用提供的内容或服务负责。',
+            'serviceChange': '六、服务变更与终止',
+            'change1': '6.1 我们有权随时修改、暂停或终止本应用的全部或部分服务。',
+            'change2': '6.2 我们可以随时修改本协议，修改后的协议将在公布后生效。',
+            'change3': '6.3 如果您不同意修改后的协议，请停止使用本应用。',
+            'applicableLaw': '七、适用法律与争议解决',
+            'law1': '7.1 本协议的订立、执行和解释及争议的解决均应适用中华人民共和国法律。',
+            'law2': '7.2 如双方就本协议内容或其执行发生任何争议，应首先通过友好协商解决；协商不成时，任何一方均可向我们所在地的人民法院提起诉讼。',
+            'other': '八、其他',
+            'other1': '8.1 本协议构成您与我们之间就使用本应用的完整协议。',
+            'other2': '8.2 如果我们未执行本协议的任何条款，不应视为放弃该条款。',
+            'other3': '8.3 如果本协议的任何条款被认定为无效或不可执行，不影响其他条款的效力。',
+            'contact': '九、联系我们',
+            'contactIntro': '如果您对本协议有任何疑问、意见或建议，请通过以下方式与我们联系：',
+            'operator': '运营方：',
+            'email': '电子邮件：',
+            'phone': '联系电话：',
+            'qqGroup': 'QQ群：',
+            'contactResponse': '一般情况下，我们将在<strong>15个工作日</strong>内回复您的请求。'
+        },
+        'en-US': {
+            // 按钮文本
+            'languageButton': '中文',
+            'themeButton': 'Day Mode',
+
+            // 页面内容
+            'title': 'Meglight User Agreement',
+            'updateDate': 'Last Updated: September 19, 2025',
+            'welcome1': 'Welcome to our app! Please read this User Agreement (hereinafter referred to as "this Agreement") carefully before use. This Agreement is an agreement between you (hereinafter referred to as "User") and us (hereinafter referred to as "we" or "this App", The names we legally own and operate are "美光相机", "美光相機"", and "Meglight") regarding the use of this App.',
+            'welcome2': '<strong>Once you start using this App, it means that you have fully read, understood, and agreed to accept all the contents of this Agreement</strong>. If you do not agree to any terms of this Agreement, please stop using this App immediately.',
+            'serviceContent': 'I. Service Content',
+            'service1': '1.1 This App is a mobile application that provides fill light photography functions. The main functions include:',
+            'service1_1': 'Provide multiple colors of fill light effects',
+            'service1_2': 'Fill light background supports split-screen mode, you can choose the background color of each split screen',
+            'service1_3': 'Allow users to customize colors and brightness',
+            'service1_4': 'Support saving up to 20 colors locally. Uninstalling the software will cause the saved data to disappear.',
+            'service1_5': 'Support camera photography, delayed photography and video recording functions',
+            'service1_6': 'Provide floating window mode for fill light background to support fill light effects for third-party beauty cameras (Meitu XiuXiu, Meiyan Camera, Light Camera, Faceu, B612)',
+            'service2': '1.2 More features include:',
+            'service2_1': 'Electronic Wooden Fish: A mobile application that combines traditional Zen spirit with modern technology, allowing users to accumulate merit and purify their minds by tapping electronic wooden fish anytime, anywhere. The application integrates traditional wooden fish tapping experience with modern interactive design, bringing you a unique Zen experience.',
+            'service2_2': 'Makeup Mirror: Implement makeup mirror function through the camera, you can customize the shape of the makeup mirror, lighting atmosphere, focal length, lens, etc.',
+            'service2_3': 'Flashlight: Lighting tool',
+            'service2_4': 'Scrolling Text: Used for scenarios such as airport pick-up, concert support, stall hawking, event display, etc. Supports custom text content, LED background color, font color, font effect, font size, scrolling speed, horizontal and vertical screen switching, etc.',
+            'service2_5': 'Camouflage Text: More cool effect scrolling text',
+            'service2_6': 'Bullet Screen: A self-entertaining bullet screen tool, you can choose your own video, edit and send bullet screens, or randomly generate interesting bullet screens',
+            'service2_7': 'Neon lights, warning lights, alarm lights: Have certain warning functions, road emergency reminders',
+            'service2_8': 'Glow Stick: Concert support',
+            'service3': '1.3 We reserve the right to change, interrupt or terminate part or all of the services at any time without any responsibility.',
+            'accountSecurity': 'II. Account Registration and Security',
+            'account1': '2.1 All functions do not require registration of an account, and you do not need to provide true, accurate, and complete information.',
+            'account2': '2.2 Currently, we do not provide online services, and your information is stored locally on the phone.',
+            'account3': '2.3 You are responsible for properly using the software and bear responsibility for all activities using the software.',
+            'account4': '2.4 If you find any unauthorized use of your personal information, please notify us immediately.',
+            'userBehavior': 'III. User Behavior Standards',
+            'behavior1': '3.1 You agree to comply with all applicable laws and regulations when using this App.',
+            'behavior2': '3.2 You shall not use this App to engage in the following activities:',
+            'behavior2_1': 'Acts that violate national laws and regulations',
+            'behavior2_2': 'Acts that infringe upon the legitimate rights and interests of others',
+            'behavior2_3': 'Acts that interfere with or disrupt the normal operation of this App',
+            'behavior2_4': 'Unauthorized access, interference or destruction of our servers or networks',
+            'behavior2_5': 'Any other inappropriate behavior',
+            'behavior3': '3.3 We have the right to supervise user behavior and take corresponding measures against violations of this Agreement.',
+            'intellectualProperty': 'IV. Intellectual Property',
+            'property1': '4.1 All intellectual property rights of this App, including but not limited to code, design, logo, graphics, text, etc., are owned by us.',
+            'property2': '4.2 Without our explicit authorization, you shall not copy, modify, disseminate, sell or utilize any part of this App.',
+            'property3': '4.3 The intellectual property rights of the content you create, upload or share through this App still belong to you, but you grant us the right to use these content globally for free.',
+            'disclaimer': 'V. Disclaimer',
+            'disclaimer1': '5.1 This App is provided "as is", and we do not guarantee that the service will not be interrupted or error-free.',
+            'disclaimer2': '5.2 We shall not be liable for any direct, indirect, incidental, special or consequential damages caused by the use of this App.',
+            'disclaimer3': '5.3 We are not responsible for the way users use this App or any consequences arising therefrom.',
+            'disclaimer4': '5.4 We are not responsible for the content or services provided by third parties through this App.',
+            'serviceChange': 'VI. Service Change and Termination',
+            'change1': '6.1 We have the right to modify, suspend or terminate all or part of the services of this App at any time.',
+            'change2': '6.2 We can modify this Agreement at any time, and the modified agreement will take effect after publication.',
+            'change3': '6.3 If you do not agree to the modified agreement, please stop using this App.',
+            'applicableLaw': 'VII. Applicable Law and Dispute Resolution',
+            'law1': '7.1 The conclusion, execution and interpretation of this Agreement and the resolution of disputes shall be governed by the laws of the People\'s Republic of China.',
+            'law2': '7.2 If any dispute arises between the two parties regarding the content of this Agreement or its execution, it should be resolved through friendly negotiation first; if the negotiation fails, either party may file a lawsuit in the People\'s Court where we are located.',
+            'other': 'VIII. Other',
+            'other1': '8.1 This Agreement constitutes the complete agreement between you and us regarding the use of this App.',
+            'other2': '8.2 If we do not enforce any terms of this Agreement, it should not be regarded as a waiver of that term.',
+            'other3': '8.3 If any term of this Agreement is deemed invalid or unenforceable, it does not affect the validity of other terms.',
+            'contact': 'IX. Contact Us',
+            'contactIntro': 'If you have any questions, comments or suggestions about this Agreement, please contact us in the following ways:',
+            'operator': 'Operator:',
+            'email': 'Email:',
+            'phone': 'Phone:',
+            'qqGroup': 'QQ Group:',
+            'contactResponse': 'Generally, we will respond to your request within <strong>15 working days</strong>.'
+        }
+    };
+
+    // 获取URL参数
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // 设置语言
+    function setLanguage(lang) {
+        // 设置html的lang属性
+        document.documentElement.lang = lang;
+
+        // 更新所有带有data-i18n属性的元素
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (languageData[lang] && languageData[lang][key]) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.value = languageData[lang][key];
+                } else {
+                    element.innerHTML = languageData[lang][key];
+                }
+            }
+        });
+
+        // 更新语言切换按钮文本
+        const languageToggle = document.getElementById('languageToggle');
+        const languageText = languageToggle.querySelector('span:last-child');
+        languageText.textContent = languageData[lang]['languageButton'];
+
+        // 更新主题切换按钮文本
+        const themeToggle = document.getElementById('themeToggle');
+        const themeText = themeToggle.querySelector('span:last-child');
+        themeText.textContent = languageData[lang]['themeButton'];
+
+        // 保存语言设置到本地存储
+        localStorage.setItem('language', lang);
+    }
+
+    // 初始化语言设置
+    function initLanguage() {
+        // 获取URL参数
+        const urlLanguage = getUrlParameter('language');
+
+        let lang = 'zh-CN'; // 默认语言
+
+        if (urlLanguage === 'us') {
+            lang = 'en-US';
+        } else if (urlLanguage === 'cn') {
+            lang = 'zh-CN';
+        } else {
+            // 检查本地存储
+            const storedLanguage = localStorage.getItem('language');
+            if (storedLanguage) {
+                lang = storedLanguage;
+            } else {
+                // 检查浏览器语言
+                const browserLang = navigator.language || navigator.userLanguage;
+                if (browserLang.startsWith('en')) {
+                    lang = 'en-US';
+                }
+            }
+        }
+
+        setLanguage(lang);
+    }
+
     // 页面加载完成后启用过渡效果
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
 
+        // 初始化语言
+        initLanguage();
+
         // 设置切换按钮状态
         const themeToggle = document.getElementById('themeToggle');
-        const iconElement = themeToggle.querySelector('.icon');
-        const textElement = themeToggle.querySelector('span:last-child');
+        const themeIcon = themeToggle.querySelector('.icon');
+        const themeText = themeToggle.querySelector('span:last-child');
 
         const currentTheme = document.documentElement.getAttribute('data-theme');
 
         if (currentTheme === 'dark') {
-            iconElement.textContent = '☀️';
-            textElement.textContent = '白天模式';
+            themeIcon.textContent = '☀️';
+            // 文本会在语言切换时更新
         } else {
-            iconElement.textContent = '🌙';
-            textElement.textContent = '夜间模式';
+            themeIcon.textContent = '🌙';
+            // 文本会在语言切换时更新
         }
 
         // 切换主题功能
@@ -355,12 +585,18 @@
             localStorage.setItem('theme', newTheme);
 
             if (newTheme === 'dark') {
-                iconElement.textContent = '☀️';
-                textElement.textContent = '白天模式';
+                themeIcon.textContent = '☀️';
             } else {
-                iconElement.textContent = '🌙';
-                textElement.textContent = '夜间模式';
+                themeIcon.textContent = '🌙';
             }
+        });
+
+        // 切换语言功能
+        const languageToggle = document.getElementById('languageToggle');
+        languageToggle.addEventListener('click', function() {
+            const currentLang = document.documentElement.lang;
+            const newLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
+            setLanguage(newLang);
         });
     });
 </script>
