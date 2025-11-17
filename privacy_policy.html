@@ -318,8 +318,98 @@
     <p data-i18n="definition3">1.3 <strong>匿名化</strong>：通过对个人信息的技术处理，使得个人信息主体无法被识别，且处理后的信息不能被复原的过程。</p>
 </div>
 
+<!--<div class="section">
+    <h2 data-i18n="collectUse">二、我们如何收集和使用您的个人信息</h2>
+    <p data-i18n="collectUseIntro">我们遵循"最小必要原则"，仅收集实现产品功能所必要的个人信息。以下是本应用申请权限及使用情况的详细说明：</p>
+
+    &lt;!&ndash; 响应式表格 &ndash;&gt;
+    <table class="responsive-table">
+        <thead>
+        <tr>
+            <th data-i18n="permissionName">权限名称</th>
+            <th data-i18n="usagePurpose">使用目的</th>
+            <th data-i18n="usageScenario">使用场景</th>
+            <th data-i18n="isRequired">是否必需</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td data-i18n="cameraPermission">相机权限(CAMERA)</td>
+            <td data-i18n="cameraPurpose">访问摄像头设备</td>
+            <td data-i18n="cameraScenario">用于拍照、录制视频、补光灯功能</td>
+            <td data-i18n="yes">是</td>
+        </tr>
+        <tr>
+            <td data-i18n="microphonePermission">麦克风权限(RECORD_AUDIO)</td>
+            <td data-i18n="microphonePurpose">录制音频</td>
+            <td data-i18n="microphoneScenario">在录制视频时同步录制声音</td>
+            <td data-i18n="microphoneRequired">否（仅在使用视频录制功能时需要）</td>
+        </tr>
+        <tr>
+            <td data-i18n="mediaPermission">读取媒体权限(READ_MEDIA_IMAGES/VIDEO/AUDIO)</td>
+            <td data-i18n="mediaPurpose">访问设备上的媒体文件</td>
+            <td data-i18n="mediaScenario">允许您选择和使用设备中的照片、视频作为补光灯背景或进行编辑</td>
+            <td data-i18n="mediaRequired">否（仅在使用相册选择功能时需要）</td>
+        </tr>
+        <tr>
+            <td data-i18n="flashlightPermission">闪光灯权限(FLASHLIGHT)</td>
+            <td data-i18n="flashlightPurpose">控制设备闪光灯</td>
+            <td data-i18n="flashlightScenario">实现补光灯功能，提供光线补充</td>
+            <td data-i18n="yes">是</td>
+        </tr>
+        <tr>
+            <td data-i18n="vibratePermission">振动器权限(VIBRATE)</td>
+            <td data-i18n="vibratePurpose">控制设备振动器</td>
+            <td data-i18n="vibrateScenario">在特定操作（如拍照完成）时提供触觉反馈</td>
+            <td data-i18n="no">否</td>
+        </tr>
+        </tbody>
+    </table>
+
+    &lt;!&ndash; 卡片式布局（在移动端显示） &ndash;&gt;
+    <div class="card-container">
+        <div class="permission-card">
+            <h3 data-i18n="cameraPermission">相机权限(CAMERA)</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="cameraPurpose">访问摄像头设备</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="cameraScenario">用于拍照、录制视频、补光灯功能</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="yes">是</span></p>
+        </div>
+
+        <div class="permission-card">
+            <h3 data-i18n="microphonePermission">麦克风权限(RECORD_AUDIO)</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="microphonePurpose">录制音频</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="microphoneScenario">在录制视频时同步录制声音</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="microphoneRequired">否（仅在使用视频录制功能时需要）</span></p>
+        </div>
+
+        <div class="permission-card">
+            <h3 data-i18n="mediaPermission">读取媒体权限</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="mediaPurpose">访问设备上的媒体文件</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="mediaScenario">允许您选择和使用设备中的照片、视频作为补光灯背景或进行编辑</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="mediaRequired">否（仅在使用相册选择功能时需要）</span></p>
+        </div>
+
+        <div class="permission-card">
+            <h3 data-i18n="flashlightPermission">闪光灯权限(FLASHLIGHT)</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="flashlightPurpose">控制设备闪光灯</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="flashlightScenario">实现补光灯功能，提供光线补充</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="yes">是</span></p>
+        </div>
+
+        <div class="permission-card">
+            <h3 data-i18n="vibratePermission">振动器权限(VIBRATE)</h3>
+            <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="vibratePurpose">控制设备振动器</span></p>
+            <p><span class="label" data-i18n="usageScenario">使用场景：</span><span data-i18n="vibrateScenario">在特定操作（如拍照完成）时提供触觉反馈</span></p>
+            <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="no">否</span></p>
+        </div>
+    </div>
+
+    <p data-i18n="permissionPromise">我们承诺，上述权限和收集的信息将仅用于明确声明的目的，不会用于其他商业用途。如我们需要使用您的个人信息超出原本目的，我们将再次获取您的明确同意。</p>
+</div>-->
+
 <div class="section">
     <h2 data-i18n="collectUse">二、我们如何收集和使用您的个人信息</h2>
+
     <p data-i18n="collectUseIntro">我们遵循"最小必要原则"，仅收集实现产品功能所必要的个人信息。以下是本应用申请权限及使用情况的详细说明：</p>
 
     <!-- 响应式表格 -->
@@ -368,6 +458,7 @@
 
     <!-- 卡片式布局（在移动端显示） -->
     <div class="card-container">
+        <!-- 原有权限卡片保持不变 -->
         <div class="permission-card">
             <h3 data-i18n="cameraPermission">相机权限(CAMERA)</h3>
             <p><span class="label" data-i18n="usagePurpose">使用目的：</span><span data-i18n="cameraPurpose">访问摄像头设备</span></p>
@@ -403,6 +494,38 @@
             <p><span class="label" data-i18n="isRequired">是否必需：</span><span data-i18n="no">否</span></p>
         </div>
     </div>
+
+    <!-- 新增：设备标识符收集说明 -->
+    <h3 data-i18n="deviceIdentifierTitle">设备标识符收集与使用说明</h3>
+    <p data-i18n="deviceIdentifierIntro">为保障本应用正常稳定运行、优化服务体验并实现特定功能，我们可能会收集和使用您的设备标识符，包括但不限于OAID（开放匿名设备标识符）和Android ID。</p>
+
+    <h4 data-i18n="deviceIdentifierPurpose">收集目的</h4>
+    <p data-i18n="deviceIdentifierPurposeDesc">我们收集上述设备标识符主要用于以下目的：</p>
+    <ul>
+        <!--<li data-i18n="purpose1">广告归因与分析：用于追踪广告投放效果，分析广告活动效率，优化广告内容推荐</li>-->
+        <li data-i18n="purpose2">数据统计分析：进行应用内数据统计和分析，用于改进产品功能和服务质量</li>
+        <li data-i18n="purpose3">安全风控：用于识别和防止欺诈行为，保障您的账户和交易安全</li>
+        <li data-i18n="purpose4">服务稳定性：监测应用运行状态，及时发现并解决技术问题</li>
+    </ul>
+
+    <h4 data-i18n="deviceIdentifierUsage">使用方式</h4>
+    <p data-i18n="deviceIdentifierUsageDesc">我们收集的设备标识符将采用加密技术进行安全存储，并设置访问权限控制。我们仅在实现上述目的的必要范围内使用这些信息，并会在实现收集目的所需的合理期限内保存，一般不超过2年。我们可能会与以下第三方共享设备标识符：</p>
+    <ul>
+        <!--<li data-i18n="usage1">广告合作伙伴（用于广告效果监测和归因）</li>-->
+        <li data-i18n="usage2">数据分析服务提供商（用于统计和分析应用使用情况）</li>
+        <li data-i18n="usage3">云计算服务提供商（用于数据存储和处理）</li>
+    </ul>
+
+    <h4 data-i18n="deviceIdentifierRights">用户权益</h4>
+    <p data-i18n="deviceIdentifierRightsDesc">我们尊重并保障您对个人信息的合法权益：</p>
+    <ul>
+        <li data-i18n="rights1">知情权：您有权了解我们收集、使用设备标识符的具体情况</li>
+        <li data-i18n="rights2">选择权：您可以通过设备系统设置限制或关闭相关权限（具体路径因设备型号而异，通常位于"设置-隐私-广告"或类似菜单中）</li>
+        <li data-i18n="rights3">查询权：您有权查询我们持有的您的设备标识符信息</li>
+        <li data-i18n="rights4">删除权：您有权要求我们删除已收集的设备标识符，可通过本政策第九条列明的联系方式向我们提出申请</li>
+        <li data-i18n="rights5">撤回同意权：您可以通过设备系统设置或应用内设置撤回对收集设备标识符的同意</li>
+    </ul>
+    <p data-i18n="deviceIdentifierNote">请注意，如果您选择限制或拒绝我们收集上述设备标识符，可能会影响部分广告推荐准确性和特定功能的使用体验。</p>
 
     <p data-i18n="permissionPromise">我们承诺，上述权限和收集的信息将仅用于明确声明的目的，不会用于其他商业用途。如我们需要使用您的个人信息超出原本目的，我们将再次获取您的明确同意。</p>
 </div>
@@ -621,7 +744,35 @@
             'email': '电子邮件：',
             'phone': '联系电话：',
             'qqGroup': 'QQ群：',
-            'contactResponse': '一般情况下，我们将在<strong>15个工作日</strong>内回复您的请求。如果您对我们的回复不满意，特别是认为我们的个人信息处理行为损害了您的合法权益，您还可以向网信、公安、工商等监管部门进行投诉或举报。'
+            'contactResponse': '一般情况下，我们将在<strong>15个工作日</strong>内回复您的请求。如果您对我们的回复不满意，特别是认为我们的个人信息处理行为损害了您的合法权益，您还可以向网信、公安、工商等监管部门进行投诉或举报。',
+
+
+
+
+            <!-- 在 languageData 的 'zh-CN' 部分添加：-->
+            'deviceIdentifierTitle': '设备标识符收集与使用说明',
+            'deviceIdentifierIntro': '为保障本应用正常稳定运行、优化服务体验并实现特定功能，我们可能会收集和使用您的设备标识符，包括但不限于OAID（开放匿名设备标识符）和Android ID。',
+            'deviceIdentifierPurpose': '收集目的',
+            'deviceIdentifierPurposeDesc': '我们收集上述设备标识符主要用于以下目的：',
+            'purpose1': '广告归因与分析：用于追踪广告投放效果，分析广告活动效率，优化广告内容推荐',
+            'purpose2': '数据统计分析：进行应用内数据统计和分析，用于改进产品功能和服务质量',
+            'purpose3': '安全风控：用于识别和防止欺诈行为，保障您的账户和交易安全',
+            'purpose4': '服务稳定性：监测应用运行状态，及时发现并解决技术问题',
+            'deviceIdentifierUsage': '使用方式',
+            'deviceIdentifierUsageDesc': '我们收集的设备标识符将采用加密技术进行安全存储，并设置访问权限控制。我们仅在实现上述目的的必要范围内使用这些信息，并会在实现收集目的所需的合理期限内保存，一般不超过2年。我们可能会与以下第三方共享设备标识符：',
+            'usage1': '广告合作伙伴（用于广告效果监测和归因）',
+            'usage2': '数据分析服务提供商（用于统计和分析应用使用情况）',
+            'usage3': '云计算服务提供商（用于数据存储和处理）',
+            'deviceIdentifierRights': '用户权益',
+            'deviceIdentifierRightsDesc': '我们尊重并保障您对个人信息的合法权益：',
+            'rights1': '知情权：您有权了解我们收集、使用设备标识符的具体情况',
+            'rights2': '选择权：您可以通过设备系统设置限制或关闭相关权限（具体路径因设备型号而异，通常位于"设置-隐私-广告"或类似菜单中）',
+            'rights3': '查询权：您有权查询我们持有的您的设备标识符信息',
+            'rights4': '删除权：您有权要求我们删除已收集的设备标识符，可通过本政策第九条列明的联系方式向我们提出申请',
+            'rights5': '撤回同意权：您可以通过设备系统设置或应用内设置撤回对收集设备标识符的同意',
+            'deviceIdentifierNote': '请注意，如果您选择限制或拒绝我们收集上述设备标识符，可能会影响部分广告推荐准确性和特定功能的使用体验。'
+
+
         },
         'en-US': {
             // 按钮文本
@@ -724,7 +875,34 @@
             'email': 'Email:',
             'phone': 'Phone:',
             'qqGroup': 'QQ Group:',
-            'contactResponse': 'Generally, we will respond to your request within <strong>15 working days</strong>. If you are not satisfied with our response, especially if you believe that our personal information processing behavior has harmed your legitimate rights and interests, you can also complain or report to regulatory authorities such as cyberspace administration, public security, and industry and commerce.'
+            'contactResponse': 'Generally, we will respond to your request within <strong>15 working days</strong>. If you are not satisfied with our response, especially if you believe that our personal information processing behavior has harmed your legitimate rights and interests, you can also complain or report to regulatory authorities such as cyberspace administration, public security, and industry and commerce.',
+
+            <!--在 languageData 的 'en-US' 部分添加：-->
+
+
+            'deviceIdentifierTitle': 'Device Identifier Collection and Usage Statement',
+            'deviceIdentifierIntro': 'To ensure the normal and stable operation of this application, optimize service experience, and achieve specific functions, we may collect and use your device identifiers, including but not limited to OAID (Open Anonymous Device Identifier) and Android ID.',
+            'deviceIdentifierPurpose': 'Collection Purpose',
+            'deviceIdentifierPurposeDesc': 'We collect the above device identifiers mainly for the following purposes:',
+            'purpose1': 'Advertising Attribution and Analysis: Used to track advertising delivery effectiveness, analyze advertising campaign efficiency, and optimize ad content recommendations',
+            'purpose2': 'Data Statistical Analysis: Conduct in-app data statistics and analysis to improve product features and service quality',
+            'purpose3': 'Security Risk Control: Used to identify and prevent fraudulent activities, protect your account and transaction security',
+            'purpose4': 'Service Stability: Monitor application operation status, promptly discover and resolve technical issues',
+            'deviceIdentifierUsage': 'Usage Method',
+            'deviceIdentifierUsageDesc': 'The collected device identifiers will be securely stored using encryption technology with access permission controls. We only use this information within the necessary scope to achieve the above purposes and will retain it for a reasonable period required to achieve the collection purpose, generally not exceeding 2 years. We may share device identifiers with the following third parties:',
+            'usage1': 'Advertising partners (for advertising effectiveness monitoring and attribution)',
+            'usage2': 'Data analysis service providers (for statistics and analysis of application usage)',
+            'usage3': 'Cloud computing service providers (for data storage and processing)',
+            'deviceIdentifierRights': 'User Rights',
+            'deviceIdentifierRightsDesc': 'We respect and protect your legitimate rights regarding personal information:',
+            'rights1': 'Right to Know: You have the right to understand the specific circumstances of our collection and use of device identifiers',
+            'rights2': 'Right to Choose: You can restrict or turn off related permissions through device system settings (specific paths vary by device model, usually located in "Settings-Privacy-Advertising" or similar menus)',
+            'rights3': 'Right to Inquire: You have the right to inquire about your device identifier information held by us',
+            'rights4': 'Right to Delete: You have the right to request us to delete collected device identifiers, you can submit your request through the contact methods listed in Article 9 of this policy',
+            'rights5': 'Right to Withdraw Consent: You can withdraw your consent to the collection of device identifiers through device system settings or in-app settings',
+            'deviceIdentifierNote': 'Please note that if you choose to restrict or refuse our collection of the above device identifiers, it may affect the accuracy of some advertising recommendations and the use experience of specific features.'
+
+
         }
     };
 
