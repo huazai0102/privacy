@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐私政策 - 光颜相机</title>
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --text-color: #333;
+            --background-color: #f8f9fa;
+            --container-background: #ffffff;
+            --border-color: #e9ecef;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: var(--container-background);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        h1, h2, h3 {
+            color: #000;
+            padding-bottom: 10px;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 2px solid var(--primary-color);
+            margin-top: 30px;
+        }
+        p, li {
+            color: #495057;
+            font-size: 1.05em;
+        }
+        ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        strong {
+            color: #000;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+        .date {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        .lang-switch {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .lang-switch button {
+            background: none;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-weight: bold;
+            transition: all 0.2s ease-in-out;
+        }
+        .lang-switch button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .lang-en { display: none; }
+        .highlight {
+            background-color: #e7f5ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .contact-info {
+            background-color: #f1f3f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="lang-zh">光颜相机 隐私政策</h1>
+            <h1 class="lang-en">LumiCamera Privacy Policy</h1>
+            <div class="lang-switch">
+                <button id="btn-zh" class="active" onclick="switchLang('zh')">简体中文</button>
+                <button id="btn-en" onclick="switchLang('en')">English</button>
+            </div>
+            <p class="lang-zh date"><strong>生效日期：2024年5月21日</strong></p>
+            <p class="lang-en date"><strong>Effective Date: May 21, 2024</strong></p>
+        </div>
+
+        <div class="lang-zh">
+            <p>本《隐私政策》旨在说明开发者张广华（以下简称“我们”）如何处理您在使用“光颜相机”移动应用（以下简称“本应用”）时可能涉及的个人信息。我们深知隐私的重要性，并承诺以最高标准保护您的隐私。</p>
+            <div class="highlight">
+                <p><strong>核心摘要：我们不收集、不上传、不存储您的任何个人信息。所有数据和操作均在您的设备本地完成。</strong></p>
+            </div>
+
+            <h2>1. 我们不收集任何个人信息</h2>
+            <p>我们郑重承诺，本应用是一款纯粹的离线工具应用。我们不会以任何形式收集、上传、存储或与任何第三方分享您的任何个人信息。</p>
+            <ul>
+                <li><strong>照片与视频</strong>：您使用本应用拍摄或从相册选择的所有照片和视频，仅用于实时处理（如补光、作为背景）或根据您的操作保存在本地设备相册中。我们无法访问、查看或获取这些内容。</li>
+                <li><strong>自定义数据</strong>：您在“电子木鱼”、“电子烧香”、“电子佛珠”和“滚动字幕”功能中设置的自定义文本、样式及设置，仅通过`UserDefaults`存储在您设备的本地存储中，我们无法访问。</li>
+                <li><strong>使用分析</strong>：本应用不包含任何用于分析您使用行为的第三方统计工具或SDK。我们不会追踪您的任何操作。</li>
+            </ul>
+
+            <h2>2. 我们请求的权限及使用目的</h2>
+            <p>为了实现核心功能，本应用会在必要时通过标准的系统弹窗向您请求以下权限。所有权限仅在您主动使用相关功能时触发，您可以随时在设备的“设置”中管理这些权限。</p>
+            <ul>
+                <li><strong>相机权限 (NSCameraUsageDescription)</strong>：用于实现“补妆镜”、拍照、录像和实时预览功能。所有相机数据仅用于实时显示和拍摄，不会被我们收集。</li>
+                <li><strong>照片图库权限 (NSPhotoLibraryUsageDescription / NSPhotoLibraryAddUsageDescription)</strong>：用于将您拍摄的作品保存到相册，或允许您从相册中选择视频作为“电子木鱼”等功能的背景。我们仅在您操作时访问，不会扫描或收集您的相册内容。</li>
+                <li><strong>麦克风权限 (NSMicrophoneUsageDescription)</strong>：当您使用录像或Live Photo功能时，用于录制声音。音频数据仅随视频一同保存在您的本地设备中。</li>
+            </ul>
+            <p>请注意，“手电筒”功能通过调用系统框架控制闪光灯，此过程不涉及相机图像的捕获。</p>
+
+            <h2>3. 数据存储与安全</h2>
+            <p>您在本应用中产生的所有数据，例如自定义的祝福语、视频播放列表等，都使用iOS系统的标准机制（`UserDefaults`或应用沙盒文件系统）安全地存储在您的设备本地。这些数据仅您自己可见，并会随着您卸载本应用而被系统一并删除。</p>
+
+            <h2>4. 儿童隐私</h2>
+            <p>我们不会有意收集任何未满14周岁（或您所在司法管辖区规定的其他年龄）儿童的个人信息。本应用不以儿童为目标用户。</p>
+
+            <h2>5. 隐私政策的更新</h2>
+            <p>我们可能会不时更新本隐私政策以反映功能变化或法律要求。任何变更我们都会在本应用内通过适当方式通知您。</p>
+
+            <h2>6. 联系我们</h2>
+            <div class="contact-info">
+                <p>如果您对本隐私政策有任何疑问、意见或建议，请通过以下方式与我们联系：</p>
+                <p>开发者：张广华</p>
+                <p>电子邮箱：<strong>382916853@qq.com</strong></p>
+            </div>
+        </div>
+
+        <div class="lang-en">
+            <p>This Privacy Policy explains how developer Zhang Guanghua ("we", "us", "our") handles information in connection with your use of the "LumiCamera" mobile application ("this App"). We value your privacy and are committed to protecting it.</p>
+            <div class="highlight">
+                <p><strong>In short: We do not collect, upload, or store any of your personal information. All data and operations are processed locally on your device.</strong></p>
+            </div>
+
+            <h2>1. Information We Do Not Collect</h2>
+            <p>We solemnly promise that this App is a pure offline utility. We do not collect, upload, store, or share any of your personal information with any third party in any form.</p>
+            <ul>
+                <li><strong>Photos and Videos</strong>: All photos and videos you capture or select from your library are used only for real-time processing (e.g., fill light, background playback) and are saved to your local device's photo album upon your action. We cannot access, view, or obtain this content.</li>
+                <li><strong>Custom Data</strong>: Custom texts, styles, and settings for features like "Digital Woodfish," "Digital Incense," "Digital Prayer Beads," and "Scrolling Ticker" are stored locally on your device using `UserDefaults`. We cannot access this data.</li>
+                <li><strong>Usage Analytics</strong>: This App does not include any third-party analytics tools or SDKs to analyze your usage behavior. We do not track your activities.</li>
+            </ul>
+
+            <h2>2. Permissions We Request and Their Purposes</h2>
+            <p>To enable core functionalities, this App will request the following permissions via standard system pop-ups when necessary. You can manage these permissions at any time in your device's "Settings".</p>
+            <ul>
+                <li><strong>Camera Access (NSCameraUsageDescription)</strong>: Required for the "Makeup Mirror", photo shooting, and video recording features. All camera data is used only for real-time display and capture upon your instruction and is not collected by us.</li>
+                <li><strong>Photo Library Access (NSPhotoLibraryUsageDescription / NSPhotoLibraryAddUsageDescription)</strong>: Required to save your works to the photo album or to allow you to select videos as backgrounds for simulation features. We only access it when you perform such actions and will not scan or collect your album content.</li>
+                <li><strong>Microphone Access (NSMicrophoneUsageDescription)</strong>: Required to record audio when you use the video recording or Live Photo features. Audio data is saved locally on your device along with the video.</li>
+            </ul>
+            <p>Please note that the "Flashlight" feature controls the device's torch through system frameworks and does not involve capturing images.</p>
+
+            <h2>3. Data Storage and Security</h2>
+            <p>All data you generate within this App, such as custom texts and video playlists, is securely stored locally on your device using standard iOS mechanisms (`UserDefaults` or the app's sandboxed file system). This data is only visible to you and will be deleted by the system if you uninstall the App.</p>
+
+            <h2>4. Children's Privacy</h2>
+            <p>We do not knowingly collect any personal information from children under the age of 14 (or any other age stipulated by the law in your jurisdiction).</p>
+
+            <h2>5. Updates to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any changes through appropriate means within the App.</p>
+
+            <h2>6. Contact Us</h2>
+            <div class="contact-info">
+                <p>If you have any questions, comments, or suggestions regarding this Privacy Policy, please contact us:</p>
+                <p>Developer: Zhang Guanghua</p>
+                <p>Email: <strong>382916853@qq.com</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            if (lang === 'en') {
+                document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'block');
+                document.getElementById('btn-en').classList.add('active');
+                document.getElementById('btn-zh').classList.remove('active');
+                document.documentElement.lang = 'en';
+            } else {
+                document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'block');
+                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+                document.getElementById('btn-zh').classList.add('active');
+                document.getElementById('btn-en').classList.remove('active');
+                document.documentElement.lang = 'zh-CN';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const userLang = navigator.language || navigator.userLanguage;
+            if (userLang.toLowerCase().startsWith('en')) {
+                switchLang('en');
+            } else {
+                switchLang('zh');
+            }
+        });
+    </script>
+</body>
+</html>
