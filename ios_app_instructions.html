@@ -18,15 +18,15 @@
             font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
             line-height: 1.8;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             background-color: var(--background-color);
             color: var(--text-color);
         }
         .container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 10px auto;
             background-color: var(--container-background);
-            padding: 30px 40px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
@@ -37,25 +37,25 @@
         }
         h1 {
             text-align: center;
-            font-size: 2.2em;
+            font-size: 2em;
             margin-bottom: 10px;
             color: var(--primary-color);
         }
         h2 {
-            font-size: 1.6em;
+            font-size: 1.5em;
             border-bottom: 2px solid var(--primary-color);
             margin-top: 40px;
             padding-left: 10px;
             border-left: 4px solid var(--primary-color);
         }
         h3 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin-top: 30px;
             color: var(--secondary-color);
         }
         p, li {
             color: #495057;
-            font-size: 1.1em;
+            font-size: 1.05em;
         }
         ul {
             padding-left: 25px;
@@ -68,13 +68,6 @@
         strong, .key-action {
             color: #000;
             font-weight: bold;
-        }
-        .note {
-            background-color: #fffbe6;
-            border-left: 4px solid #ffc107;
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 4px;
         }
         .header {
             text-align: center;
@@ -112,6 +105,26 @@
             font-weight: bold;
             color: var(--primary-color);
         }
+        
+        /* 响应式布局 */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .container {
+                padding: 30px 40px;
+                margin: 20px auto;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            p, li {
+                font-size: 1.1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -147,7 +160,7 @@
             <p>在主界面底部，您可以左右滑动切换不同的拍摄模式：</p>
             <ul>
                 <li><strong>拍照</strong>：拍摄高质量的静态照片。</li>
-                <li><strong>拍Live</strong>：拍摄包含声音和动态效果的Live Photo（实况照片）。</li>
+                <li><strong>拍Live</strong>：拍摄带有动态效果的Live Photo（实况照片）。</li>
                 <li><strong>录像</strong>：长按拍摄按钮开始录制视频，松开即可结束。</li>
                 <li><strong>延时拍照</strong>：提供倒计时功能，方便您进行自拍或合影。</li>
             </ul>
@@ -163,24 +176,16 @@
             </ul>
 
             <h2>二. 模拟体验工具</h2>
-            <p>我们内置了多款有趣的模拟互动工具，为您带来片刻的宁静与乐趣。</p>
             <h3>2.1 电子木鱼</h3>
             <ul>
                 <li><strong>敲击</strong>：在“电子木鱼”界面，点击屏幕中央的木鱼即可进行敲击，屏幕上会显示“功德+1”等祝福语动画。</li>
                 <li><strong>自动敲击</strong>：点击底部的 <span class="key-action">“自动敲击”</span> 按钮，木鱼将根据您设定的速度持续敲击。再次点击可停止。</li>
-                <li><strong>自定义</strong>：点击右上角的齿轮图标进入设置。在这里，您可以：
-                    <ul>
-                        <li><strong>更换木鱼样式</strong>：在“选择木鱼”区域，横向滑动并点选您喜欢的材质和外观。</li>
-                        <li><strong>管理祝福语</strong>：点击“管理祝福语”，可以添加、删除或重置敲击时显示的文字。</li>
-                        <li><strong>设置背景</strong>：使用“背景”下方的分段控件，可在“关闭”、“音乐”或“视频”模式间切换。选择“视频”模式后，可点击“添加”从您的相册导入视频作为背景。</li>
-                    </ul>
-                </li>
+                <li><strong>自定义</strong>：点击右上角的齿轮图标进入设置。在这里，您可以更换木鱼样式、管理祝福语、设置背景音乐或从相册导入视频作为背景。</li>
             </ul>
 
             <h3>2.2 电子佛珠</h3>
             <ul>
-                <li><strong>拨动</strong>：在“电子佛珠”界面，用手指向下滑动屏幕即可模拟拨动佛珠的动作，同时累积计数。</li>
-                <li><strong>计数规则</strong>：每拨动108颗佛珠（一轮），“累计圈数”会自动加一，并伴有提示音。</li>
+                <li><strong>拨动</strong>：在“电子佛珠”界面，用手指向下滑动屏幕即可模拟拨动佛珠的动作，同时累积计数。每拨动108颗佛珠（一轮），“累计圈数”会自动加一，并伴有提示音。</li>
                 <li><strong>自定义</strong>：点击右上角的齿轮图标进入设置。您可以更换佛珠的材质样式（如小叶紫檀、和田玉等）、开启或关闭“功德+1”弹幕动画，以及设置背景音乐或视频。</li>
             </ul>
 
@@ -256,19 +261,12 @@
             <ul>
                 <li><strong>Knocking</strong>: On the "Digital Woodfish" screen, tap the woodfish in the center to knock. An animation with blessing texts like "Merit +1" will appear.</li>
                 <li><strong>Auto-Knock</strong>: Tap the <span class="key-action">"Auto-Knock"</span> button at the bottom to have the woodfish knocked continuously at your set speed. Tap again to stop.</li>
-                <li><strong>Customization</strong>: Tap the gear icon in the top right to open settings. Here you can:
-                    <ul>
-                        <li><strong>Change Woodfish Style</strong>: In the "Select Woodfish" section, swipe horizontally and tap on your desired style.</li>
-                        <li><strong>Manage Blessings</strong>: Tap "Manage Blessings" to add, delete, or reset the texts that appear when knocking.</li>
-                        <li><strong>Set Background</strong>: Use the segmented control under "Background" to switch between "Off," "Music," or "Video." For video mode, tap "Add" to import a video from your photo library.</li>
-                    </ul>
-                </li>
+                <li><strong>Customization</strong>: Tap the gear icon in the top right to open settings. Here you can change the woodfish style, manage blessing texts, and set a background with music or a video from your album.</li>
             </ul>
 
             <h3>2.2 Digital Prayer Beads</h3>
             <ul>
-                <li><strong>Scrolling</strong>: On the "Digital Prayer Beads" screen, swipe down firmly on the screen to simulate scrolling the beads and accumulate counts.</li>
-                <li><strong>Counting Rule</strong>: Each time you complete a round of 108 beads, the "Rounds" counter will increment with an alert sound.</li>
+                <li><strong>Scrolling</strong>: On the "Digital Prayer Beads" screen, swipe down firmly on the screen to simulate scrolling the beads and accumulate counts. Each round of 108 beads increments the "Rounds" counter with an alert sound.</li>
                 <li><strong>Customization</strong>: Tap the gear icon to access settings. You can change the bead material (e.g., Red Sandalwood, Jade), toggle the "Merit +1" danmaku animation, and set a background with music or video.</li>
             </ul>
 

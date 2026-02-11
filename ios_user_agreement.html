@@ -16,15 +16,15 @@
             font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
             line-height: 1.8;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             background-color: var(--background-color);
             color: var(--text-color);
         }
         .container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 10px auto;
             background-color: var(--container-background);
-            padding: 30px 40px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
@@ -35,21 +35,17 @@
         }
         h1 {
             text-align: center;
-            font-size: 2em;
+            font-size: 1.8em;
             margin-bottom: 10px;
         }
         h2 {
-            font-size: 1.5em;
+            font-size: 1.4em;
             border-bottom: 2px solid var(--primary-color);
             margin-top: 30px;
         }
-        h3 {
-            font-size: 1.2em;
-            margin-top: 25px;
-        }
         p, li {
             color: #495057;
-            font-size: 1.05em;
+            font-size: 1em;
         }
         ul {
             padding-left: 20px;
@@ -96,6 +92,26 @@
             padding: 15px;
             border-radius: 8px;
             margin-top: 20px;
+        }
+
+        /* 响应式布局：针对大屏幕优化 */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .container {
+                padding: 30px 40px;
+                margin: 20px auto;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            p, li {
+                font-size: 1.1em;
+            }
         }
     </style>
 </head>
