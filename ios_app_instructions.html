@@ -1,330 +1,841 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>用户使用手册 - 光颜相机</title>
-    <style>
-        :root {
-            --primary-color: #007AFF;
-            --secondary-color: #34C759;
-            --tertiary-color: #FF9500;
-            --text-color: #333;
-            --background-color: #f8f9fa;
-            --container-background: #ffffff;
-            --border-color: #e9ecef;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 10px;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-        .container {
-            max-width: 800px;
-            margin: 10px auto;
-            background-color: var(--container-background);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        h1, h2, h3 {
-            color: #000;
-            padding-bottom: 10px;
-            margin-top: 20px;
-        }
-        h1 {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        h2 {
-            font-size: 1.5em;
-            border-bottom: 2px solid var(--primary-color);
-            margin-top: 40px;
-            padding-left: 10px;
-            border-left: 4px solid var(--primary-color);
-        }
-        h3 {
-            font-size: 1.2em;
-            margin-top: 30px;
-            color: var(--secondary-color);
-        }
-        p, li {
-            color: #495057;
-            font-size: 1.05em;
-        }
-        ul {
-            padding-left: 25px;
-            list-style-type: '✨';
-        }
-        li {
-            margin-bottom: 12px;
-            padding-left: 10px;
-        }
-        strong, .key-action {
-            color: #000;
-            font-weight: bold;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-        }
-        .lang-switch {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .lang-switch button {
-            background: none;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin: 0 5px;
-            font-weight: bold;
-            transition: all 0.2s ease-in-out;
-        }
-        .lang-switch button.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        .lang-en { display: none; }
-        .faq-section {
-            background-color: #f1f3f5;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-        }
-        .faq-question {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        
-        /* 响应式布局 */
-        @media (min-width: 768px) {
-            body {
-                padding: 20px;
-            }
-            .container {
-                padding: 30px 40px;
-                margin: 20px auto;
-            }
-            h1 {
-                font-size: 2.2em;
-            }
-            h2 {
-                font-size: 1.6em;
-            }
-            p, li {
-                font-size: 1.1em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用说明 · 光颜相机</title>
+  <style>
+    :root {
+      --primary: #007AFF;
+      --primary-light: #e7f3ff;
+      --text: #1a1a2e;
+      --text-secondary: #555e6d;
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --border: #e8ecf0;
+      --radius: 14px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Helvetica Neue", sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.8; font-size: 15px;
+    }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 16px; }
+    /* Header */
+    .site-header {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100; padding: 12px 20px;
+    }
+    .site-header .inner {
+      max-width: 820px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .app-name { font-size: 15px; font-weight: 700; color: var(--primary); }
+    .lang-switch { display: flex; gap: 6px; }
+    .lang-switch button {
+      padding: 7px 18px; border-radius: 20px;
+      border: 1.5px solid var(--primary); background: transparent;
+      color: var(--primary); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.18s; min-width: 80px; touch-action: manipulation;
+    }
+    .lang-switch button.active { background: var(--primary); color: #fff; }
+    /* Hero */
+    .hero {
+      text-align: center; padding: 40px 20px 28px;
+    }
+    .hero h1 { font-size: 2em; font-weight: 800; color: var(--text); letter-spacing: -0.5px; margin-bottom: 8px; }
+    .hero p { color: var(--text-secondary); font-size: 0.95em; }
+    /* TOC */
+    .toc {
+      background: var(--card); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 20px 24px; margin-bottom: 20px;
+    }
+    .toc h3 { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 12px; font-weight: 600; }
+    .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .toc a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 10px; border-radius: 8px; text-decoration: none;
+      color: var(--text); font-size: 0.88em; font-weight: 500;
+      border: 1px solid var(--border); background: var(--bg); transition: all 0.15s;
+    }
+    .toc a:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+    .toc a .emoji { font-size: 1.1em; }
+    /* Sections */
+    .section {
+      background: var(--card); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 28px 24px; margin-bottom: 20px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-bottom: 16px; border-bottom: 2px solid var(--primary);
+    }
+    .section-icon { font-size: 1.8em; flex-shrink: 0; }
+    .section-title h2 { font-size: 1.2em; font-weight: 800; color: var(--text); border: none; padding: 0; margin: 0; }
+    .section-title p { font-size: 0.85em; color: var(--text-secondary); margin: 0; }
+    h3 { font-size: 1em; font-weight: 700; color: var(--text); margin: 20px 0 8px; }
+    p { color: var(--text-secondary); margin-bottom: 10px; }
+    ul, ol { padding-left: 20px; color: var(--text-secondary); margin-bottom: 12px; }
+    li { margin-bottom: 8px; line-height: 1.75; }
+    strong { color: var(--text); }
+    /* Feature cards in grid */
+    .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+    .feat-card {
+      background: var(--bg); border-radius: 10px; padding: 14px 16px;
+      border: 1px solid var(--border);
+    }
+    .feat-card .icon { font-size: 1.3em; margin-bottom: 6px; }
+    .feat-card .name { font-weight: 700; font-size: 0.9em; color: var(--text); margin-bottom: 3px; }
+    .feat-card .info { font-size: 0.82em; color: var(--text-secondary); line-height: 1.5; }
+    /* VIP badge */
+    .vip {
+      display: inline-flex; align-items: center; gap: 3px;
+      background: linear-gradient(135deg, #f5a623, #e8870a);
+      color: #fff; font-size: 10px; font-weight: 700;
+      padding: 2px 7px; border-radius: 8px; margin-left: 6px; vertical-align: middle;
+    }
+    /* Step list */
+    .steps { counter-reset: step; margin: 12px 0; }
+    .step {
+      display: flex; gap: 12px; align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .step-num {
+      background: var(--primary); color: #fff;
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+    }
+    .step-content { flex: 1; }
+    .step-content strong { display: block; margin-bottom: 2px; }
+    .step-content p { margin: 0; font-size: 0.9em; }
+    /* Highlight */
+    .highlight {
+      background: var(--primary-light); border-left: 4px solid var(--primary);
+      padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0;
+    }
+    .highlight p { color: var(--text); margin: 0; font-size: 0.92em; }
+    /* Tip */
+    .tip {
+      background: #fff8e1; border-left: 4px solid #f59e0b;
+      padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0;
+      font-size: 0.88em; color: #6b4e00;
+    }
+    /* Meditation modes */
+    .med-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 14px 0; }
+    .med-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: var(--bg); border-radius: 10px; padding: 12px 14px;
+      border: 1px solid var(--border);
+    }
+    .med-icon { font-size: 1.4em; flex-shrink: 0; width: 30px; text-align: center; }
+    .med-name { font-weight: 700; font-size: 0.92em; color: var(--text); margin-bottom: 2px; }
+    .med-desc { font-size: 0.84em; color: var(--text-secondary); margin: 0; }
+    /* Back to top */
+    #back-top {
+      position: fixed; bottom: 24px; right: 20px;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--primary); color: #fff; border: none;
+      font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,122,255,0.35);
+      opacity: 0; pointer-events: none; transition: opacity 0.25s; z-index: 200;
+    }
+    #back-top.show { opacity: 1; pointer-events: auto; }
+    .lang-en { display: none; }
+    @media (min-width: 640px) {
+      body { font-size: 16px; }
+      .wrap { padding: 24px; }
+      .section { padding: 36px 40px; }
+      .hero h1 { font-size: 2.5em; }
+      .med-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .feat-grid { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 class="lang-zh">光颜相机 用户使用手册</h1>
-            <h1 class="lang-en">LumiCamera User Guide</h1>
-            <div class="lang-switch">
-                <button id="btn-zh" class="active" onclick="switchLang('zh')">简体中文</button>
-                <button id="btn-en" onclick="switchLang('en')">English</button>
-            </div>
+
+<header class="site-header">
+  <div class="inner">
+    <span class="app-name">📷 光颜相机 · LumiCamera</span>
+    <div class="lang-switch">
+      <button id="btn-zh" class="active" onclick="switchLang('zh')">简体中文</button>
+      <button id="btn-en" onclick="switchLang('en')">English</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ===== 中文 ===== -->
+<div class="lang-zh">
+
+  <div class="hero">
+    <h1>📖 使用说明</h1>
+    <p>光颜相机 · 补光拍摄 · 佛具模拟 · 冥想引导</p>
+  </div>
+
+  <!-- 目录 -->
+  <div class="toc">
+    <h3>目录</h3>
+    <div class="toc-grid">
+      <a href="#camera"><span class="emoji">📷</span> 补光相机</a>
+      <a href="#woodfish"><span class="emoji">🥁</span> 电子木鱼</a>
+      <a href="#beads"><span class="emoji">📿</span> 电子佛珠</a>
+      <a href="#incense"><span class="emoji">🪄</span> 电子烧香</a>
+      <a href="#candle"><span class="emoji">🕯️</span> 电子蜡烛</a>
+      <a href="#meditation"><span class="emoji">🧘</span> 冥想中心</a>
+      <a href="#mirror"><span class="emoji">🪞</span> 补妆镜</a>
+      <a href="#led"><span class="emoji">📺</span> LED 字幕</a>
+      <a href="#vip"><span class="emoji">👑</span> 会员 Pro</a>
+      <a href="#settings"><span class="emoji">⚙️</span> 设置</a>
+    </div>
+  </div>
+
+  <!-- 1. 补光相机 -->
+  <div class="section" id="camera">
+    <div class="section-header">
+      <div class="section-icon">📷</div>
+      <div class="section-title">
+        <h2>补光相机</h2>
+        <p>主界面 · 补光拍摄核心功能</p>
+      </div>
+    </div>
+    <p>打开应用即进入补光相机主界面。屏幕背景即为补光灯——颜色越亮、饱和度越高，补光效果越强。</p>
+
+    <h3>🎨 调整补光颜色</h3>
+    <p>点击屏幕下方控制面板，切换以下三个标签页：</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="icon">🎡</div>
+        <div class="name">自定义色轮</div>
+        <div class="info">拖动色轮选择任意颜色，支持精确调色</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">✨</div>
+        <div class="name">预设颜色</div>
+        <div class="info">8种美颜补光预设：纯欲感、冷白皮、水光肌等</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">🪟</div>
+        <div class="name">悬浮框 <span class="vip">Pro</span></div>
+        <div class="info">开启画中画悬浮补光，切换其他App时补光持续存在</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">🌗</div>
+        <div class="name">补光透明度 / 亮度</div>
+        <div class="info">面板底部两个滑块，分别控制透明度和亮度</div>
+      </div>
+    </div>
+    <div class="tip">💡 左右滑动主屏幕可快速切换上一个/下一个预设颜色</div>
+
+    <h3>📸 拍摄模式</h3>
+    <p>点击左上角相机图标开启前置摄像头，选择底部拍摄模式：</p>
+    <ul>
+      <li><strong>拍照</strong>：点击快门拍摄照片，自动保存到相册</li>
+      <li><strong>拍 Live</strong>：拍摄 Live Photo 动态照片</li>
+      <li><strong>录像</strong>：点击快门开始/停止录像</li>
+      <li><strong>延时拍照</strong>：设置延时后自动拍摄</li>
+    </ul>
+
+    <h3>🪟 悬浮补光框 <span class="vip">Pro</span></h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><strong>进入悬浮框标签</strong><p>控制面板切换到"悬浮框"页</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><strong>选择目标App</strong><p>选择要配合使用的相机 App（美颜相机、轻颜、美图等）</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><strong>选择比例</strong><p>选择悬浮窗比例（4:3、1:1、16:9等）</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><strong>开启悬浮框</strong><p>点击"开启悬浮框"，应用会自动跳转到目标App，补光窗口始终悬浮在屏幕上</p></div></div>
+    </div>
+    <div class="highlight"><p>💡 悬浮补光框通过 iOS 画中画（PiP）技术实现，系统会在后台保持补光显示。</p></div>
+  </div>
+
+  <!-- 2. 电子木鱼 -->
+  <div class="section" id="woodfish">
+    <div class="section-header">
+      <div class="section-icon">🥁</div>
+      <div class="section-title">
+        <h2>电子木鱼 <span class="vip">Pro</span></h2>
+        <p>敲击木鱼，积累功德</p>
+      </div>
+    </div>
+    <p>点击主界面右上角"•••"进入更多功能，选择"电子木鱼"。</p>
+    <ul>
+      <li><strong>敲击木鱼</strong>：点击木鱼即可敲击，累计功德数</li>
+      <li><strong>选择样式</strong>：多种木鱼外观，点击右上角设置切换</li>
+      <li><strong>功德弹幕</strong>：可开启功德文字飘出效果</li>
+      <li><strong>背景设置</strong>：支持自定义背景颜色或导入视频作为背景</li>
+      <li><strong>音效</strong>：每次敲击有清脆木鱼声，可调节音量</li>
+    </ul>
+    <div class="tip">📌 功德计数会自动保存，下次打开继续累计</div>
+  </div>
+
+  <!-- 3. 电子佛珠 -->
+  <div class="section" id="beads">
+    <div class="section-header">
+      <div class="section-icon">📿</div>
+      <div class="section-title">
+        <h2>电子佛珠</h2>
+        <p>转动佛珠，静心修身</p>
+      </div>
+    </div>
+    <p>在更多功能中选择"电子佛珠"。</p>
+    <ul>
+      <li><strong>滑动佛珠</strong>：向上滑动拨动佛珠，每拨一颗计数一次</li>
+      <li><strong>计数显示</strong>：当前圈数和总计数实时显示</li>
+      <li><strong>样式选择</strong>：多种佛珠颜色与材质可选</li>
+      <li><strong>音效</strong>：拨动时有清脆佛珠声</li>
+    </ul>
+  </div>
+
+  <!-- 4. 电子烧香 -->
+  <div class="section" id="incense">
+    <div class="section-header">
+      <div class="section-icon">🪄</div>
+      <div class="section-title">
+        <h2>电子烧香</h2>
+        <p>诚心礼佛，祈福平安</p>
+      </div>
+    </div>
+    <p>在更多功能中选择"电子烧香"。</p>
+    <ul>
+      <li><strong>点燃香支</strong>：点击"点燃"按钮，香支开始燃烧，烟雾飘起</li>
+      <li><strong>重力感应</strong>：手机倾斜时烟雾随重力方向飘动</li>
+      <li><strong>吹气熄灭</strong>：对着麦克风轻吹，可吹散烟雾</li>
+      <li><strong>香型选择</strong>：设置中选择不同香支样式和颜色</li>
+      <li><strong>背景音乐</strong>：可设置背景音乐或背景视频增强氛围</li>
+    </ul>
+    <div class="tip">💡 需要授权麦克风权限才能使用吹气功能，重力感应需开启运动权限</div>
+  </div>
+
+  <!-- 5. 电子蜡烛 -->
+  <div class="section" id="candle">
+    <div class="section-header">
+      <div class="section-icon">🕯️</div>
+      <div class="section-title">
+        <h2>电子蜡烛</h2>
+        <p>烛光摇曳，静谧祈愿</p>
+      </div>
+    </div>
+    <p>在更多功能中选择"电子蜡烛"。</p>
+    <ul>
+      <li><strong>点燃蜡烛</strong>：点击"点燃"，蜡烛燃烧，火焰随机闪烁</li>
+      <li><strong>吹气熄灭</strong>：对麦克风轻吹，火焰摇曳后熄灭，烟雾飘散</li>
+      <li><strong>重力感应</strong>：倾斜手机，烟雾顺势飘动</li>
+      <li><strong>蜡烛样式</strong>：多种颜色可选（白烛、红烛、黑烛、金烛等）</li>
+      <li><strong>多支蜡烛</strong>：可在设置中选择摆放多支蜡烛</li>
+      <li><strong>背景</strong>：支持纯色、音乐或视频背景</li>
+    </ul>
+  </div>
+
+  <!-- 6. 冥想中心 -->
+  <div class="section" id="meditation">
+    <div class="section-header">
+      <div class="section-icon">🧘</div>
+      <div class="section-title">
+        <h2>冥想中心 <span class="vip">Pro</span></h2>
+        <p>7种冥想模式，引导身心放松</p>
+      </div>
+    </div>
+    <p>在更多功能中选择"冥想"，进入冥想主页，选择适合您的模式。</p>
+
+    <div class="med-grid">
+      <div class="med-item">
+        <div class="med-icon">🫁</div>
+        <div>
+          <div class="med-name">呼吸引导</div>
+          <div class="med-desc">跟随动画节奏进行有节律的呼吸练习，6种专业呼吸法可选（盒式、4-7-8、火焰呼吸等），支持设置时长和背景</div>
         </div>
-
-        <div class="lang-zh">
-            <p>欢迎使用光颜相机！这是一款集成了多种创意拍摄与实用工具的App，旨在为您提供有趣、便捷的使用体验。本手册将引导您探索App的全部功能。</p>
-            
-            <h2>一. 相机与补光</h2>
-            <h3>1.1 补光模式</h3>
-            <ul>
-                <li><strong>开启与调节</strong>：在主拍摄界面，屏幕本身即为补光灯。轻点屏幕任意位置，即可呼出底部的控制面板。您可以通过拖动 <span class="key-action">“亮度”</span> 和 <span class="key-action">“透明度”</span> 滑块，实时调整补光效果。</li>
-                <li><strong>色彩控制</strong>：在控制面板中，您可以在 <span class="key-action">“自定义”</span> 标签页通过色轮自由选择颜色，或在 <span class="key-action">“预设颜色”</span> 标签页快速应用精心调制的氛围色彩。</li>
-                <li><strong>悬浮补光 (画中画)</strong>：
-                    <ol>
-                        <li>切换到控制面板的 <span class="key-action">“悬浮框”</span> 标签页。</li>
-                        <li>点击 <span class="key-action">“开启悬浮框”</span> 按钮。补光面板会以小窗形式悬浮在屏幕上。</li>
-                        <li>此时您可以切换到系统相机或其他任何App，补光悬浮窗会持续存在。</li>
-                        <li>您可以通过双指捏合来缩放悬浮窗大小，或拖动它到屏幕的四个角落。</li>
-                    </ol>
-                </li>
-            </ul>
-
-            <h3>1.2 拍摄模式</h3>
-            <p>在主界面底部，您可以左右滑动切换不同的拍摄模式：</p>
-            <ul>
-                <li><strong>拍照</strong>：拍摄高质量的静态照片。</li>
-                <li><strong>拍Live</strong>：拍摄带有动态效果的Live Photo（实况照片）。</li>
-                <li><strong>录像</strong>：长按拍摄按钮开始录制视频，松开即可结束。</li>
-                <li><strong>延时拍照</strong>：提供倒计时功能，方便您进行自拍或合影。</li>
-            </ul>
-
-            <h3>1.3 补妆镜</h3>
-            <ul>
-                <li><strong>操作</strong>：从主屏幕进入 <span class="key-action">“更多”</span> 页面，点击 <span class="key-action">“补妆镜”</span>。App会立即启动一个无任何UI干扰的全屏镜像视图，利用前置摄像头让您清晰地整理妆容。</li>
-            </ul>
-
-            <h3>1.4 九宫格</h3>
-            <ul>
-                <li><strong>操作</strong>：在 <span class="key-action">“更多”</span> 页面的“拍摄辅助”区域，轻点 <span class="key-action">“九宫格”</span> 行即可开启或关闭。开启后，相机预览界面会显示辅助构图线，帮助您拍出更具美感的照片。</li>
-            </ul>
-
-            <h2>二. 模拟体验工具</h2>
-            <h3>2.1 电子木鱼</h3>
-            <ul>
-                <li><strong>敲击</strong>：在“电子木鱼”界面，点击屏幕中央的木鱼即可进行敲击，屏幕上会显示“功德+1”等祝福语动画。</li>
-                <li><strong>自动敲击</strong>：点击底部的 <span class="key-action">“自动敲击”</span> 按钮，木鱼将根据您设定的速度持续敲击。再次点击可停止。</li>
-                <li><strong>自定义</strong>：点击右上角的齿轮图标进入设置。在这里，您可以更换木鱼样式、管理祝福语、设置背景音乐或从相册导入视频作为背景。</li>
-            </ul>
-
-            <h3>2.2 电子佛珠</h3>
-            <ul>
-                <li><strong>拨动</strong>：在“电子佛珠”界面，用手指向下滑动屏幕即可模拟拨动佛珠的动作，同时累积计数。每拨动108颗佛珠（一轮），“累计圈数”会自动加一，并伴有提示音。</li>
-                <li><strong>自定义</strong>：点击右上角的齿轮图标进入设置。您可以更换佛珠的材质样式（如小叶紫檀、和田玉等）、开启或关闭“功德+1”弹幕动画，以及设置背景音乐或视频。</li>
-            </ul>
-
-            <h3>2.3 电子烧香</h3>
-            <ul>
-                <li><strong>敬香</strong>：点击底部的 <span class="key-action">“敬香”</span> 按钮，香会开始燃烧，并伴有缓缓升起的烟雾效果。屏幕上会实时显示香的剩余燃烧时间。</li>
-                <li><strong>自定义</strong>：点击右上角的齿轮图标进入设置。您可以选择不同的香（如檀香、藏香等），并同样可以设置背景音乐或视频。</li>
-            </ul>
-
-            <h2>三. 其他实用工具</h2>
-            <h3>3.1 滚动字幕</h3>
-            <ul>
-                <li><strong>操作</strong>：在 <span class="key-action">“更多”</span> 页面中，点击 <span class="key-action">“滚动字幕”</span>，进入设置页面。</li>
-                <li><strong>自定义</strong>：您可以输入想要显示的文字，并通过滑块和颜色选择器调整滚动速度、字体大小、文字颜色和背景颜色。设置完成后，点击 <span class="key-action">“开始滚动”</span> 即可在全屏模式下展示，非常适合在演唱会、接机等场合使用。</li>
-            </ul>
-
-            <h3>3.2 手电筒</h3>
-            <ul>
-                <li><strong>快速开关</strong>：在 <span class="key-action">“更多”</span> 页面中，轻点“手电筒”行即可快速打开或关闭闪光灯。</li>
-                <li><strong>亮度调节</strong>：当手电筒开启时，<span class="key-action">长按“手电筒”</span>行，会弹出一个“调整亮度”的选项。点击后即可进入亮度调节页面，通过滑块在1%到100%之间精细控制亮度。</li>
-            </ul>
-
-            <div class="faq-section">
-                <h2>常见问题 (FAQ)</h2>
-                <p class="faq-question">Q: 为什么手电筒功能需要相机权限？</p>
-                <p>A: 在iOS系统中，闪光灯（Torch）是相机硬件的一部分，因此任何需要控制闪光灯的应用都必须获得相机权限。我们承诺仅使用此权限来开关手电筒，绝不会捕获任何图像。</p>
-                <p class="faq-question">Q: 我选择的背景视频会上传到服务器吗？</p>
-                <p>A: 绝对不会。您从相册选择的所有视频都仅在您的设备本地进行处理和播放，我们不会也无法访问、上传或存储您的任何媒体文件。</p>
-                <p class="faq-question">Q: 如何在App内找到用户协议和隐私政策？</p>
-                <p>A: 您可以在“更多”页面进入“设置”，在设置列表的底部可以找到“用户协议”和“隐私政策”的入口。</p>
-            </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🎵</div>
+        <div>
+          <div class="med-name">音频冥想</div>
+          <div class="med-desc">12种音景自由混音（雨声、颂钵、海浪、森林等），支持单独调节每种音量，从服务器加载高质量音频</div>
         </div>
-
-        <div class="lang-en">
-            <p>Welcome to LumiCamera! This is a comprehensive application that integrates a variety of creative shooting and utility tools, designed to provide you with a fun and convenient user experience. This guide will walk you through all the features of the App.</p>
-
-            <h2>1. Camera & Fill Light</h2>
-            <h3>1.1 Fill Light Mode</h3>
-            <ul>
-                <li><strong>Activation & Adjustment</strong>: On the main shooting screen, the screen itself acts as a fill light. Simply tap anywhere on the screen to bring up the control panel at the bottom. You can adjust the lighting effect in real-time by dragging the <span class="key-action">"Brightness"</span> and <span class="key-action">"Opacity"</span> sliders.</li>
-                <li><strong>Color Control</strong>: In the control panel, you can freely select colors using the color wheel in the <span class="key-action">"Custom"</span> tab, or quickly apply well-designed atmospheric colors from the <span class="key-action">"Preset Colors"</span> tab.</li>
-                <li><strong>Floating Fill Light (Picture-in-Picture)</strong>:
-                    <ol>
-                        <li>Switch to the <span class="key-action">"Floating Window"</span> tab in the control panel.</li>
-                        <li>Tap the <span class="key-action">"Enable Floating Window"</span> button. The fill light panel will appear as a small floating window.</li>
-                        <li>You can now switch to the system camera or any other app, and the fill light window will remain on top.</li>
-                        <li>You can resize the window by pinching with two fingers or drag it to any of the four corners of the screen.</li>
-                    </ol>
-                </li>
-            </ul>
-
-            <h3>1.2 Shooting Modes</h3>
-            <p>At the bottom of the main screen, you can swipe left or right to switch between different shooting modes:</p>
-            <ul>
-                <li><strong>Photo</strong>: Capture high-quality static photos.</li>
-                <li><strong>Live Photo</strong>: Capture Live Photos with motion and sound.</li>
-                <li><strong>Video</strong>: Press and hold the shutter button to start recording a video; release to stop.</li>
-                <li><strong>Timer</strong>: Set a countdown for hands-free selfies or group photos.</li>
-            </ul>
-
-            <h3>1.3 Makeup Mirror</h3>
-            <ul>
-                <li><strong>Operation</strong>: From the home screen, navigate to the <span class="key-action">"More"</span> page and tap <span class="key-action">"Makeup Mirror"</span>. This will launch a full-screen, UI-free mirror view using the front camera, perfect for a quick touch-up.</li>
-            </ul>
-
-            <h3>1.4 Grid Lines</h3>
-            <ul>
-                <li><strong>Operation</strong>: In the "Shooting Assistance" section of the <span class="key-action">"More"</span> page, tap the <span class="key-action">"Grid"</span> row to toggle it on or off. When enabled, compositional grid lines will be displayed on the camera preview to help you frame better shots.</li>
-            </ul>
-
-            <h2>2. Simulation Tools</h2>
-            <h3>2.1 Digital Woodfish</h3>
-            <ul>
-                <li><strong>Knocking</strong>: On the "Digital Woodfish" screen, tap the woodfish in the center to knock. An animation with blessing texts like "Merit +1" will appear.</li>
-                <li><strong>Auto-Knock</strong>: Tap the <span class="key-action">"Auto-Knock"</span> button at the bottom to have the woodfish knocked continuously at your set speed. Tap again to stop.</li>
-                <li><strong>Customization</strong>: Tap the gear icon in the top right to open settings. Here you can change the woodfish style, manage blessing texts, and set a background with music or a video from your album.</li>
-            </ul>
-
-            <h3>2.2 Digital Prayer Beads</h3>
-            <ul>
-                <li><strong>Scrolling</strong>: On the "Digital Prayer Beads" screen, swipe down firmly on the screen to simulate scrolling the beads and accumulate counts. Each round of 108 beads increments the "Rounds" counter with an alert sound.</li>
-                <li><strong>Customization</strong>: Tap the gear icon to access settings. You can change the bead material (e.g., Red Sandalwood, Jade), toggle the "Merit +1" danmaku animation, and set a background with music or video.</li>
-            </ul>
-
-            <h3>2.3 Digital Incense</h3>
-            <ul>
-                <li><strong>Lighting</strong>: Tap the <span class="key-action">"Light Incense"</span> button to start burning the incense, complete with rising smoke effects. A timer will display the remaining burn time.</li>
-                <li><strong>Customization</strong>: In the settings panel, you can choose different types of incense (e.g., Sandalwood, Tibetan Incense) and set a background with music or video.</li>
-            </ul>
-
-            <h2>3. Other Utilities</h2>
-            <h3>3.1 Scrolling Ticker</h3>
-            <ul>
-                <li><strong>Operation</strong>: On the <span class="key-action">"More"</span> page, tap <span class="key-action">"Scrolling Ticker"</span> to enter the setup screen.</li>
-                <li><strong>Customization</strong>: You can input your desired text, adjust the scrolling speed, font size, text color, and background color. Once set, tap <span class="key-action">"Start Scrolling"</span> to display it in full-screen mode, perfect for concerts or airport pickups.</li>
-            </ul>
-
-            <h3>3.2 Flashlight</h3>
-            <ul>
-                <li><strong>Toggle</strong>: On the <span class="key-action">"More"</span> page, tap the "Flashlight" row to quickly turn the torch on or off.</li>
-                <li><strong>Brightness Control</strong>: When the flashlight is on, <span class="key-action">long-press</span> the "Flashlight" row to reveal an "Adjust Brightness" option. Tapping it will take you to a settings page where you can finely control the brightness from 1% to 100% using a slider.</li>
-            </ul>
-
-            <div class="faq-section">
-                <h2>Frequently Asked Questions (FAQ)</h2>
-                <p class="faq-question">Q: Why does the flashlight feature require camera permission?</p>
-                <p>A: In iOS, the flashlight (torch) is part of the camera hardware. Therefore, any app that needs to control the torch must obtain camera permission. We promise to use this permission solely for toggling the flashlight and will never capture any images.</p>
-                <p class="faq-question">Q: Will the background videos I select be uploaded to a server?</p>
-                <p>A: Absolutely not. All videos you select from your photo library are processed and played locally on your device. We cannot and will not access, upload, or store any of your media files.</p>
-                <p class="faq-question">Q: How can I find the User Agreement and Privacy Policy within the app?</p>
-                <p>A: You can go to the "More" page, then "Settings". You will find the entries for "User Agreement" and "Privacy Policy" at the bottom of the settings list.</p>
-            </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🎬</div>
+        <div>
+          <div class="med-name">视觉冥想</div>
+          <div class="med-desc">全屏视频播放，内置4种视频（篝火/溪流/星空/寺庙），支持从相册导入自定义视频，含音量控制</div>
         </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🌸</div>
+        <div>
+          <div class="med-name">曼陀罗</div>
+          <div class="med-desc">凝视多层旋转几何图案，可选5种图案和5种配色，支持呼吸联动与重力视差效果</div>
+        </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🕯️</div>
+        <div>
+          <div class="med-name">烛光凝视</div>
+          <div class="med-desc">极简烛光冥想，全屏沉浸，支持吹气检测和多种蜡烛样式，让思绪随火焰沉静</div>
+        </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🫂</div>
+        <div>
+          <div class="med-name">身体扫描</div>
+          <div class="med-desc">从双脚到头顶逐部位引导放松，支持文字、语音或同步三种引导方式，语音随语言设置自动切换</div>
+        </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🔔</div>
+        <div>
+          <div class="med-name">咒语 / 数息</div>
+          <div class="med-desc">默念循环咒语（阿弥陀佛/Om等）或专注数呼吸计数，清空杂念</div>
+        </div>
+      </div>
     </div>
 
-    <script>
-        function switchLang(lang) {
-            if (lang === 'en') {
-                document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'none');
-                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'block');
-                document.getElementById('btn-en').classList.add('active');
-                document.getElementById('btn-zh').classList.remove('active');
-                document.documentElement.lang = 'en';
-            } else {
-                document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'block');
-                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
-                document.getElementById('btn-zh').classList.add('active');
-                document.getElementById('btn-en').classList.remove('active');
-                document.documentElement.lang = 'zh-CN';
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            const userLang = navigator.language || navigator.userLanguage;
-            if (userLang.toLowerCase().startsWith('en')) {
-                switchLang('en');
-            } else {
-                switchLang('zh');
-            }
-        });
-    </script>
+    <div class="highlight">
+      <p>💡 所有冥想模式支持设置冥想时长，到时间屏幕渐暗提示，不打断体验。</p>
+    </div>
+  </div>
+
+  <!-- 7. 补妆镜 -->
+  <div class="section" id="mirror">
+    <div class="section-header">
+      <div class="section-icon">🪞</div>
+      <div class="section-title">
+        <h2>补妆镜</h2>
+        <p>随时随地高清补光化妆镜</p>
+      </div>
+    </div>
+    <p>在更多功能中选择"补妆镜"，自动开启前置摄像头。</p>
+    <ul>
+      <li><strong>补光颜色</strong>：点击调色板图标，从15种预设补光色中选择（纯白、暖白、冷白、玫瑰、橙色等），或使用颜色选择器自定义</li>
+      <li><strong>亮度调节</strong>：顶部滑块实时调节屏幕亮度，越亮补光效果越强</li>
+      <li><strong>镜框形状</strong>：点击形状图标切换圆形/椭圆/矩形三种镜框</li>
+      <li><strong>缩放</strong>：点击放大/缩小按钮调整画面大小</li>
+      <li><strong>切换摄像头</strong>：支持前置/后置切换</li>
+      <li><strong>手电筒</strong>：点击手电筒图标开启后置补光</li>
+    </ul>
+    <div class="tip">💡 屏幕常亮已自动开启，补妆时手机不会自动熄屏</div>
+  </div>
+
+  <!-- 8. LED 字幕 -->
+  <div class="section" id="led">
+    <div class="section-header">
+      <div class="section-icon">📺</div>
+      <div class="section-title">
+        <h2>LED 字幕</h2>
+        <p>炫酷手持滚动弹幕</p>
+      </div>
+    </div>
+    <p>在更多功能中选择"LED字幕"，进入全黑背景的字幕展示界面。</p>
+    <ul>
+      <li><strong>编辑文字</strong>：点击屏幕打开设置面板，输入您想显示的文字</li>
+      <li><strong>文字颜色</strong>：从颜色选择器设置文字颜色</li>
+      <li><strong>背景颜色</strong>：可自定义背景颜色，不再局限于纯黑</li>
+      <li><strong>滚动方向</strong>：从右到左 / 从下到上 / 静止居中 三种模式</li>
+      <li><strong>字体风格</strong>：7种字体（系统加粗、圆润、衬线、等宽、艺术手写等）</li>
+      <li><strong>滚动速度和字体大小</strong>：用滑块调节</li>
+      <li><strong>开始/停止</strong>：点击底部蓝色按钮控制滚动</li>
+    </ul>
+    <div class="tip">💡 使用 LED 字幕时屏幕自动常亮，关闭页面后恢复正常</div>
+  </div>
+
+  <!-- 9. 会员 -->
+  <div class="section" id="vip">
+    <div class="section-header">
+      <div class="section-icon">👑</div>
+      <div class="section-title">
+        <h2>会员 Pro</h2>
+        <p>解锁高级功能</p>
+      </div>
+    </div>
+    <p>光颜相机 Pro 会员解锁以下三项高级功能：</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="icon">🪟</div>
+        <div class="name">悬浮补光框</div>
+        <div class="info">切换任意相机 App 时，补光框始终悬浮在屏幕上</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">🥁</div>
+        <div class="name">电子木鱼</div>
+        <div class="info">完整功能使用，含功德计数与自定义样式</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">🧘</div>
+        <div class="name">冥想中心</div>
+        <div class="info">全部7种冥想模式无限使用</div>
+      </div>
+    </div>
+    <h3>购买方式</h3>
+    <ul>
+      <li><strong>包年订阅</strong>：自动续期，可随时在 App Store 取消</li>
+      <li><strong>终身会员</strong>：一次性买断，永久有效</li>
+    </ul>
+    <div class="tip">📌 管理订阅：iPhone 设置 → 您的名字 → 订阅</div>
+    <div class="tip">📌 已购买过？点击"恢复购买"即可恢复会员状态</div>
+  </div>
+
+  <!-- 10. 设置 -->
+  <div class="section" id="settings">
+    <div class="section-header">
+      <div class="section-icon">⚙️</div>
+      <div class="section-title">
+        <h2>设置</h2>
+        <p>个性化配置 App</p>
+      </div>
+    </div>
+    <ul>
+      <li><strong>语言设置</strong>：支持简体中文、繁体中文（台湾/香港）、英文、日文、韩文，可跟随系统或手动选择</li>
+      <li><strong>九宫格辅助线</strong>：开启后拍照时显示构图辅助线</li>
+      <li><strong>会员状态</strong>：查看当前会员状态，入口跳转购买页</li>
+      <li><strong>用户协议 / 隐私政策</strong>：点击可在浏览器中查看完整法律文件</li>
+      <li><strong>联系我们</strong>：复制开发者邮箱，发送反馈</li>
+      <li><strong>五星好评</strong>：跳转 App Store 评分页面</li>
+    </ul>
+  </div>
+
+</div><!-- end lang-zh -->
+
+
+<!-- ===== English ===== -->
+<div class="lang-en">
+
+  <div class="hero">
+    <h1>📖 User Guide</h1>
+    <p>LumiCamera · Fill Light · Spiritual Tools · Meditation</p>
+  </div>
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <div class="toc-grid">
+      <a href="#camera-en"><span class="emoji">📷</span> Fill Light Camera</a>
+      <a href="#woodfish-en"><span class="emoji">🥁</span> Digital Woodfish</a>
+      <a href="#beads-en"><span class="emoji">📿</span> Prayer Beads</a>
+      <a href="#incense-en"><span class="emoji">🪄</span> Digital Incense</a>
+      <a href="#candle-en"><span class="emoji">🕯️</span> Digital Candle</a>
+      <a href="#meditation-en"><span class="emoji">🧘</span> Meditation</a>
+      <a href="#mirror-en"><span class="emoji">🪞</span> Makeup Mirror</a>
+      <a href="#led-en"><span class="emoji">📺</span> LED Marquee</a>
+      <a href="#vip-en"><span class="emoji">👑</span> Pro Membership</a>
+      <a href="#settings-en"><span class="emoji">⚙️</span> Settings</a>
+    </div>
+  </div>
+
+  <!-- Camera -->
+  <div class="section" id="camera-en">
+    <div class="section-header">
+      <div class="section-icon">📷</div>
+      <div class="section-title">
+        <h2>Fill Light Camera</h2>
+        <p>Main screen · Core photography features</p>
+      </div>
+    </div>
+    <p>The app opens directly to the Fill Light Camera. The screen background acts as the fill light — the brighter and more saturated the color, the stronger the fill-light effect.</p>
+
+    <h3>🎨 Adjusting the Fill Color</h3>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="icon">🎡</div>
+        <div class="name">Color Wheel</div>
+        <div class="info">Drag to pick any color with precise control</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">✨</div>
+        <div class="name">Preset Colors</div>
+        <div class="info">8 beauty-focused presets: Pure Desire, Cool Skin, Water Glow, etc.</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">🪟</div>
+        <div class="name">Floating Panel <span class="vip">Pro</span></div>
+        <div class="info">PiP fill-light window stays visible when switching to other apps</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">🌗</div>
+        <div class="name">Opacity / Brightness</div>
+        <div class="info">Two sliders at the bottom of the panel for fine-tuning</div>
+      </div>
+    </div>
+    <div class="tip">💡 Swipe left or right on the main screen to cycle through preset colors quickly</div>
+
+    <h3>📸 Shooting Modes</h3>
+    <ul>
+      <li><strong>Photo:</strong> Tap the shutter to take a photo, auto-saved to your album</li>
+      <li><strong>Live Photo:</strong> Capture a Live Photo with motion</li>
+      <li><strong>Video:</strong> Tap to start/stop recording</li>
+      <li><strong>Time-lapse:</strong> Set a delay and the shot fires automatically</li>
+    </ul>
+
+    <h3>🪟 Floating Fill Light <span class="vip">Pro</span></h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Open the Floating tab</strong><p>Switch to the "Float" tab in the control panel</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Choose a target app</strong><p>Select the camera app you want to use alongside (Meitu, Ulike, etc.)</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Pick an aspect ratio</strong><p>Choose from 4:3, 1:1, 16:9, and more</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Enable floating</strong><p>Tap "Enable Float" — the fill light window will float over your chosen app</p></div></div>
+    </div>
+  </div>
+
+  <!-- Woodfish -->
+  <div class="section" id="woodfish-en">
+    <div class="section-header">
+      <div class="section-icon">🥁</div>
+      <div class="section-title">
+        <h2>Digital Woodfish <span class="vip">Pro</span></h2>
+        <p>Tap the wooden fish, accumulate merit</p>
+      </div>
+    </div>
+    <p>Access via the ••• menu → Digital Woodfish.</p>
+    <ul>
+      <li><strong>Tap the woodfish</strong> to strike it and increment your merit count</li>
+      <li>Choose from multiple <strong>woodfish styles</strong> in settings</li>
+      <li>Enable <strong>floating merit text</strong> for a visual effect</li>
+      <li>Set a custom <strong>background color or video</strong></li>
+      <li>Merit count is <strong>automatically saved</strong> between sessions</li>
+    </ul>
+  </div>
+
+  <!-- Beads -->
+  <div class="section" id="beads-en">
+    <div class="section-header">
+      <div class="section-icon">📿</div>
+      <div class="section-title">
+        <h2>Digital Prayer Beads</h2>
+        <p>Turn beads, calm your mind</p>
+      </div>
+    </div>
+    <p>Access via the ••• menu → Digital Prayer Beads.</p>
+    <ul>
+      <li><strong>Swipe upward</strong> to roll the beads — each bead counted automatically</li>
+      <li>Current <strong>lap and total count</strong> displayed in real time</li>
+      <li>Choose from multiple <strong>bead colors and styles</strong></li>
+      <li>Accompanied by a soft <strong>bead click sound</strong> on each roll</li>
+    </ul>
+  </div>
+
+  <!-- Incense -->
+  <div class="section" id="incense-en">
+    <div class="section-header">
+      <div class="section-icon">🪄</div>
+      <div class="section-title">
+        <h2>Digital Incense</h2>
+        <p>Offer incense with sincerity</p>
+      </div>
+    </div>
+    <p>Access via the ••• menu → Digital Incense.</p>
+    <ul>
+      <li>Tap <strong>Light</strong> to ignite the incense and watch the smoke rise</li>
+      <li><strong>Gravity sensing:</strong> tilt your phone and the smoke drifts naturally</li>
+      <li><strong>Blow to disperse:</strong> blow gently near the microphone to scatter the smoke</li>
+      <li>Set <strong>background music or video</strong> for a deeper atmosphere</li>
+    </ul>
+    <div class="tip">💡 Microphone permission is needed for the blow feature; Motion permission for gravity sensing</div>
+  </div>
+
+  <!-- Candle -->
+  <div class="section" id="candle-en">
+    <div class="section-header">
+      <div class="section-icon">🕯️</div>
+      <div class="section-title">
+        <h2>Digital Candle</h2>
+        <p>Flickering flame, quiet wishes</p>
+      </div>
+    </div>
+    <p>Access via the ••• menu → Digital Candle.</p>
+    <ul>
+      <li>Tap <strong>Light</strong> to ignite the candle with a realistically flickering flame</li>
+      <li><strong>Blow to extinguish:</strong> blow near the microphone — the flame sways and goes out</li>
+      <li><strong>Gravity smoke:</strong> tilt the device to make smoke drift sideways</li>
+      <li>Choose from multiple <strong>candle colors</strong> (White, Red, Black, Gold…)</li>
+      <li>Supports <strong>multiple candles</strong> and custom backgrounds</li>
+    </ul>
+  </div>
+
+  <!-- Meditation -->
+  <div class="section" id="meditation-en">
+    <div class="section-header">
+      <div class="section-icon">🧘</div>
+      <div class="section-title">
+        <h2>Meditation Center <span class="vip">Pro</span></h2>
+        <p>7 guided meditation modes</p>
+      </div>
+    </div>
+    <p>Access via the ••• menu → Meditation, then choose a mode.</p>
+
+    <div class="med-grid">
+      <div class="med-item">
+        <div class="med-icon">🫁</div>
+        <div>
+          <div class="med-name">Breathwork</div>
+          <div class="med-desc">Follow animated breathing cycles with 6 expert techniques (Box, 4-7-8, Fire Breath, etc.) — set session length and background</div>
+        </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🎵</div>
+        <div>
+          <div class="med-name">Sound Meditation</div>
+          <div class="med-desc">Mix up to 12 soundscapes (rain, singing bowl, ocean, forest…) with individual volume control</div>
+        </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🎬</div>
+        <div>
+          <div class="med-name">Visual Meditation</div>
+          <div class="med-desc">Full-screen looping video (campfire / stream / stars / temple). Import your own videos from your photo library</div>
+        </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🌸</div>
+        <div>
+          <div class="med-name">Mandala</div>
+          <div class="med-desc">Gaze at layered rotating geometric patterns; 5 designs and 5 color themes; optional breath sync and gravity parallax</div>
+        </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🕯️</div>
+        <div>
+          <div class="med-name">Candle Gazing</div>
+          <div class="med-desc">Minimalist candle meditation with blow-detection and candle style selection</div>
+        </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🫂</div>
+        <div>
+          <div class="med-name">Body Scan</div>
+          <div class="med-desc">Progressive relaxation from feet to crown with text, voice, or combined guidance — voice language follows your app language setting</div>
+        </div>
+      </div>
+      <div class="med-item">
+        <div class="med-icon">🔔</div>
+        <div>
+          <div class="med-name">Mantra / Counting</div>
+          <div class="med-desc">Silently recite a mantra (Amitabha, Om, etc.) or count breaths to quiet the mind</div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight">
+      <p>💡 All meditation modes support a session timer — the screen gently dims when time is up, without jarring interruptions.</p>
+    </div>
+  </div>
+
+  <!-- Mirror -->
+  <div class="section" id="mirror-en">
+    <div class="section-header">
+      <div class="section-icon">🪞</div>
+      <div class="section-title">
+        <h2>Makeup Mirror</h2>
+        <p>HD fill-light mirror anytime, anywhere</p>
+      </div>
+    </div>
+    <p>Access via the ••• menu → Makeup Mirror.</p>
+    <ul>
+      <li><strong>Fill color:</strong> Tap the palette icon to pick from 15 presets or use the custom color picker</li>
+      <li><strong>Brightness:</strong> Drag the top slider to adjust screen brightness</li>
+      <li><strong>Mirror shape:</strong> Toggle between circle, oval, and rectangle frames</li>
+      <li><strong>Zoom:</strong> Use + / − buttons to resize the preview</li>
+      <li><strong>Flashlight:</strong> Activate the rear torch for extra supplemental light</li>
+    </ul>
+    <div class="tip">💡 The screen stays on automatically while the mirror is open</div>
+  </div>
+
+  <!-- LED -->
+  <div class="section" id="led-en">
+    <div class="section-header">
+      <div class="section-icon">📺</div>
+      <div class="section-title">
+        <h2>LED Marquee</h2>
+        <p>Eye-catching scrolling text display</p>
+      </div>
+    </div>
+    <p>Access via the ••• menu → LED Marquee.</p>
+    <ul>
+      <li>Tap the screen to open the <strong>settings panel</strong> and type your message</li>
+      <li>Set <strong>text color</strong> and <strong>background color</strong> independently</li>
+      <li>Choose <strong>scroll direction:</strong> right-to-left, bottom-to-top, or static center</li>
+      <li>Pick from <strong>7 font styles</strong> (Bold, Rounded, Serif, Mono, Chalkboard…)</li>
+      <li>Adjust <strong>speed</strong> and <strong>font size</strong> with sliders</li>
+      <li>Tap the blue button to <strong>start / stop</strong> scrolling</li>
+    </ul>
+  </div>
+
+  <!-- VIP -->
+  <div class="section" id="vip-en">
+    <div class="section-header">
+      <div class="section-icon">👑</div>
+      <div class="section-title">
+        <h2>Pro Membership</h2>
+        <p>Unlock premium features</p>
+      </div>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="icon">🪟</div>
+        <div class="name">Floating Fill Light</div>
+        <div class="info">Fill light stays visible when switching to any other camera app</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">🥁</div>
+        <div class="name">Digital Woodfish</div>
+        <div class="info">Full access with merit counting and custom styles</div>
+      </div>
+      <div class="feat-card">
+        <div class="icon">🧘</div>
+        <div class="name">Meditation Center</div>
+        <div class="info">All 7 meditation modes, unlimited</div>
+      </div>
+    </div>
+    <ul style="margin-top:14px">
+      <li><strong>Annual Subscription:</strong> Auto-renews; cancel anytime in App Store</li>
+      <li><strong>Lifetime:</strong> One-time purchase, permanent access</li>
+    </ul>
+    <div class="tip">📌 To cancel: Settings → Your Name → Subscriptions</div>
+    <div class="tip">📌 Already purchased? Tap "Restore Purchase" to recover your access</div>
+  </div>
+
+  <!-- Settings -->
+  <div class="section" id="settings-en">
+    <div class="section-header">
+      <div class="section-icon">⚙️</div>
+      <div class="section-title">
+        <h2>Settings</h2>
+        <p>Personalize your experience</p>
+      </div>
+    </div>
+    <ul>
+      <li><strong>Language:</strong> Choose from Simplified Chinese, Traditional Chinese (TW/HK), English, Japanese, or Korean — or follow the system language</li>
+      <li><strong>Grid Lines:</strong> Toggle composition guide lines during shooting</li>
+      <li><strong>Membership:</strong> Check your Pro status or go to the purchase page</li>
+      <li><strong>Privacy Policy / User Agreement:</strong> Opens in your browser</li>
+      <li><strong>Contact Us:</strong> Copy developer email to send feedback</li>
+      <li><strong>Rate the App:</strong> Opens the App Store review page</li>
+    </ul>
+  </div>
+
+</div><!-- end lang-en -->
+
+</div>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script data-cfasync="false">
+  function switchLang(lang) {
+    const isEn = lang === 'en';
+    document.querySelectorAll('.lang-zh').forEach(el => el.style.display = isEn ? 'none' : 'block');
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = isEn ? 'block' : 'none');
+    document.getElementById('btn-en').classList.toggle('active', isEn);
+    document.getElementById('btn-zh').classList.toggle('active', !isEn);
+    document.documentElement.lang = isEn ? 'en' : 'zh-CN';
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const lang = navigator.language || '';
+    if (lang.toLowerCase().startsWith('en')) switchLang('en');
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('back-top').classList.toggle('show', window.scrollY > 300);
+  });
+</script>
 </body>
 </html>
